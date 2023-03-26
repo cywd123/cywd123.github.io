@@ -16,21 +16,21 @@
   <meta name="author" content="崔雨">
   <meta name="keywords" content="">
   
-    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;long long c[500001];	long long i,j,n,m,t,k;long long lb(long long x)&amp;#123;">
+    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;long long d[500000&lt;&lt;2],laz[500000&lt;&lt;2],n,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【个人收藏】树状数组">
-<meta property="og:url" content="https://cywd123.github.io/2023/03/26/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:title" content="【个人收藏】带lazy标记的zkw线段树">
+<meta property="og:url" content="https://cywd123.github.io/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/%E5%B8%A6lazy%E6%A0%87%E8%AE%B0%E7%9A%84zkw%E7%BA%BF%E6%AE%B5%E6%A0%91/index.html">
 <meta property="og:site_name" content="唯物主义鼠鼠">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;long long c[500001];	long long i,j,n,m,t,k;long long lb(long long x)&amp;#123;">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;long long d[500000&lt;&lt;2],laz[500000&lt;&lt;2],n,">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-26T15:11:01.896Z">
-<meta property="article:modified_time" content="2023-03-20T15:36:51.044Z">
+<meta property="article:published_time" content="2022-03-18T13:41:44.000Z">
+<meta property="article:modified_time" content="2023-03-26T15:51:54.919Z">
 <meta property="article:author" content="崔雨">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>【个人收藏】树状数组 - 唯物主义鼠鼠</title>
+  <title>【个人收藏】带lazy标记的zkw线段树 - 唯物主义鼠鼠</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【个人收藏】树状数组"></span>
+            <span id="subtitle" data-typed-text="【个人收藏】带lazy标记的zkw线段树"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-26 23:11" pubdate>
-          2023年3月26日 晚上
+        <time datetime="2022-03-18 21:41" pubdate>
+          2022年3月18日 晚上
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          656 字
+          1.3k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          6 分钟
+          11 分钟
         
       </span>
     
@@ -268,12 +268,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【个人收藏】树状数组</h1>
+            <h1 style="display: none">【个人收藏】带lazy标记的zkw线段树</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><br><span class="hljs-meta">#include&lt;bits/stdc++.h&gt;</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-title">std</span>;<br><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> c[<span class="hljs-number">500001</span>];<br>	<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> i,j,n,m,t,k;<br><span class="hljs-function"><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> <span class="hljs-title">lb</span>(<span class="hljs-params"><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> x</span>)</span><br>&#123;<span class="hljs-keyword">return</span> x&amp;(-x);<br>&#125;<br><span class="hljs-function"><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> <span class="hljs-title">get</span>(<span class="hljs-params"><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> x</span>)</span><br>&#123;<br>	<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> ans=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(;x;x-=lb(x))<br>	ans+=c[x];<br>	<span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span>(<span class="hljs-params"><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> x,<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> y</span>)</span>&#123;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> i=x;i&lt;=n;i+=lb(i))<br>	c[i]+=y;<br>	<br>&#125;<br><br><span class="hljs-function"><span class="hljs-built_in">int</span> <span class="hljs-title">main</span>()</span>&#123;<br><br>	cin&gt;&gt;n&gt;&gt;m;<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>	&#123;scanf(<span class="hljs-string">&quot;%lld&quot;</span>,&amp;t);<br>	<span class="hljs-keyword">add</span>(i,t);<br>	&#125;<br>	<span class="hljs-keyword">while</span>(m--)&#123;<br>		cin&gt;&gt;t;<br>		<span class="hljs-keyword">if</span>(t==<span class="hljs-number">1</span>)&#123;<br>			cin&gt;&gt;j&gt;&gt;k;<br>			<span class="hljs-keyword">add</span>(j,k);<br>		&#125;<br>		<span class="hljs-keyword">else</span> &#123;<br>			<br>			cin&gt;&gt;j&gt;&gt;k;<br>			cout&lt;&lt;<span class="hljs-keyword">get</span>(k)-<span class="hljs-keyword">get</span>(j<span class="hljs-number">-1</span>)&lt;&lt;endl;<br>		&#125;<br>		<br>	&#125;<br>	<br>&#125;<br></code></pre></td></tr></table></figure>
+                <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><br><span class="hljs-meta">#include&lt;bits/stdc++.h&gt;</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-title">std</span>;<br><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> d[<span class="hljs-number">500000</span>&lt;&lt;<span class="hljs-number">2</span>],laz[<span class="hljs-number">500000</span>&lt;&lt;<span class="hljs-number">2</span>],n,m=<span class="hljs-number">1</span>;;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span>()</span>&#123;<br>	<span class="hljs-keyword">while</span>(m&lt;=n)m&lt;&lt;=<span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> i=m+<span class="hljs-number">1</span>;i&lt;=m+n;i++)cin&gt;&gt;d[i];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> i=m<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">1</span>;i--)d[i]=d[i&lt;&lt;<span class="hljs-number">1</span>]+d[i&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>];<br>&#125;<br><span class="hljs-function"><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> <span class="hljs-title">get</span>(<span class="hljs-params"><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> x,<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> y</span>)</span>&#123;<br>	<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> ans=<span class="hljs-number">0</span>,lc=<span class="hljs-number">0</span>,rc=<span class="hljs-number">0</span>,cnt=<span class="hljs-number">1</span>;<span class="hljs-comment">//cnt=1</span><br>	<span class="hljs-keyword">for</span>(x+=m<span class="hljs-number">-1</span>,y+=m+<span class="hljs-number">1</span>; x^y^<span class="hljs-number">1</span>; x&gt;&gt;=<span class="hljs-number">1</span>,y&gt;&gt;=<span class="hljs-number">1</span>,cnt&lt;&lt;=<span class="hljs-number">1</span>)&#123;<br>		<span class="hljs-keyword">if</span>(laz[x])ans+=laz[x]*lc;<br>		<span class="hljs-keyword">if</span>(laz[y])ans+=laz[y]*rc;<br>		<span class="hljs-keyword">if</span>(~x&amp;<span class="hljs-number">1</span>)ans+=d[x^<span class="hljs-number">1</span>],lc+=cnt;<br>		<span class="hljs-keyword">if</span>(y&amp;<span class="hljs-number">1</span>)ans+=d[y^<span class="hljs-number">1</span>],rc+=cnt;<br>	&#125;<br>	<br>		<span class="hljs-keyword">for</span>(;x;x&gt;&gt;=<span class="hljs-number">1</span>,y&gt;&gt;=<span class="hljs-number">1</span>)ans+=laz[x]*lc,ans+=laz[y]*rc;<br>	<span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span>(<span class="hljs-params"><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> x,<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> y,<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> v</span>)</span>&#123;<br>	<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> ans=<span class="hljs-number">0</span>,lc=<span class="hljs-number">0</span>,rc=<span class="hljs-number">0</span>,cnt=<span class="hljs-number">1</span>;<span class="hljs-comment">//cnt=1</span><br>	<span class="hljs-keyword">for</span>(x+=m<span class="hljs-number">-1</span>,y+=m+<span class="hljs-number">1</span>; x^y^<span class="hljs-number">1</span>; x&gt;&gt;=<span class="hljs-number">1</span>,y&gt;&gt;=<span class="hljs-number">1</span>,cnt&lt;&lt;=<span class="hljs-number">1</span>)&#123;<br>		d[x]+=v*lc;d[y]+=v*rc;<br>		<span class="hljs-keyword">if</span>(~x&amp;<span class="hljs-number">1</span>) laz[x^<span class="hljs-number">1</span>]+=v,d[x^<span class="hljs-number">1</span>]+=v*cnt,lc+=cnt;<br>		<span class="hljs-keyword">if</span>(y&amp;<span class="hljs-number">1</span>)  laz[y^<span class="hljs-number">1</span>]+=v,d[y^<span class="hljs-number">1</span>]+=v*cnt,rc+=cnt;		<br><br>	&#125;<br><span class="hljs-keyword">for</span>(;x;x&gt;&gt;=<span class="hljs-number">1</span>,y&gt;&gt;=<span class="hljs-number">1</span>)d[x]+=v*lc,d[y]+=v*rc;<br>&#125;<br><span class="hljs-function"><span class="hljs-built_in">int</span> <span class="hljs-title">main</span>()</span>&#123;<br><span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> q;<br>cin&gt;&gt;n&gt;&gt;q;<br>build();<br><span class="hljs-keyword">while</span>(q--)&#123;<br>	<span class="hljs-built_in">long</span> <span class="hljs-built_in">long</span> a,b,op,c;<br>	cin&gt;&gt;op&gt;&gt;a&gt;&gt;b;<br>	<span class="hljs-keyword">if</span>(op==<span class="hljs-number">1</span>)&#123;<br>		cin&gt;&gt;c;<br>		<span class="hljs-keyword">add</span>(a,b,c);<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>		<br>		cout&lt;&lt;<span class="hljs-keyword">get</span>(a,b)&lt;&lt;endl;<br>		<br>	&#125;<br>	<br>	<br>&#125;<br><br><br><br><br>&#125; <br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -318,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【个人收藏】树状数组</div>
-      <div>https://cywd123.github.io/2023/03/26/个人收藏C++模板/树状数组/</div>
+      <div>【个人收藏】带lazy标记的zkw线段树</div>
+      <div>https://cywd123.github.io/2022/03/18/个人收藏C++模板/带lazy标记的zkw线段树/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +331,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年3月26日</div>
+          <div>2022年3月18日</div>
         </div>
       
       
@@ -363,9 +363,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/26/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="【个人收藏】线段树">
+                      <a href="/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94%E7%AE%97%E6%B3%95/" title="【个人收藏】kruskal算法（克鲁斯卡尔算法）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【个人收藏】线段树</span>
+                        <span class="hidden-mobile">【个人收藏】kruskal算法（克鲁斯卡尔算法）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -373,8 +373,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/26/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/%E5%B8%A6lazy%E6%A0%87%E8%AE%B0%E7%9A%84zkw%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="【个人收藏】带lazy标记的zkw线段树">
-                        <span class="hidden-mobile">【个人收藏】带lazy标记的zkw线段树</span>
+                      <a href="/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" title="【个人收藏】树状数组">
+                        <span class="hidden-mobile">【个人收藏】树状数组</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
