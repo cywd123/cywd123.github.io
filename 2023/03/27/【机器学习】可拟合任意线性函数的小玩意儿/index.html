@@ -16,21 +16,25 @@
   <meta name="author" content="崔雨">
   <meta name="keywords" content="">
   
-    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;const long long   N&#x3D;100010,M&#x3D;200011;long long   head[N],">
+    <meta name="description" content="【机器学习】可拟合任意线性函数的小玩意儿先上完整代码import torch as t import torch.nn as nn import torch.optim as optim  def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c):     for epoch in range(1, n_epochs + 1):">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【个人收藏】SPFA算法">
-<meta property="og:url" content="https://cywd123.github.io/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/SPFA%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="【机器学习】可拟合任意线性函数的小玩意儿">
+<meta property="og:url" content="https://cywd123.github.io/2023/03/27/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/index.html">
 <meta property="og:site_name" content="唯物主义鼠鼠">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;const long long   N&#x3D;100010,M&#x3D;200011;long long   head[N],">
+<meta property="og:description" content="【机器学习】可拟合任意线性函数的小玩意儿先上完整代码import torch as t import torch.nn as nn import torch.optim as optim  def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c):     for epoch in range(1, n_epochs + 1):">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-18T13:41:49.000Z">
-<meta property="article:modified_time" content="2023-03-20T15:33:43.040Z">
+<meta property="og:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/1.jpg">
+<meta property="og:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/2.jpg">
+<meta property="og:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/3.jpg">
+<meta property="article:published_time" content="2023-03-27T14:27:23.000Z">
+<meta property="article:modified_time" content="2023-03-27T15:58:34.028Z">
 <meta property="article:author" content="崔雨">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/1.jpg">
   
   
   
-  <title>【个人收藏】SPFA算法 - 唯物主义鼠鼠</title>
+  <title>【机器学习】可拟合任意线性函数的小玩意儿 - 唯物主义鼠鼠</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【个人收藏】SPFA算法"></span>
+            <span id="subtitle" data-typed-text="【机器学习】可拟合任意线性函数的小玩意儿"></span>
           
         </div>
 
@@ -207,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-18 21:41" pubdate>
-          2022年3月18日 晚上
+        <time datetime="2023-03-27 22:27" pubdate>
+          2023年3月27日 晚上
         </time>
       </span>
     
@@ -219,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          912 字
+          1.9k 字
         
       </span>
     
@@ -230,7 +234,7 @@
         
         
         
-          8 分钟
+          16 分钟
         
       </span>
     
@@ -268,12 +272,69 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【个人收藏】SPFA算法</h1>
+            <h1 style="display: none">【机器学习】可拟合任意线性函数的小玩意儿</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span>   N=<span class="hljs-number">100010</span>,M=<span class="hljs-number">200011</span>;<br><span class="hljs-type">long</span> <span class="hljs-type">long</span>   head[N],ver[M],edge[M],Next[M],d[N];<br><span class="hljs-type">long</span> <span class="hljs-type">long</span>   n,m,tot=<span class="hljs-number">0</span>;<br>queue&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span> &gt;q;<br><span class="hljs-type">bool</span> v[N];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span>   x,<span class="hljs-type">long</span> <span class="hljs-type">long</span>   y,<span class="hljs-type">long</span> <span class="hljs-type">long</span>   z)</span></span>&#123;<br>	ver[++tot]=y;edge[tot]=z;Next[tot]=head[x];<br>	head[x]=tot;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-type">long</span> <span class="hljs-type">long</span>   i,j,n,m,a,b,c,s;<br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lld %lld %lld&quot;</span>,&amp;n,&amp;m,&amp;s);<br><span class="hljs-keyword">while</span>(m--)&#123;<br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lld %lld %lld&quot;</span>,&amp;a,&amp;b,&amp;c);<br><span class="hljs-built_in">add</span>(a,b,c);<br><span class="hljs-comment">//	add(b,a,c);</span><br>&#125;<br><span class="hljs-built_in">memset</span>(d,<span class="hljs-number">0x3f</span>,<span class="hljs-built_in">sizeof</span>(d));<br><span class="hljs-built_in">memset</span>(v,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(v));<br>d[s]=<span class="hljs-number">0</span>;<br>v[s]=<span class="hljs-number">1</span>;<br>q.<span class="hljs-built_in">push</span>(<span class="hljs-number">1</span>);<br><span class="hljs-keyword">while</span>(q.<span class="hljs-built_in">size</span>())<br>&#123;<br>	<span class="hljs-type">long</span> <span class="hljs-type">long</span>   x=q.<span class="hljs-built_in">front</span>();<br>	q.<span class="hljs-built_in">pop</span>();<br>	v[x]=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">long</span> <span class="hljs-type">long</span>  i=head[x];i;i=Next[i])<br>	&#123;<span class="hljs-type">long</span> <span class="hljs-type">long</span>   y=ver[i],z=edge[i];<br>	<span class="hljs-keyword">if</span>(d[y]&gt;d[x]+z)&#123;<br>		d[y]=d[x]+z;<br>		<span class="hljs-keyword">if</span>(!v[y])<br>		&#123;<br>			q.<span class="hljs-built_in">push</span>(y);<br>			v[y]=<span class="hljs-number">1</span>;<br>			<br>		&#125;<br>	&#125;<br>	&#125;<br>	<br>	<br>&#125;<br><br><br><span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>cout&lt;&lt;d[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br><br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+                <h1 id="【机器学习】可拟合任意线性函数的小玩意儿"><a href="#【机器学习】可拟合任意线性函数的小玩意儿" class="headerlink" title="【机器学习】可拟合任意线性函数的小玩意儿"></a>【机器学习】可拟合任意线性函数的小玩意儿</h1><h3 id="先上完整代码"><a href="#先上完整代码" class="headerlink" title="先上完整代码"></a>先上完整代码</h3><pre><code class="hljs">import torch as t
+import torch.nn as nn
+import torch.optim as optim
+
+def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c):
+    for epoch in range(1, n_epochs + 1):
+        t_p = model(t_u)          #计算当前模型的预测值
+        loss = loss_fn(t_p, t_c)  #计算损失函数
+        optimizer.zero_grad()   
+        loss.backward()   #回溯累计损失
+        optimizer.step()
+        if epoch % 50 == 0:
+            print(&#39;Epoch %d, Loss %f&#39; % (epoch, float(loss)))
+    return model
+
+
+epoches=30000  #迭代次数 一般次数适中，为防止过度拟合不建议迭代次数过多
+num=50000  #随机生成的样本数 一般越多越好，看运行配置
+
+learning_rate=1e-4   #学习率（数值越大学得越快（但不一定准确），数值越小拟合越好（时间较长））建议取 1e-2 、1e-3、1e-4、1e-5
+
+x = t.randn(num, 1)
+def f(x):
+    return 30 * x + 10
+    #待拟合的式子为 y=30*x +10  可自行修改if you like。
+
+
+y = f(x)+ t.randn(num, 1)*10  #  后面的 t.randn(num, 1)*10 是偏离值，降低训练的精确性（给你的模型更多的挑战）
+linear_model = nn.Linear(1, 1)
+optimizer = optim.SGD(linear_model.parameters(), lr=learning_rate)
+training_loop(n_epochs=epoches,optimizer=optimizer,model=linear_model,loss_fn=nn.MSELoss(),t_u=x,t_c=y)
+print(&#39;\n&#39;)
+#print(linear_model.weight)
+#print(linear_model.bias)
+
+while(1):
+    x=float(input(&#39;请输入想预测的x值：&#39;))
+    tmp=float(linear_model(t.tensor([x]))[0])
+    print(&quot;拟合值:&quot;,tmp)
+    print(&quot;真实值:&quot;,f(x))
+    print(&quot;相对误差:&quot;,1-tmp/f(x))
+    print(&#39;\n&#39;)
+</code></pre>
+<p>这个程序可以分为两个部分(生成训练数据、机器学习模型)，其中生成训练数据部分可有可无(因为在实际应用中，一般数据为人工导入，不是系统随机生成)。</p>
+<h4 id="不得不说，PyTorch真香。"><a href="#不得不说，PyTorch真香。" class="headerlink" title="不得不说，PyTorch真香。"></a>不得不说，PyTorch真香。</h4><p>下面来简单地介绍一下这个模型：<br>    它基于PyTorch深度学习框架，实现了简单的机器学习，主体采用梯度下降法，内部调用PyTorch的SGD计算梯度函数</p>
+<p>基本功能是根据已有的训练数据，拟合出X与Y的线性对应关系</p>
+<h2 id="我们用这个模型拟合-Y-x3D-30-X-10-这个函数"><a href="#我们用这个模型拟合-Y-x3D-30-X-10-这个函数" class="headerlink" title="我们用这个模型拟合 Y&#x3D;30 * X + 10  这个函数"></a>我们用这个模型拟合 Y&#x3D;30 * X + 10  这个函数</h2><p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/1.jpg" srcset="/img/loading.gif" lazyload><br>这是代码的主要配置界面，想玩的在这里配置参数</p>
+<p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/2.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>目前随机生成50000个不太准确的训练数据(准确值+一个随机数)，进行30000轮迭代。<br>（普通电脑能够在3秒内完成所有训练的超小规模训练&#x3D;。&#x3D;）<br>可以看到，随着迭代次数的增加，LOSS(拟合偏离值)在不断减小。说明训练效果不错</p>
+<p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/3.jpg" srcset="/img/loading.gif" lazyload><br>可以看到预测值与真实值非常接近，相对误差在0.3%以内。<br>（这个应该比较精确了，如果需要，可以加大训练数据，加深迭代次数进行更加精确的训练）</p>
+<h3 id="这个只是简单的机器学习模型，甚至都没有建立人工神经网络。。。"><a href="#这个只是简单的机器学习模型，甚至都没有建立人工神经网络。。。" class="headerlink" title="这个只是简单的机器学习模型，甚至都没有建立人工神经网络。。。"></a>这个只是简单的机器学习模型，甚至都没有建立人工神经网络。。。</h3><p>不过要怎么说呢，学起来！！！</p>
+<h1 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h1><h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><p>或许，这个模型实用性为零。因为它只能拟合线性函数，无法拟合其它函数。<br>（说实话与其用这个模型，还不如用R语言分析，再不济也能用Excel计算 线性回归方程 。这样效率会高很多很多。。。。</p>
+<h4 id="前景："><a href="#前景：" class="headerlink" title="前景："></a>前景：</h4><ol>
+<li>在这个模型的基础上可以编写能拟合非线性函数的模型。</li>
+<li>如果输入的参数很多，例如Y&#x3D;f(x1,x2,x3…),那么回归方程不太适用的时候，这类模型依旧能拟合出Y与各个参数的关系。</li>
+<li>不需要关注目标函数的构成：在更加深层次的机器学习模型中，我们并不关注目标函数的构成（即不需要预先知道Y与X是否符合特定的关系，如Y&#x3D;aX+b，Y&#x3D;aX^b+c等构成式），这样能够大大减轻拟合一个函数的负担。</li>
+</ol>
+
                 
               </div>
             
@@ -296,7 +357,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E7%BC%96%E7%A8%8B/C/" class="category-chain-item">C++</a>
+  <a href="/categories/%E7%BC%96%E7%A8%8B/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">机器学习</a>
   
   
 
@@ -318,8 +379,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【个人收藏】SPFA算法</div>
-      <div>https://cywd123.github.io/2022/03/18/个人收藏C++模板/SPFA算法/</div>
+      <div>【机器学习】可拟合任意线性函数的小玩意儿</div>
+      <div>https://cywd123.github.io/2023/03/27/【机器学习】可拟合任意线性函数的小玩意儿/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +392,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月18日</div>
+          <div>2023年3月27日</div>
         </div>
       
       
@@ -363,18 +424,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/ST%E8%A1%A8/" title="【个人收藏】ST表">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【个人收藏】ST表</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/Prim%E7%AE%97%E6%B3%95/" title="【个人收藏】Prim算法">
-                        <span class="hidden-mobile">【个人收藏】Prim算法</span>
+                      <a href="/2023/03/26/%E3%80%90%E7%88%AC%E8%99%AB%E3%80%91%E8%B1%86%E7%93%A3Top250%E7%88%AC%E5%8F%96/" title="【爬虫】豆瓣Top250爬取">
+                        <span class="hidden-mobile">【爬虫】豆瓣Top250爬取</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
