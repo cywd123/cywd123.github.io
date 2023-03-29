@@ -16,21 +16,28 @@
   <meta name="author" content="崔雨">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;priority_queue&lt;pair&lt;long long,long l">
+    <meta name="description" content="四层人工神经网络拟合二元二次函数先上 导出的神经网络模型：cyNN.pt(cyNN → 崔雨 Neural Network)（手动狗头）这个是PyTorch的模型，可以直接导入使用。 如果想了解人工神经网络，请认真阅读每个字，字字珠玑。😂 核心代码: 1234567891011121314151617181920212223242526272829      、、、、、、、、、、class Ne">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【个人收藏】Prim堆优化版">
-<meta property="og:url" content="https://cywd123.github.io/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/Prim%E5%A0%86%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="【机器学习】四层人工神经网络拟合二元二次函数">
+<meta property="og:url" content="https://cywd123.github.io/2023/03/29/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="唯物主义鼠鼠">
-<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;priority_queue&lt;pair&lt;long long,long l">
+<meta property="og:description" content="四层人工神经网络拟合二元二次函数先上 导出的神经网络模型：cyNN.pt(cyNN → 崔雨 Neural Network)（手动狗头）这个是PyTorch的模型，可以直接导入使用。 如果想了解人工神经网络，请认真阅读每个字，字字珠玑。😂 核心代码: 1234567891011121314151617181920212223242526272829      、、、、、、、、、、class Ne">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-18T13:41:49.000Z">
-<meta property="article:modified_time" content="2023-03-20T15:33:16.739Z">
+<meta property="og:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/2.jpg">
+<meta property="og:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/4.jpg">
+<meta property="og:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/3.jpg">
+<meta property="og:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/1.jpg">
+<meta property="og:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/5.jpg">
+<meta property="og:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/6.jpg">
+<meta property="article:published_time" content="2023-03-29T09:54:00.000Z">
+<meta property="article:modified_time" content="2023-03-29T11:06:21.565Z">
 <meta property="article:author" content="崔雨">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cywd123.github.io/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/2.jpg">
   
   
   
-  <title>【个人收藏】Prim堆优化版 - 唯物主义鼠鼠</title>
+  <title>【机器学习】四层人工神经网络拟合二元二次函数 - 唯物主义鼠鼠</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【个人收藏】Prim堆优化版"></span>
+            <span id="subtitle" data-typed-text="【机器学习】四层人工神经网络拟合二元二次函数"></span>
           
         </div>
 
@@ -207,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-18 21:41" pubdate>
-          2022年3月18日 晚上
+        <time datetime="2023-03-29 17:54" pubdate>
+          2023年3月29日 下午
         </time>
       </span>
     
@@ -219,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          2k 字
         
       </span>
     
@@ -230,7 +237,7 @@
         
         
         
-          9 分钟
+          17 分钟
         
       </span>
     
@@ -268,12 +275,52 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【个人收藏】Prim堆优化版</h1>
+            <h1 style="display: none">【机器学习】四层人工神经网络拟合二元二次函数</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br>priority_queue&lt;pair&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>,<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; &gt;q;<br>vector&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt;ver[<span class="hljs-number">5010</span>],edge[<span class="hljs-number">5010</span>];<br><span class="hljs-type">bool</span> v[<span class="hljs-number">5010</span>];<br><span class="hljs-type">long</span> <span class="hljs-type">long</span> d[<span class="hljs-number">5010</span>];<br><span class="hljs-type">long</span> <span class="hljs-type">long</span> n,m;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> x,<span class="hljs-type">long</span> <span class="hljs-type">long</span> y,<span class="hljs-type">long</span> <span class="hljs-type">long</span> z)</span></span>&#123;<br>	ver[x].<span class="hljs-built_in">push_back</span>(y);edge[x].<span class="hljs-built_in">push_back</span>(z);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>&#123;<br>	cin&gt;&gt;n&gt;&gt;m;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">long</span> <span class="hljs-type">long</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;<br>		<span class="hljs-type">long</span> <span class="hljs-type">long</span> a,b,c;<br>		cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;<br>		<span class="hljs-built_in">add</span>(a,b,c);<span class="hljs-built_in">add</span>(b,a,c);<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">work</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-built_in">memset</span>(d,<span class="hljs-number">0x3f</span>,<span class="hljs-built_in">sizeof</span>(d));<br>	<span class="hljs-built_in">memset</span>(v,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(v));<br>	<span class="hljs-type">long</span> <span class="hljs-type">long</span> ans=<span class="hljs-number">0</span>;<br>	d[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;<br>	q.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">make_pair</span>(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>));<br>	<span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span>(q.<span class="hljs-built_in">size</span>())&#123;<br>		<span class="hljs-type">long</span> <span class="hljs-type">long</span> x=q.<span class="hljs-built_in">top</span>().second;<br>		q.<span class="hljs-built_in">pop</span>();<br>		<span class="hljs-keyword">if</span>(v[x])<span class="hljs-keyword">continue</span>;<br>		v[x]=<span class="hljs-number">1</span>;<br>		cnt++;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=ver[x].<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>		<br>			<span class="hljs-type">int</span> y=ver[x][i],z=edge[x][i];<br>			<span class="hljs-keyword">if</span>(!v[y] &amp;&amp;(z&lt;d[y]))&#123;<br>				d[y]=z;<br>				q.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">make_pair</span>(-d[y],y));<br>			&#125;<br>		&#125;<br>		<br>		<br>	&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)ans+=d[i];<br><span class="hljs-keyword">if</span>(cnt==n)cout&lt;&lt;ans;<br><span class="hljs-keyword">else</span> cout&lt;&lt;<span class="hljs-string">&quot;orz&quot;</span>;<br><br><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-built_in">init</span>();<br><span class="hljs-built_in">work</span>();<br><br><br><br><br><br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="四层人工神经网络拟合二元二次函数"><a href="#四层人工神经网络拟合二元二次函数" class="headerlink" title="四层人工神经网络拟合二元二次函数"></a>四层人工神经网络拟合二元二次函数</h1><p>先上 导出的神经网络模型：<a href="/code/cyNN.pt">cyNN.pt</a><br>(cyNN → 崔雨 Neural Network)（手动狗头）<br>这个是PyTorch的模型，可以直接导入使用。</p>
+<p>如果想了解人工神经网络，请认真阅读每个字，字字珠玑。😂</p>
+<p>核心代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python">      、、、、、、、、、、<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Net</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>(Net, self).__init__()<br>        self.fc1 = nn.Linear(<span class="hljs-number">2</span>, <span class="hljs-number">40</span>)<br>        self.fc2 = nn.Linear(<span class="hljs-number">40</span>, <span class="hljs-number">40</span>)<br>        self.fc3 =nn.Linear(<span class="hljs-number">40</span>, <span class="hljs-number">24</span>)<br>        self.fc4 =nn.Linear(<span class="hljs-number">24</span>, <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self,x</span>):<br>        <span class="hljs-keyword">return</span> self.fc4(t.relu(self.fc3(t.relu(self.fc2(t.relu(self.fc1(x)))))))<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">train</span>(<span class="hljs-params">epoch,model,opt,lossfn,tu,tc</span>):<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,epoch+<span class="hljs-number">1</span>):<br>        tp=model(tu)<br>        loss=lossfn(tp,tc)<br>        opt.zero_grad()<br>        loss.backward()<br>        opt.step()<br>        <span class="hljs-keyword">if</span> i % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> i == <span class="hljs-number">1</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Epoch %d, Loss %f&#x27;</span> % (i, <span class="hljs-built_in">float</span>(loss)))<br>    <span class="hljs-keyword">return</span> model<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">f</span>(<span class="hljs-params">x,x2</span>):<br>    <span class="hljs-keyword">return</span> x**<span class="hljs-number">2</span>+x2<br><br>PATH = <span class="hljs-string">&quot;cyNN.pt&quot;</span><br>cyNN=t.load(PATH)<br>cyNN.<span class="hljs-built_in">eval</span>()<br>opt=optim.Adam(cyNN.parameters(),lr=<span class="hljs-number">1e-7</span>)<br>    、、、、、、、、、、<br></code></pre></td></tr></table></figure>
+<p>我们这个模型拟合的函数是：f(x,x2)&#x3D;x^2+x2</p>
+<h4 id="最最重要的核心调用框架"><a href="#最最重要的核心调用框架" class="headerlink" title="最最重要的核心调用框架"></a>最最重要的核心调用框架</h4><p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/2.jpg" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h2 id="神经网络解释"><a href="#神经网络解释" class="headerlink" title="神经网络解释"></a>神经网络解释</h2><p>这是一个四层人工神经网络，拟合二元二次函数。</p>
+<p>输入层有两个神经元，输出层有一个神经元，中间两层各有40个神经元，最后一层有24个神经元。激活函数使用的是ReLU，优化器使用的是Adam，学习率为1e-7，损失函数使用的是MSELoss。</p>
+<pre><code class="hljs">输入层：2个神经元  （表示两个自变量）
+隐藏层1：40个神经元
+隐藏层2：40个神经元
+隐藏层3：24个神经元
+输出层：1个神经元   （表示一个因变量）
+激活函数：ReLU （线性整流函数）
+优化器：Adam 
+学习率：1e-7 
+损失函数：MSELoss(即均方误差，也就是绝对误差的平方)
+</code></pre>
+<h4 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h4><p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/4.jpg" srcset="/img/loading.gif" lazyload><br>(一目了然这个属于是&#x3D;。&#x3D;）</p>
+<h4 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h4><p>这个激活函数采用的是ReLU，即线性整流函数，公式如下：<br><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/3.jpg" srcset="/img/loading.gif" lazyload><br>这个函数的特点是，当x&gt;0时，y&#x3D;x，当x&lt;0时，y&#x3D;0，这样就可以避免梯度消失的问题。同时，这个函数非常简单（数学公式只是 f(x)&#x3D;max(0,x)</p>
+<h4 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h4><p>这个优化器采用的是Pytorch内置的Adam，这个优化器是基于梯度下降的优化器，它的优点是，不需要精确设置学习率，而且可以自动调整学习率。而且更重要的是它对输入的数据不敏感，不需要对数据进行归一化处理。（可以同时处理不同量级的输入数据，例如同时处理0.1和10000的数据）</p>
+<h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><p>这个损失函数采用的是MSELoss，即均方误差，也就是绝对误差的平方。没啥好说的。</p>
+<hr>
+<h2 id="测试环节"><a href="#测试环节" class="headerlink" title="测试环节"></a>测试环节</h2><p>这里我用了一个简单的测试方法，就是随机输入二元二次函数的数据，然后用这个神经网络进行拟合，看看拟合的效果如何。</p>
+<p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/1.jpg" srcset="/img/loading.gif" lazyload><br><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/5.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到，这个神经网络拟合的效果还是不错的(拟合误差在2%以内)，而且这个神经网络的结构也是比较简单的，如果我们把神经网络的层数增加，神经元的数量增加，那么拟合的效果肯定会更好。</p>
+<hr>
+<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><p>####缺点</p>
+<ol>
+<li>这个神经网络的缺点是，它的结构依旧比较简单。如果我们把神经网络的层数增加，神经元的数量增加，那么拟合的效果肯定会更好。然鹅在训练深度神经网络时，模型的性能随着架构深度的增加而下降。这被称为“退化问题”。这样显然是不划算的。。。。。。</li>
+<li>出现了过拟合的现象（一图了解机器学习的过拟合现象）</li>
+</ol>
+<p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/6.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>显然，上方的拟合图像才是我们想要的函数图像。<br>但过多次训练后，这个神经网络的拟合会趋向于下方图像，这就是过拟合的现象。<br>专业来讲：过拟合现象是指一个模型在训练集上表现优异，但在测试集上表现一般，甚至无法正确预测测试集数据的现象。<br>所以，这个模型不能过度重复训练，否则会出现过拟合的现象。但是重复训练减少了，又会拟合不足，所以我们需要找到一个平衡点。只能说（道阻且长，行则将至）</p>
+<p>####优点</p>
+<ol>
+<li>这个神经网络的优点是，它的结构比较简单，所以训练速度比较快，而且拟合的效果也还不错。</li>
+<li>这个是前面机器学习的“升 级 版”，构建了前面没有的四层人工神经网络，学习能力更强了。</li>
+</ol>
+
                 
               </div>
             
@@ -296,7 +343,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E7%BC%96%E7%A8%8B/C/" class="category-chain-item">C++</a>
+  <a href="/categories/%E7%BC%96%E7%A8%8B/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">机器学习</a>
   
   
 
@@ -318,8 +365,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【个人收藏】Prim堆优化版</div>
-      <div>https://cywd123.github.io/2022/03/18/个人收藏C++模板/Prim堆优化/</div>
+      <div>【机器学习】四层人工神经网络拟合二元二次函数</div>
+      <div>https://cywd123.github.io/2023/03/29/【机器学习】四层人工神经网络拟合二元二次函数/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +378,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月18日</div>
+          <div>2023年3月29日</div>
         </div>
       
       
@@ -363,18 +410,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/SPFA%E7%AE%97%E6%B3%95/" title="【个人收藏】SPFA算法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【个人收藏】SPFA算法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94%E7%AE%97%E6%B3%95/" title="【个人收藏】kruskal算法（克鲁斯卡尔算法）">
-                        <span class="hidden-mobile">【个人收藏】kruskal算法（克鲁斯卡尔算法）</span>
+                      <a href="/2023/03/27/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/" title="【机器学习】可拟合任意线性函数的小玩意儿">
+                        <span class="hidden-mobile">【机器学习】可拟合任意线性函数的小玩意儿</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
