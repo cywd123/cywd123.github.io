@@ -16,21 +16,21 @@
   <meta name="author" content="崔雨">
   <meta name="keywords" content="">
   
-    <meta name="description" content="孟德尔随机化学习笔记（一）这是孟德尔随机化分析的一个简单的实例笔记下载：孟德尔随机化学习笔记(一).pdf">
+    <meta name="description" content="运用随机森林预测乳腺癌为恶性的概率1. 问题描述乳腺癌是女性常见的恶性肿瘤，其发病率在世界范围内居高不下。乳腺癌的早期诊断对于治疗的成功率有着至关重要的作用。因此，对于乳腺癌的早期诊断，有着十分重要的意义。在这里，我们将运用随机森林算法，对乳腺癌的数据进行分析，预测乳腺癌为恶性的概率。（我在此之前已经用人工神经网络对该数据集进行过分析，神经网络预测准确率为96%） 2. 数据集数据集来源于UCI机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="孟德尔随机化学习笔记（一）">
-<meta property="og:url" content="https://cywd123.github.io/2023/04/08/%E5%AD%9F%E5%BE%B7%E5%B0%94%E9%9A%8F%E6%9C%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:title" content="【机器学习】运用随机森林预测乳腺癌为恶性的概率">
+<meta property="og:url" content="https://cywd123.github.io/2023/04/08/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E8%BF%90%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E9%A2%84%E6%B5%8B%E4%B9%B3%E8%85%BA%E7%99%8C%E4%B8%BA%E6%81%B6%E6%80%A7%E7%9A%84%E6%A6%82%E7%8E%87/index.html">
 <meta property="og:site_name" content="唯物主义鼠鼠">
-<meta property="og:description" content="孟德尔随机化学习笔记（一）这是孟德尔随机化分析的一个简单的实例笔记下载：孟德尔随机化学习笔记(一).pdf">
+<meta property="og:description" content="运用随机森林预测乳腺癌为恶性的概率1. 问题描述乳腺癌是女性常见的恶性肿瘤，其发病率在世界范围内居高不下。乳腺癌的早期诊断对于治疗的成功率有着至关重要的作用。因此，对于乳腺癌的早期诊断，有着十分重要的意义。在这里，我们将运用随机森林算法，对乳腺癌的数据进行分析，预测乳腺癌为恶性的概率。（我在此之前已经用人工神经网络对该数据集进行过分析，神经网络预测准确率为96%） 2. 数据集数据集来源于UCI机">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-04-08T08:07:20.000Z">
-<meta property="article:modified_time" content="2023-04-08T09:14:55.913Z">
+<meta property="article:published_time" content="2023-04-08T13:03:30.000Z">
+<meta property="article:modified_time" content="2023-04-08T13:35:40.351Z">
 <meta property="article:author" content="崔雨">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>孟德尔随机化学习笔记（一） - 唯物主义鼠鼠</title>
+  <title>【机器学习】运用随机森林预测乳腺癌为恶性的概率 - 唯物主义鼠鼠</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="孟德尔随机化学习笔记（一）"></span>
+            <span id="subtitle" data-typed-text="【机器学习】运用随机森林预测乳腺癌为恶性的概率"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-08 16:07" pubdate>
-          2023年4月8日 下午
+        <time datetime="2023-04-08 21:03" pubdate>
+          2023年4月8日 晚上
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          53 字
+          1.1k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          1 分钟
+          10 分钟
         
       </span>
     
@@ -268,19 +268,51 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">孟德尔随机化学习笔记（一）</h1>
+            <h1 style="display: none">【机器学习】运用随机森林预测乳腺癌为恶性的概率</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="孟德尔随机化学习笔记（一）"><a href="#孟德尔随机化学习笔记（一）" class="headerlink" title="孟德尔随机化学习笔记（一）"></a>孟德尔随机化学习笔记（一）</h1><h2 id="这是孟德尔随机化分析的一个简单的实例"><a href="#这是孟德尔随机化分析的一个简单的实例" class="headerlink" title="这是孟德尔随机化分析的一个简单的实例"></a>这是孟德尔随机化分析的一个简单的实例</h2><p>笔记下载：<a href="/code/%E5%AD%9F%E5%BE%B7%E5%B0%94%E9%9A%8F%E6%9C%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(%E4%B8%80).pdf">孟德尔随机化学习笔记(一).pdf</a></p>
+                <h1 id="运用随机森林预测乳腺癌为恶性的概率"><a href="#运用随机森林预测乳腺癌为恶性的概率" class="headerlink" title="运用随机森林预测乳腺癌为恶性的概率"></a>运用随机森林预测乳腺癌为恶性的概率</h1><h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1. 问题描述"></a>1. 问题描述</h2><p>乳腺癌是女性常见的恶性肿瘤，其发病率在世界范围内居高不下。乳腺癌的早期诊断对于治疗的成功率有着至关重要的作用。因此，对于乳腺癌的早期诊断，有着十分重要的意义。在这里，我们将运用随机森林算法，对乳腺癌的数据进行分析，预测乳腺癌为恶性的概率。<br>（我在此之前已经<a href="/2023/04/02/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E8%BF%90%E7%94%A8%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E9%A2%84%E6%B5%8B%E4%B9%B3%E8%85%BA%E7%99%8C%E4%B8%BA%E6%81%B6%E6%80%A7%E7%9A%84%E6%A6%82%E7%8E%87/">用人工神经网络对该数据集进行过分析</a>，神经网络预测准确率为96%）</p>
+<h2 id="2-数据集"><a href="#2-数据集" class="headerlink" title="2. 数据集"></a>2. 数据集</h2><p>数据集来源于UCI机器学习库，数据集的名称为Breast Cancer Wisconsin (Diagnostic) Data Set，数据集的下载地址为：<a target="_blank" rel="noopener" href="https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data">https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data</a></p>
+<p>数据集的特征如下：</p>
+<ul>
+<li>ID：样本编号</li>
+<li>Diagnosis：诊断结果，M为恶性，B为良性<br>—-和以下10个特征的平均值、标准差、极大值——</li>
+<li>Radius：半径</li>
+<li>Texture：纹理</li>
+<li>Perimeter：周长</li>
+<li>Area：面积</li>
+<li>Smoothness：平滑度</li>
+<li>Compactness：紧凑度</li>
+<li>Concavity：凹度</li>
+<li>Concave points：凹点</li>
+<li>Symmetry：对称性</li>
+<li>Fractal dimension：分形维度</li>
+</ul>
+<p>共有 2 + 10*3 &#x3D; 32个特征</p>
+<p>该数据集一共有569个样本，其中恶性样本212个，良性样本357个。</p>
+<p>由于在之前的文章中，已经对该数据集进行过<a href="/2023/04/02/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E8%BF%90%E7%94%A8%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E9%A2%84%E6%B5%8B%E4%B9%B3%E8%85%BA%E7%99%8C%E4%B8%BA%E6%81%B6%E6%80%A7%E7%9A%84%E6%A6%82%E7%8E%87/">人工神经网络的分析</a>，因此这里我们将运用R语言随机森林算法对该数据集进行分析</p>
+<hr>
+<h2 id="完整代码及注解请见：R-BCancer-随机森林-pdf"><a href="#完整代码及注解请见：R-BCancer-随机森林-pdf" class="headerlink" title="完整代码及注解请见：R_BCancer_随机森林.pdf"></a>完整代码及注解请见：<a href="/code/R_BCancer_%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97.pdf">R_BCancer_随机森林.pdf</a></h2><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>与之前神经网络模型一样，我们将数据集分为训练集和测试集，测试集为原数据集最后50条数据，训练集为原数据集的前519条数据。我们将训练集的数据输入到随机森林模型中，训练模型，然后将测试集的数据输入到模型中，得到预测结果。最后，我们将预测结果与测试集的真实结果进行对比，得到预测准确率。</p>
+<h3 id="1-随机森林模型的预测结果-（100-）"><a href="#1-随机森林模型的预测结果-（100-）" class="headerlink" title="1. 随机森林模型的预测结果 （100%）"></a>1. 随机森林模型的预测结果 （100%）</h3><pre><code class="hljs">Confusion Matrix and Statistics
 
-
-	<div class="row">
-    <embed src="/code/孟德尔随机化学习笔记(一).html" width="100%" height="550" type="application/pdf">
-	</div>
-
-
+        Reference
+Prediction  0  1
+        0 40  0
+        1  0 10
+                                    
+            Accuracy : 1          
+                95% CI : (0.9289, 1)
+    No Information Rate : 0.8        
+    P-Value [Acc &gt; NIR] : 1.427e-05  
+                                    
+</code></pre>
+<h3 id="2-人工神经网络模型的预测结果（96-）"><a href="#2-人工神经网络模型的预测结果（96-）" class="headerlink" title="2. 人工神经网络模型的预测结果（96%）"></a>2. 人工神经网络模型的预测结果（96%）</h3><pre><code class="hljs">Accuracy: 96.000000 %
+总数: 50.000000 
+正确数: 48.000000 
+</code></pre>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>从上面的结果可以看出，随机森林模型的预测准确率为100%，而人工神经网络模型的预测准确率为96%，因此，随机森林模型的预测准确率更高，因此，我们可以得出结论，随机森林模型对于乳腺癌的预测更加准确。</p>
 
                 
               </div>
@@ -299,8 +331,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%A7%91%E7%A0%94/" class="category-chain-item">科研</a>
+  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%BC%96%E7%A8%8B/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">机器学习</a>
+  
+  
+
   
 
       </span>
@@ -319,8 +358,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>孟德尔随机化学习笔记（一）</div>
-      <div>https://cywd123.github.io/2023/04/08/孟德尔随机化学习笔记（一）/</div>
+      <div>【机器学习】运用随机森林预测乳腺癌为恶性的概率</div>
+      <div>https://cywd123.github.io/2023/04/08/【机器学习】运用随机森林预测乳腺癌为恶性的概率/</div>
     </div>
     <div class="license-meta">
       
@@ -364,18 +403,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/08/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E8%BF%90%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E9%A2%84%E6%B5%8B%E4%B9%B3%E8%85%BA%E7%99%8C%E4%B8%BA%E6%81%B6%E6%80%A7%E7%9A%84%E6%A6%82%E7%8E%87/" title="【机器学习】运用随机森林预测乳腺癌为恶性的概率">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【机器学习】运用随机森林预测乳腺癌为恶性的概率</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/03/%E3%80%90%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%91EMNIST/" title="【深度学习】EMNIST">
-                        <span class="hidden-mobile">【深度学习】EMNIST</span>
+                      <a href="/2023/04/08/%E5%AD%9F%E5%BE%B7%E5%B0%94%E9%9A%8F%E6%9C%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="孟德尔随机化学习笔记（一）">
+                        <span class="hidden-mobile">孟德尔随机化学习笔记（一）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
