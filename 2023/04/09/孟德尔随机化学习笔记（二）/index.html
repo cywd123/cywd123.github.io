@@ -16,21 +16,21 @@
   <meta name="author" content="崔雨">
   <meta name="keywords" content="">
   
-    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;typedef int ll;ll d[5010],mp[5010][5010];bool v[5010];ll i,j,n">
+    <meta name="description" content="孟德尔随机化学习笔记（二）这是孟德尔随机化分析的全部内容，可以一键生成所有MR分析、敏感性分析和画图的报告，非常方便。感觉孟德尔随机化分析学到头了&#x3D;。&#x3D;  学习笔记下载：孟德尔随机化学习笔记(二).pdf 报告打开： TwoSampleMR.Body_mass_index__idieua2_against_Coronary_heart_disease__idieua7.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【个人收藏】Prim算法">
-<meta property="og:url" content="https://cywd123.github.io/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/Prim%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="孟德尔随机化学习笔记（二）">
+<meta property="og:url" content="https://cywd123.github.io/2023/04/09/%E5%AD%9F%E5%BE%B7%E5%B0%94%E9%9A%8F%E6%9C%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="唯物主义鼠鼠">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;typedef int ll;ll d[5010],mp[5010][5010];bool v[5010];ll i,j,n">
+<meta property="og:description" content="孟德尔随机化学习笔记（二）这是孟德尔随机化分析的全部内容，可以一键生成所有MR分析、敏感性分析和画图的报告，非常方便。感觉孟德尔随机化分析学到头了&#x3D;。&#x3D;  学习笔记下载：孟德尔随机化学习笔记(二).pdf 报告打开： TwoSampleMR.Body_mass_index__idieua2_against_Coronary_heart_disease__idieua7.html">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-18T13:41:49.000Z">
-<meta property="article:modified_time" content="2023-03-20T15:33:28.628Z">
+<meta property="article:published_time" content="2023-04-09T07:46:02.000Z">
+<meta property="article:modified_time" content="2023-04-09T07:50:41.674Z">
 <meta property="article:author" content="崔雨">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>【个人收藏】Prim算法 - 唯物主义鼠鼠</title>
+  <title>孟德尔随机化学习笔记（二） - 唯物主义鼠鼠</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【个人收藏】Prim算法"></span>
+            <span id="subtitle" data-typed-text="孟德尔随机化学习笔记（二）"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-18 21:41" pubdate>
-          2022年3月18日 晚上
+        <time datetime="2023-04-09 15:46" pubdate>
+          2023年4月9日 下午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          703 字
+          196 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          6 分钟
+          2 分钟
         
       </span>
     
@@ -268,46 +268,21 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【个人收藏】Prim算法</h1>
+            <h1 style="display: none">孟德尔随机化学习笔记（二）</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><br><span class="hljs-comment">#include&lt;bits/stdc++.h&gt;</span><br>using namespace std;<br>typedef int <span class="hljs-keyword">ll;</span><br><span class="hljs-keyword"></span><br><span class="hljs-keyword">ll </span>d[<span class="hljs-number">5010</span>],mp[<span class="hljs-number">5010</span>][<span class="hljs-number">5010</span>];<br><span class="hljs-keyword">bool </span>v[<span class="hljs-number">5010</span>];<br><span class="hljs-keyword">ll </span>i,<span class="hljs-keyword">j,n,m,t,k;</span><br><span class="hljs-keyword"></span><br>int main() &#123;<br>	cin&gt;&gt;n&gt;&gt;m;<br>	memset(mp,<span class="hljs-number">0x3f</span>,sizeof(mp));<br>	memset(d,<span class="hljs-number">0x3f</span>,sizeof(d));<br>	memset(v,<span class="hljs-number">0</span>,sizeof(v));<br>	<span class="hljs-keyword">ll </span>a,<span class="hljs-keyword">b,c;</span><br><span class="hljs-keyword"></span><br>	for(i=<span class="hljs-number">1</span><span class="hljs-comment">; i&lt;=m; i++) &#123;</span><br>		cin&gt;&gt;a&gt;&gt;<span class="hljs-keyword">b&gt;&gt;c;</span><br><span class="hljs-keyword"></span><br>		mp[a][<span class="hljs-keyword">b]=min(mp[a][b],c);</span><br><span class="hljs-keyword"></span><br>		mp[<span class="hljs-keyword">b][a]=mp[a][b];</span><br><span class="hljs-keyword"></span><br>	&#125;<br><br>	d[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;<br><br>	for(i=<span class="hljs-number">1</span><span class="hljs-comment">; i&lt;n; i++) &#123;</span><br>		<span class="hljs-keyword">ll </span>x=<span class="hljs-number">0</span>;<br>		for(<span class="hljs-keyword">j=1; </span><span class="hljs-keyword">j&lt;=n; </span><span class="hljs-keyword">j++)</span><br><span class="hljs-keyword"></span><br>			if(!v[<span class="hljs-keyword">j]&amp;&amp;(x==0||d[j]&lt;d[x]))x=j;</span><br><span class="hljs-keyword"></span><br>		v[x]=<span class="hljs-number">1</span>;<br>		for(<span class="hljs-keyword">j=1; </span><span class="hljs-keyword">j&lt;=n; </span><span class="hljs-keyword">j++)</span><br><span class="hljs-keyword"></span><br>			if(!v[<span class="hljs-keyword">j])d[j]=min(d[j],mp[x][j]);</span><br><span class="hljs-keyword"></span><br>	&#125;<br><br>	<span class="hljs-keyword">ll </span>ans=<span class="hljs-number">0</span>;<br>	for(i=<span class="hljs-number">2</span><span class="hljs-comment">; i&lt;=n; i++)</span><br>		ans+=d[i];<br>	<br>	if(ans&gt;<span class="hljs-number">99999999</span>)cout&lt;&lt;<span class="hljs-string">&quot;orz&quot;</span>;<br>	else cout&lt;&lt;ans;<br>	<br>	<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="孟德尔随机化学习笔记（二）"><a href="#孟德尔随机化学习笔记（二）" class="headerlink" title="孟德尔随机化学习笔记（二）"></a>孟德尔随机化学习笔记（二）</h1><h3 id="这是孟德尔随机化分析的全部内容，可以一键生成所有MR分析、敏感性分析和画图的报告，非常方便。"><a href="#这是孟德尔随机化分析的全部内容，可以一键生成所有MR分析、敏感性分析和画图的报告，非常方便。" class="headerlink" title="这是孟德尔随机化分析的全部内容，可以一键生成所有MR分析、敏感性分析和画图的报告，非常方便。"></a>这是孟德尔随机化分析的全部内容，可以一键生成所有MR分析、敏感性分析和画图的报告，非常方便。</h3><p>感觉孟德尔随机化分析学到头了&#x3D;。&#x3D; </p>
+<p>学习笔记下载：<a href="/code/%E5%AD%9F%E5%BE%B7%E5%B0%94%E9%9A%8F%E6%9C%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(%E4%BA%8C).pdf">孟德尔随机化学习笔记(二).pdf</a></p>
+<p>报告打开： <a href="/code/TwoSampleMR.Body_mass_index__idieua2_against_Coronary_heart_disease__idieua7.html">TwoSampleMR.Body_mass_index__idieua2_against_Coronary_heart_disease__idieua7.html</a></p>
+
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%BC%96%E7%A8%8B/C/" class="category-chain-item">C++</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -318,8 +293,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【个人收藏】Prim算法</div>
-      <div>https://cywd123.github.io/2022/03/18/个人收藏C++模板/Prim算法/</div>
+      <div>孟德尔随机化学习笔记（二）</div>
+      <div>https://cywd123.github.io/2023/04/09/孟德尔随机化学习笔记（二）/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +306,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月18日</div>
+          <div>2023年4月9日</div>
         </div>
       
       
@@ -363,18 +338,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/ST%E8%A1%A8/" title="【个人收藏】ST表">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【个人收藏】ST表</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/Prim%E5%A0%86%E4%BC%98%E5%8C%96/" title="【个人收藏】Prim堆优化版">
-                        <span class="hidden-mobile">【个人收藏】Prim堆优化版</span>
+                      <a href="/2023/04/08/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E8%BF%90%E7%94%A8%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E9%A2%84%E6%B5%8B%E4%B9%B3%E8%85%BA%E7%99%8C%E4%B8%BA%E6%81%B6%E6%80%A7%E7%9A%84%E6%A6%82%E7%8E%87/" title="【机器学习】运用支持向量机预测乳腺癌为恶性的概率">
+                        <span class="hidden-mobile">【机器学习】运用支持向量机预测乳腺癌为恶性的概率</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
