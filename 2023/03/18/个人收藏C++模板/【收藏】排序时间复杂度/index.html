@@ -1,0 +1,1585 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="MR. Important">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="!!!  @font-face{ font-family:&quot;Times New Roman&quot;; } @font-face{ font-family:“宋体”; } @font-face{ font-family:“Wingdings”; } @font-face{ font-family:“Calibri”; } @font-face{ font-family:“Verdana”; } p.Mso">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【个人收藏】排序时间复杂度">
+<meta property="og:url" content="https://cywd123.github.io/2023/03/18/%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8FC++%E6%A8%A1%E6%9D%BF/%E3%80%90%E6%94%B6%E8%97%8F%E3%80%91%E6%8E%92%E5%BA%8F%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/index.html">
+<meta property="og:site_name" content="Mr. Important">
+<meta property="og:description" content="!!!  @font-face{ font-family:&quot;Times New Roman&quot;; } @font-face{ font-family:“宋体”; } @font-face{ font-family:“Wingdings”; } @font-face{ font-family:“Calibri”; } @font-face{ font-family:“Verdana”; } p.Mso">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-18T13:41:49.000Z">
+<meta property="article:modified_time" content="2023-03-20T15:37:03.468Z">
+<meta property="article:author" content="MR. Important">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>【个人收藏】排序时间复杂度 - Mr. Important</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"cywd123.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Python"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mr. Important</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【个人收藏】排序时间复杂度"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-18 21:41" pubdate>
+          2023年3月18日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【个人收藏】排序时间复杂度</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>!!!</p>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns="http://www.w3.org/TR/REC-html40"><head><meta http-equiv=Content-Type  content="text/html; charset=gb2312" ><meta name=ProgId  content=Word.Document ><meta name=Generator  content="Microsoft Word 14" ><meta name=Originator  content="Microsoft Word 14" ><title></title><!--[if gte mso 9]><xml><o:DocumentProperties><o:Author>admin</o:Author><o:LastAuthor>admin</o:LastAuthor><o:Revision>1</o:Revision><o:Pages>1</o:Pages></o:DocumentProperties><o:CustomDocumentProperties><o:KSOProductBuildVer dt:dt="string" >2052-11.3.0.8632</o:KSOProductBuildVer></o:CustomDocumentProperties></xml><![endif]--><!--[if gte mso 9]><xml><o:OfficeDocumentSettings></o:OfficeDocumentSettings></xml><![endif]--><!--[if gte mso 9]><xml><w:WordDocument><w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel><w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery><w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery><w:DocumentKind>DocumentNotSpecified</w:DocumentKind><w:DrawingGridVerticalSpacing>7.8 磅</w:DrawingGridVerticalSpacing><w:View>Web</w:View><w:Compatibility><w:DontGrowAutofit/><w:BalanceSingleByteDoubleByteWidth/><w:DoNotExpandShiftReturn/><w:UseFELayout/></w:Compatibility><w:Zoom>0</w:Zoom></w:WordDocument></xml><![endif]--><!--[if gte mso 9]><xml><w:LatentStyles DefLockedState="false"  DefUnhideWhenUsed="true"  DefSemiHidden="true"  DefQFormat="false"  DefPriority="99"  LatentStyleCount="260" >
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Normal" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  QFormat="true"  Name="heading 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  QFormat="true"  Name="heading 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  QFormat="true"  Name="heading 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  QFormat="true"  Name="heading 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  QFormat="true"  Name="heading 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  QFormat="true"  Name="heading 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  QFormat="true"  Name="heading 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  QFormat="true"  Name="heading 9" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index 9" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 9" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Normal Indent" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="footnote text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="annotation text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="header" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="footer" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="index heading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  QFormat="true"  Name="caption" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="table of figures" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="envelope address" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="envelope return" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="footnote reference" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="annotation reference" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="line number" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="page number" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="endnote reference" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="endnote text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="table of authorities" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="macro" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toa heading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Bullet" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Number" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Bullet 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Bullet 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Bullet 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Bullet 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Number 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Number 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Number 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Number 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Title" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Closing" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Signature" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  UnhideWhenUsed="false"  Name="Default Paragraph Font" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Body Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Body Text Indent" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Continue" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Continue 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Continue 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Continue 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="List Continue 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Message Header" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Subtitle" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Salutation" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Date" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Body Text First Indent" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Body Text First Indent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Note Heading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Body Text 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Body Text 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Body Text Indent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Body Text Indent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Block Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Hyperlink" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="FollowedHyperlink" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Strong" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Emphasis" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Document Map" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Plain Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="E-mail Signature" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Normal (Web)" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Acronym" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Address" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Cite" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Code" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Definition" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Keyboard" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Preformatted" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Sample" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Typewriter" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="HTML Variable" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  UnhideWhenUsed="false"  Name="Normal Table" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="annotation subject" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="No List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="1 / a / i" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="1 / 1.1 / 1.1.1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Article / Section" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Simple 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Simple 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Simple 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Classic 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Classic 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Classic 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Classic 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Colorful 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Colorful 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Colorful 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Columns 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Columns 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Columns 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Columns 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Columns 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Grid 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Grid 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Grid 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Grid 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Grid 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Grid 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Grid 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Grid 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table List 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table List 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table List 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table List 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table List 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table List 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table List 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table List 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table 3D effects 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table 3D effects 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table 3D effects 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Contemporary" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Elegant" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Professional" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Subtle 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Subtle 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Web 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Web 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Web 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Balloon Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Grid" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Table Theme" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Placeholder Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="No Spacing" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Paragraph" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Quote" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Intense Quote" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 6" ></w:LsdException>
+</w:LatentStyles></xml><![endif]--><style>
+@font-face{
+font-family:"Times New Roman";
+}
+<p>@font-face{<br>
+font-family:“宋体”;<br>
+}</p>
+<p>@font-face{<br>
+font-family:“Wingdings”;<br>
+}</p>
+<p>@font-face{<br>
+font-family:“Calibri”;<br>
+}</p>
+<p>@font-face{<br>
+font-family:“Verdana”;<br>
+}</p>
+<p>p.MsoNormal{<br>
+mso-style-name:正文;<br>
+mso-style-parent:“”;<br>
+margin:0pt;<br>
+margin-bottom:.0001pt;<br>
+mso-pagination:none;<br>
+text-align:justify;<br>
+text-justify:inter-ideograph;<br>
+font-family:Calibri;<br>
+mso-fareast-font-family:宋体;<br>
+mso-bidi-font-family:‘Times New Roman’;<br>
+font-size:10.5000pt;<br>
+mso-font-kerning:1.0000pt;<br>
+}</p>
+<p>span.10{<br>
+font-family:‘Times New Roman’;<br>
+}</p>
+<p>p.p{<br>
+mso-style-name:“普通(网站)”;<br>
+margin-top:5.0000pt;<br>
+margin-right:0.0000pt;<br>
+margin-bottom:5.0000pt;<br>
+margin-left:0.0000pt;<br>
+mso-margin-top-alt:auto;<br>
+mso-margin-bottom-alt:auto;<br>
+mso-pagination:none;<br>
+text-align:left;<br>
+font-family:Calibri;<br>
+mso-fareast-font-family:宋体;<br>
+mso-bidi-font-family:‘Times New Roman’;<br>
+font-size:12.0000pt;<br>
+}</p>
+<p>span.msoIns{<br>
+mso-style-type:export-only;<br>
+mso-style-name:“”;<br>
+text-decoration:underline;<br>
+text-underline:single;<br>
+color:blue;<br>
+}</p>
+<p>span.msoDel{<br>
+mso-style-type:export-only;<br>
+mso-style-name:“”;<br>
+text-decoration:line-through;<br>
+color:red;<br>
+}</p>
+<p>table.MsoNormalTable{<br>
+mso-style-name:普通表格;<br>
+mso-style-parent:“”;<br>
+mso-style-noshow:yes;<br>
+mso-tstyle-rowband-size:0;<br>
+mso-tstyle-colband-size:0;<br>
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;<br>
+mso-para-margin:0pt;<br>
+mso-para-margin-bottom:.0001pt;<br>
+mso-pagination:widow-orphan;<br>
+font-family:‘Times New Roman’;<br>
+font-size:10.0000pt;<br>
+mso-ansi-language:#0400;<br>
+mso-fareast-language:#0400;<br>
+mso-bidi-language:#0400;<br>
+}<br>
+@page{mso-page-border-surround-header:no;<br>
+mso-page-border-surround-footer:no;}@page Section0{<br>
+margin-top:72.0000pt;<br>
+margin-bottom:72.0000pt;<br>
+margin-left:90.0000pt;<br>
+margin-right:90.0000pt;<br>
+size:595.3000pt 841.9000pt;<br>
+layout-grid:15.6000pt;<br>
+}<br>
+div.Section0{page:Section0;}</style></head><body style="tab-interval:21pt;text-justify-trim:punctuation;" ><!--StartFragment--><div class="Section0"  style="layout-grid:15.6000pt;" ><p class=p  style="margin-top:7.5000pt;margin-right:0.0000pt;margin-bottom:7.5000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;padding:0pt 0pt 0pt 0pt ;
+mso-pagination:widow-orphan;background:rgb(255,255,255);" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;
+background:rgb(255,255,255);mso-shading:rgb(255,255,255);" ><font face="宋体" >表格版</font></span><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p><table class=MsoNormalTable  border=1  cellspacing=0  style="border-collapse:collapse;margin-left:-5.1000pt;border:none;
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);mso-border-top-alt:0.7500pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=112  valign=center  style="width:84.0000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:1.0000pt solid rgb(192,192,192);
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:1.0000pt solid rgb(192,192,192);mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(250,250,250);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><b><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;font-weight:bold;
+text-transform:none;font-style:normal;font-size:10.5000pt;
+mso-font-kerning:0.0000pt;" >排序方法</span></b><b><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;font-weight:bold;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></b></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:1.0000pt solid rgb(192,192,192);mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(250,250,250);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><b><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;font-weight:bold;
+text-transform:none;font-style:normal;font-size:10.5000pt;
+mso-font-kerning:0.0000pt;" >时间复杂度（平均）</span></b><b><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;font-weight:bold;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></b></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:1.0000pt solid rgb(192,192,192);mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(250,250,250);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><b><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;font-weight:bold;
+text-transform:none;font-style:normal;font-size:10.5000pt;
+mso-font-kerning:0.0000pt;" >时间复杂度（最坏<font face="Verdana" >)</font></span></b><b><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;font-weight:bold;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></b></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:1.0000pt solid rgb(192,192,192);mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(250,250,250);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><b><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;font-weight:bold;
+text-transform:none;font-style:normal;font-size:10.5000pt;
+mso-font-kerning:0.0000pt;" >时间复杂度（最好<font face="Verdana" >)</font></span></b><b><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;font-weight:bold;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></b></p></td><td width=170  valign=center  style="width:128.1500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:1.0000pt solid rgb(192,192,192);mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(250,250,250);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><b><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;font-weight:bold;
+text-transform:none;font-style:normal;font-size:10.5000pt;
+mso-font-kerning:0.0000pt;" >空间复杂度</span></b><b><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;font-weight:bold;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></b></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:1.0000pt solid rgb(192,192,192);mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(250,250,250);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><b><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;font-weight:bold;
+text-transform:none;font-style:normal;font-size:10.5000pt;
+mso-font-kerning:0.0000pt;" >稳定性</span></b><b><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;font-weight:bold;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></b></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:1.0000pt solid rgb(192,192,192);mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(250,250,250);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><b><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;font-weight:bold;
+text-transform:none;font-style:normal;font-size:10.5000pt;
+mso-font-kerning:0.0000pt;" >复杂性</span></b><b><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;font-weight:bold;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></b></p></td></tr><tr><td width=112  valign=center  style="width:84.0000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:1.0000pt solid rgb(192,192,192);
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >直接插入排序</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n2)O(n2)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n2)O(n2)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n)O(n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.1500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(1)O(1)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >稳定</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >简单</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td></tr><tr><td width=112  valign=center  style="width:84.0000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:1.0000pt solid rgb(192,192,192);
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >希尔排序</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n2)O(n2)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n)O(n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.1500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(1)O(1)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >不稳定</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >较复杂</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td></tr><tr><td width=112  valign=center  style="width:84.0000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:1.0000pt solid rgb(192,192,192);
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >直接选择排序</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n2)O(n2)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n2)O(n2)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n2)O(n2)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.1500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(1)O(1)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >不稳定</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >简单</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td></tr><tr><td width=112  valign=center  style="width:84.0000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:1.0000pt solid rgb(192,192,192);
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >堆排序</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.1500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(1)O(1)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >不稳定</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >较复杂</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td></tr><tr><td width=112  valign=center  style="width:84.0000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:1.0000pt solid rgb(192,192,192);
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >冒泡排序</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n2)O(n2)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n2)O(n2)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n)O(n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.1500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(1)O(1)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >稳定</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >简单</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td></tr><tr><td width=112  valign=center  style="width:84.0000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:1.0000pt solid rgb(192,192,192);
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >快速排序</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n2)O(n2)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.1500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >不稳定</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >较复杂</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td></tr><tr><td width=112  valign=center  style="width:84.0000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:1.0000pt solid rgb(192,192,192);
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >归并排序</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(nlog2n)O(nlog2n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.1500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n)O(n)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >稳定</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >较复杂</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td></tr><tr><td width=112  valign=center  style="width:84.0000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:1.0000pt solid rgb(192,192,192);
+mso-border-left-alt:0.7500pt solid rgb(192,192,192);border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >基数排序</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(d(n+r))O(d(n+r))</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(d(n+r))O(d(n+r))</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.2000pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(d(n+r))O(d(n+r))</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=170  valign=center  style="width:128.1500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >O(n+r)O(n+r)</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >稳定</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td><td width=70  valign=center  style="width:52.6500pt;padding:6.0000pt 10.5000pt 6.0000pt 10.5000pt ;border-left:none;
+mso-border-left-alt:none;border-right:1.0000pt solid rgb(192,192,192);mso-border-right-alt:0.7500pt solid rgb(192,192,192);
+border-top:none;mso-border-top-alt:0.7500pt solid rgb(192,192,192);border-bottom:1.0000pt solid rgb(192,192,192);
+mso-border-bottom-alt:0.7500pt solid rgb(192,192,192);background:rgb(255,255,255);" ><p class=MsoNormal  align=center  style="margin-top:0.0000pt;margin-right:0.0000pt;margin-bottom:0.0000pt;
+margin-left:0.0000pt;text-indent:0.0000pt;mso-pagination:widow-orphan;
+text-align:center;" ><span style="mso-spacerun:'yes';font-family:Verdana;mso-fareast-font-family:宋体;
+color:rgb(51,51,51);letter-spacing:0.0000pt;text-transform:none;
+font-style:normal;font-size:10.5000pt;mso-font-kerning:0.0000pt;" >较复杂</span><span style="font-family:Verdana;mso-fareast-font-family:宋体;color:rgb(51,51,51);
+letter-spacing:0.0000pt;text-transform:none;font-style:normal;
+font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt;&lt;/o:p&gt;</span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:Calibri;mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';font-size:10.5000pt;mso-font-kerning:1.0000pt;" >&lt;o:p&gt; &lt;/o:p&gt;</span></p></div><!--EndFragment--></body></html><br>
+!!!</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%BC%96%E7%A8%8B/C/" class="category-chain-item">C++</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【个人收藏】排序时间复杂度</div>
+      <div>https://cywd123.github.io/2023/03/18/个人收藏C++模板/【收藏】排序时间复杂度/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>MR. Important</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/18/%E7%AE%80%E5%8D%95%E5%A4%B4%E5%83%8F/" title="简单头像">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">简单头像</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/18/%E5%A3%81%E7%BA%B8%E5%9B%BE%E7%89%87/" title="壁纸图片">
+                        <span class="hidden-mobile">壁纸图片</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+<i class="iconfont icon-love"></i>
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
