@@ -6,7 +6,7 @@
     <description>Recent content in C&#43;&#43; on Juiceright</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Dec 2025 10:14:17 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Dec 2025 11:39:35 +0000</lastBuildDate>
     <atom:link href="https://cywd123.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>zkw线段树</title>
@@ -76,7 +76,7 @@
       <link>https://cywd123.github.io/posts/y1ekvamzmi/</link>
       <pubDate>Mon, 10 Mar 2025 13:26:19 +0000</pubDate>
       <guid>https://cywd123.github.io/posts/y1ekvamzmi/</guid>
-      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;&#xD;&#xA;#define ll long long&#xD;&#xA;using namespace std;&#xD;&#xA;ll fa[5010];&#xD;&#xA;ll get(ll x) {&#xD;&#xA;&#x9;return x==fa[x]?x:fa[x]=get(fa[x]);&#xD;&#xA;}&#xD;&#xA;void mrg(ll a,ll b) {&#xD;&#xA;fa[get(a)]=get(b);&#xD;&#xA;}&#xD;&#xA;struct pl{&#xD;&#xA;&#x9;ll x,y,z;&#xD;&#xA;&#x9;bool operator&amp;lt;(const pl &amp;amp;a){&#xD;&#xA;&#x9;return z&amp;lt;a.z;&#xD;&#xA;&#x9;}&#xD;&#xA;}mp[200001];&#xD;&#xA;int main() {&#xD;&#xA;ll i,j,n,m,t=0,k=0;&#xD;&#xA;cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m;&#xD;&#xA;for(i=1;i&amp;lt;=m;i++)&#xD;&#xA;{&#xD;&#xA;&#x9;cin&amp;gt;&amp;gt;mp[i].x&amp;gt;&amp;gt;mp[i].y&amp;gt;&amp;gt;mp[i].z;&#xD;&#xA;}&#xD;&#xA;sort(mp+1,mp+1+m);&#xD;&#xA;for(i=1;i&amp;lt;=n;i++)fa[i]=i;&#xD;&#xA;for(i=1;i&amp;lt;=m&amp;amp;&amp;amp;t&amp;lt;n;i++){&#xD;&#xA;&#x9;if(get(mp[i].x)!=get(mp[i].y))mrg(mp[i].x,mp[i].y),t++,k+=mp[i].z;&#x9;&#xD;&#xA;}&#xD;&#xA;if(t==n-1)&#xD;&#xA;cout&amp;lt;&amp;lt;k;&#xD;&#xA;else cout&amp;lt;&amp;lt;&amp;#34;orz&amp;#34;;&#xD;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;&#xA;#define ll long long&#xA;using namespace std;&#xA;ll fa[5010];&#xA;ll get(ll x) {&#xA;&#x9;return x==fa[x]?x:fa[x]=get(fa[x]);&#xA;}&#xA;void mrg(ll a,ll b) {&#xA;fa[get(a)]=get(b);&#xA;}&#xA;struct pl{&#xA;&#x9;ll x,y,z;&#xA;&#x9;bool operator&amp;lt;(const pl &amp;amp;a){&#xA;&#x9;return z&amp;lt;a.z;&#xA;&#x9;}&#xA;}mp[200001];&#xA;int main() {&#xA;ll i,j,n,m,t=0,k=0;&#xA;cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m;&#xA;for(i=1;i&amp;lt;=m;i++)&#xA;{&#xA;&#x9;cin&amp;gt;&amp;gt;mp[i].x&amp;gt;&amp;gt;mp[i].y&amp;gt;&amp;gt;mp[i].z;&#xA;}&#xA;sort(mp+1,mp+1+m);&#xA;for(i=1;i&amp;lt;=n;i++)fa[i]=i;&#xA;for(i=1;i&amp;lt;=m&amp;amp;&amp;amp;t&amp;lt;n;i++){&#xA;&#x9;if(get(mp[i].x)!=get(mp[i].y))mrg(mp[i].x,mp[i].y),t++,k+=mp[i].z;&#x9;&#xA;}&#xA;if(t==n-1)&#xA;cout&amp;lt;&amp;lt;k;&#xA;else cout&amp;lt;&amp;lt;&amp;#34;orz&amp;#34;;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>带lazy标记的zkw线段树</title>

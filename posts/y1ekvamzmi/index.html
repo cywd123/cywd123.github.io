@@ -94,11 +94,11 @@ else cout&lt;&lt;&#34;orz&#34;;
     "name" : ""
   },
   "headline": "kruskal算法（克鲁斯卡尔算法）",
-  "description" : "#include\u0026lt;bits\/stdc\u002b\u002b.h\u0026gt;\r#define ll long long\rusing namespace std;\rll fa[5010];\rll get(ll x) {\rreturn x==fa[x]?x:fa[x]=get(fa[x]);\r}\rvoid mrg(ll a,ll b) {\rfa[get(a)]=get(b);\r}\rstruct pl{\rll x,y,z;\rbool operator\u0026lt;(const pl \u0026amp;a){\rreturn z\u0026lt;a.z;\r}\r}mp[200001];\rint main() {\rll i,j,n,m,t=0,k=0;\rcin\u0026gt;\u0026gt;n\u0026gt;\u0026gt;m;\rfor(i=1;i\u0026lt;=m;i\u002b\u002b)\r{\rcin\u0026gt;\u0026gt;mp[i].x\u0026gt;\u0026gt;mp[i].y\u0026gt;\u0026gt;mp[i].z;\r}\rsort(mp\u002b1,mp\u002b1\u002bm);\rfor(i=1;i\u0026lt;=n;i\u002b\u002b)fa[i]=i;\rfor(i=1;i\u0026lt;=m\u0026amp;\u0026amp;t\u0026lt;n;i\u002b\u002b){\rif(get(mp[i].x)!=get(mp[i].y))mrg(mp[i].x,mp[i].y),t\u002b\u002b,k\u002b=mp[i].z;\t}\rif(t==n-1)\rcout\u0026lt;\u0026lt;k;\relse cout\u0026lt;\u0026lt;\u0026#34;orz\u0026#34;;\r} ",
+  "description" : "#include\u0026lt;bits\/stdc\u002b\u002b.h\u0026gt; #define ll long long using namespace std; ll fa[5010]; ll get(ll x) { return x==fa[x]?x:fa[x]=get(fa[x]); } void mrg(ll a,ll b) { fa[get(a)]=get(b); } struct pl{ ll x,y,z; bool operator\u0026lt;(const pl \u0026amp;a){ return z\u0026lt;a.z; } }mp[200001]; int main() { ll i,j,n,m,t=0,k=0; cin\u0026gt;\u0026gt;n\u0026gt;\u0026gt;m; for(i=1;i\u0026lt;=m;i\u002b\u002b) { cin\u0026gt;\u0026gt;mp[i].x\u0026gt;\u0026gt;mp[i].y\u0026gt;\u0026gt;mp[i].z; } sort(mp\u002b1,mp\u002b1\u002bm); for(i=1;i\u0026lt;=n;i\u002b\u002b)fa[i]=i; for(i=1;i\u0026lt;=m\u0026amp;\u0026amp;t\u0026lt;n;i\u002b\u002b){ if(get(mp[i].x)!=get(mp[i].y))mrg(mp[i].x,mp[i].y),t\u002b\u002b,k\u002b=mp[i].z;\t} if(t==n-1) cout\u0026lt;\u0026lt;k; else cout\u0026lt;\u0026lt;\u0026#34;orz\u0026#34;; } ",
   "inLanguage" : "en",
   "wordCount":  56 ,
   "datePublished" : "2025-03-10T13:26:19\u002b00:00",
-  "dateModified" : "2025-12-01T09:31:17\u002b00:00",
+  "dateModified" : "2025-12-01T11:39:35\u002b00:00",
   "image" : "https:\/\/cywd123.github.io\/",
   "keywords" : [ "编程, C\u002b\u002b" ],
   "mainEntityOfPage" : "https:\/\/cywd123.github.io\/posts\/y1ekvamzmi\/",
@@ -165,7 +165,8 @@ ll get(ll x) {
 void mrg(ll a,ll b) {
 fa[get(a)]=get(b);
 }
-struct …">
+struct pl{
+	ll …">
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="generator" content="Hugo 0.152.2">
   <link rel="alternate" href="https://cywd123.github.io/index.xml" type="application/rss+xml" title="Juiceright"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">

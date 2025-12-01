@@ -96,11 +96,11 @@ print(verify_signature(public_key, message, signature))   #验证签名
     "name" : ""
   },
   "headline": "ECDSA实例",
-  "description" : "\rimport os\rimport ecdsa\r# 生成私钥和公钥\rdef generate_keys():\r# 使用secp256k1曲线生成密钥对\rsk = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1)\rvk = sk.get_verifying_key()\rreturn sk, vk\r# 对消息进行签名\rdef sign_message(private_key, message):\rreturn private_key.sign(message)\r# 验证签名\rdef verify_signature(public_key, message, signature):\rreturn public_key.verify(signature, message)\r# %%\rprivate_key, public_key = generate_keys()\r# 简单消息\rmessage = b\u0026#34;Hello, ECDSA!\u0026#34;\r# 签名消息\rsignature = sign_message(private_key, message)\rprint(f\u0026#34;Signature: {signature.hex()}\u0026#34;)\r# %% sig=\u0026#39;adee313bebf78c1bd4a9719e0ad9aa871ff8195788ad2d7510f35e1ef0ce00a6cbfea518e4ea1716a729c7313a52da8b0c57ff0e0f97251ea604beef3890f699\u0026#39;\rmessage = b\u0026#34;Hello, ECDSA!\u0026#34;\rsignature = bytes.fromhex(sig)\rprint(verify_signature(public_key, message, signature)) #验证签名 ",
+  "description" : " import os import ecdsa # 生成私钥和公钥 def generate_keys(): # 使用secp256k1曲线生成密钥对 sk = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1) vk = sk.get_verifying_key() return sk, vk # 对消息进行签名 def sign_message(private_key, message): return private_key.sign(message) # 验证签名 def verify_signature(public_key, message, signature): return public_key.verify(signature, message) # %% private_key, public_key = generate_keys() # 简单消息 message = b\u0026#34;Hello, ECDSA!\u0026#34; # 签名消息 signature = sign_message(private_key, message) print(f\u0026#34;Signature: {signature.hex()}\u0026#34;) # %% sig=\u0026#39;adee313bebf78c1bd4a9719e0ad9aa871ff8195788ad2d7510f35e1ef0ce00a6cbfea518e4ea1716a729c7313a52da8b0c57ff0e0f97251ea604beef3890f699\u0026#39; message = b\u0026#34;Hello, ECDSA!\u0026#34; signature = bytes.fromhex(sig) print(verify_signature(public_key, message, signature)) #验证签名 ",
   "inLanguage" : "en",
   "wordCount":  69 ,
   "datePublished" : "2025-03-11T01:05:02\u002b00:00",
-  "dateModified" : "2025-12-01T09:31:17\u002b00:00",
+  "dateModified" : "2025-12-01T11:39:38\u002b00:00",
   "image" : "https:\/\/cywd123.github.io\/",
   "keywords" : [ "python, 小脚本, 编程" ],
   "mainEntityOfPage" : "https:\/\/cywd123.github.io\/posts\/22bskm0nwq\/",
@@ -168,7 +168,9 @@ def generate_keys():
     # 使用secp256k1曲线生成密钥对
     sk = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1)
     vk = sk.get_verifying_key()
-    return sk, vk …">
+    return sk, vk
+
+# 对消息进行签名 …">
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="generator" content="Hugo 0.152.2">
   <link rel="alternate" href="https://cywd123.github.io/index.xml" type="application/rss+xml" title="Juiceright"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">

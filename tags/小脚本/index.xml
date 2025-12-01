@@ -6,7 +6,7 @@
     <description>Recent content in 小脚本 on Juiceright</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Dec 2025 10:14:17 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Dec 2025 11:39:38 +0000</lastBuildDate>
     <atom:link href="https://cywd123.github.io/tags/%E5%B0%8F%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ppt word快速转换PDF小脚本</title>
@@ -55,7 +55,7 @@
       <link>https://cywd123.github.io/posts/22bskm0nwq/</link>
       <pubDate>Tue, 11 Mar 2025 01:05:02 +0000</pubDate>
       <guid>https://cywd123.github.io/posts/22bskm0nwq/</guid>
-      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xD;&#xA;import os&#xD;&#xA;import ecdsa&#xD;&#xA;&#xD;&#xA;# 生成私钥和公钥&#xD;&#xA;def generate_keys():&#xD;&#xA;    # 使用secp256k1曲线生成密钥对&#xD;&#xA;    sk = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1)&#xD;&#xA;    vk = sk.get_verifying_key()&#xD;&#xA;    return sk, vk&#xD;&#xA;&#xD;&#xA;# 对消息进行签名&#xD;&#xA;def sign_message(private_key, message):&#xD;&#xA;    return private_key.sign(message)&#xD;&#xA;&#xD;&#xA;# 验证签名&#xD;&#xA;def verify_signature(public_key, message, signature):&#xD;&#xA;    return public_key.verify(signature, message)&#xD;&#xA;&#xD;&#xA;# %%&#xD;&#xA;private_key, public_key = generate_keys()&#xD;&#xA;# 简单消息&#xD;&#xA;message = b&amp;#34;Hello, ECDSA!&amp;#34;&#xD;&#xA;&#xD;&#xA;# 签名消息&#xD;&#xA;signature = sign_message(private_key, message)&#xD;&#xA;print(f&amp;#34;Signature: {signature.hex()}&amp;#34;)&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;# %% &#xD;&#xA;sig=&amp;#39;adee313bebf78c1bd4a9719e0ad9aa871ff8195788ad2d7510f35e1ef0ce00a6cbfea518e4ea1716a729c7313a52da8b0c57ff0e0f97251ea604beef3890f699&amp;#39;&#xD;&#xA;message = b&amp;#34;Hello, ECDSA!&amp;#34;&#xD;&#xA;signature = bytes.fromhex(sig)&#xD;&#xA;print(verify_signature(public_key, message, signature))   #验证签名&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;import os&#xA;import ecdsa&#xA;&#xA;# 生成私钥和公钥&#xA;def generate_keys():&#xA;    # 使用secp256k1曲线生成密钥对&#xA;    sk = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1)&#xA;    vk = sk.get_verifying_key()&#xA;    return sk, vk&#xA;&#xA;# 对消息进行签名&#xA;def sign_message(private_key, message):&#xA;    return private_key.sign(message)&#xA;&#xA;# 验证签名&#xA;def verify_signature(public_key, message, signature):&#xA;    return public_key.verify(signature, message)&#xA;&#xA;# %%&#xA;private_key, public_key = generate_keys()&#xA;# 简单消息&#xA;message = b&amp;#34;Hello, ECDSA!&amp;#34;&#xA;&#xA;# 签名消息&#xA;signature = sign_message(private_key, message)&#xA;print(f&amp;#34;Signature: {signature.hex()}&amp;#34;)&#xA;&#xA;&#xA;# %% &#xA;sig=&amp;#39;adee313bebf78c1bd4a9719e0ad9aa871ff8195788ad2d7510f35e1ef0ce00a6cbfea518e4ea1716a729c7313a52da8b0c57ff0e0f97251ea604beef3890f699&amp;#39;&#xA;message = b&amp;#34;Hello, ECDSA!&amp;#34;&#xA;signature = bytes.fromhex(sig)&#xA;print(verify_signature(public_key, message, signature))   #验证签名&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>STU校园网自动登录脚本</title>
