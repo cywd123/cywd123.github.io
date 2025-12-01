@@ -16,6 +16,7 @@
 
   <meta name="description" content="
 
+加密
 
 
 "><script type="application/ld+json">
@@ -66,9 +67,9 @@
     "name" : ""
   },
   "headline": "极简AES无盐加密",
-  "description" : " ",
+  "description" : " 加密\r",
   "inLanguage" : "en",
-  "wordCount":  0 ,
+  "wordCount":  1 ,
   "datePublished" : "2025-11-25T22:58:25\u002b00:00",
   "dateModified" : "2025-12-01T09:31:17\u002b00:00",
   "image" : "https:\/\/cywd123.github.io\/",
@@ -91,6 +92,7 @@
 <meta property="og:title" content="极简AES无盐加密" />
 <meta property="og:description" content="
 
+加密
 
 
 ">
@@ -101,6 +103,7 @@
   <meta name="twitter:title" content="极简AES无盐加密" />
   <meta name="twitter:description" content="
 
+加密
 
 
 ">
@@ -241,11 +244,25 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+        <textarea id=t placeholder="原文" style="width:100%;height:100px"></textarea>
+<input id=p type=password placeholder="密码" style="width:100%;margin:8px 0">
+<button onclick=e()>加密</button>
+<textarea id=c placeholder="密文" style="width:100%;height:80px" readonly></textarea>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+<script>
+e=()=>{
+const t=document.getElementById('t').value.trim(),p=document.getElementById('p').value.trim();
+if(!t||!p)alert('填全原文和密码！');
+else{
+const c=CryptoJS.AES.encrypt(t,p).toString();
+document.getElementById('c').value=c;
+document.getElementById('c').select();
+navigator.clipboard.writeText(c).catch(()=>{})
+}
+}
+document.getElementById('t').addEventListener('keypress',e=>e.ctrlKey&&e.key==='Enter'&&e());
+document.getElementById('p').addEventListener('keypress',e=>e.key==='Enter'&&e());
+</script>
 
 
         

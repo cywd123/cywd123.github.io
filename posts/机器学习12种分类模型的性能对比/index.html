@@ -33,6 +33,10 @@ $Accuracy = \frac{TP&#43;TN}{TP&#43;TN&#43;FP&#43;FN}$
 精确率(Precision)
 精确率是指分类正确的正例数占分类为正例的样本数的比例，即：
 
+$$
+Precision = \frac{TP}{TP&#43;FP}
+$$
+
 其中，TP是真正例，FP是假正例。
 召回率(Recall)
 召回率是指分类正确的正例数占真正例的比例，即：
@@ -41,9 +45,17 @@ $Recall = \frac{TP}{TP&#43;FN}$
 F1值(F1-score)
 F1值是精确率和召回率的调和平均数，即：
 
+$$
+F1 = \frac{2*Precision*Recall}{Precision&#43;Recall}
+$$
+
 F1值越接近1，表明模型的性能越好。
 R2值(R2-score)
 R2值是指预测值与真实值的相关系数，即：
+
+$$
+R2 = 1-\frac{\sum_{i=1}^{n}(y_i-\hat{y_i})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}
+$$
 
 其中，$y_i$是真实值，$\hat{y_i}$是预测值，$\bar{y}$是真实值的均值。
 R2值越接近1，表明模型的性能越好。
@@ -110,9 +122,9 @@ R2值越接近1，表明模型的性能越好。
     "name" : ""
   },
   "headline": "机器学习12种分类模型的性能对比",
-  "description" : "接上回，我们已经知道了机器学习分类的本质，那么接下来就是要介绍机器学习中的分类模型的各种性能了。\n简介 我们将采用12种分类模型，分别是：GaussianNB、MultinomialNB、KNNeighbors、SVC、DecisionTree、RandomForest、GradientBoosting、LGBM、XGB、CatBoost、AdaBoost、MLP，用这些模型对数据集进行训练，然后对测试集进行预测，最后将预测结果与真实结果进行对比，得到各个模型的性能。\n数据集 我们采用以下代码生成随机分类数据：\nx,y = make_classification(n_samples=100000,n_features=3,n_classes=4,n_informative=3,n_redundant=0,random_state=50,n_clusters_per_class=1) x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.1) 这里能够生成100000个样本，每个样本有3个特征，4个类别，3个特征是有效特征，0个冗余特征，随机种子为50，每个类别有1个簇。然后我们将数据集分为训练集和测试集，测试集占10%.\n由于每个样本都是一个3维向量，所以我们将数据取前2维数据将数据集可视化，如下图所示：\n评估函数 我们采用准确率(Accuracy)、精确率(Precision)、召回率(Recall)、F1值(F1-score)、R2值(R2-score)，这5个指标来评估模型的性能。\n准确率(Accuracy) 准确率是指分类正确的样本数占总样本数的比例，即：\n$Accuracy = \\frac{TP\u002bTN}{TP\u002bTN\u002bFP\u002bFN}$\n其中，TP是真正例，TN是真负例，FP是假正例，FN是假负例。\n精确率(Precision) 精确率是指分类正确的正例数占分类为正例的样本数的比例，即：\n其中，TP是真正例，FP是假正例。\n召回率(Recall) 召回率是指分类正确的正例数占真正例的比例，即：\n$Recall = \\frac{TP}{TP\u002bFN}$\n其中，TP是真正例，FN是假负例。\nF1值(F1-score) F1值是精确率和召回率的调和平均数，即：\nF1值越接近1，表明模型的性能越好。\nR2值(R2-score) R2值是指预测值与真实值的相关系数，即：\n其中，$y_i$是真实值，$\\hat{y_i}$是预测值，$\\bar{y}$是真实值的均值。\nR2值越接近1，表明模型的性能越好。\n各模型表现 1. GaussianNB 其中GaussianNB的参数priors为None，var_smoothing为1e-09，表明我们没有对先验概率进行设置，而且我们对方差进行了平滑处理。\n2. MultinomialNB 其中MultinomialNB的参数alpha为1.0，fit_prior为True，class_prior为None，表明我们对先验概率进行了设置，而且我们对先验概率进行了平滑处理。\n3. KNNeighbors 其中KNNeighbors的参数n_neighbors为30，表明我们对最近邻的个数为30。\n4. SVC 5. DecisionTree 6. RandomForest ",
+  "description" : "接上回，我们已经知道了机器学习分类的本质，那么接下来就是要介绍机器学习中的分类模型的各种性能了。\n简介 我们将采用12种分类模型，分别是：GaussianNB、MultinomialNB、KNNeighbors、SVC、DecisionTree、RandomForest、GradientBoosting、LGBM、XGB、CatBoost、AdaBoost、MLP，用这些模型对数据集进行训练，然后对测试集进行预测，最后将预测结果与真实结果进行对比，得到各个模型的性能。\n数据集 我们采用以下代码生成随机分类数据：\nx,y = make_classification(n_samples=100000,n_features=3,n_classes=4,n_informative=3,n_redundant=0,random_state=50,n_clusters_per_class=1) x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.1) 这里能够生成100000个样本，每个样本有3个特征，4个类别，3个特征是有效特征，0个冗余特征，随机种子为50，每个类别有1个簇。然后我们将数据集分为训练集和测试集，测试集占10%.\n由于每个样本都是一个3维向量，所以我们将数据取前2维数据将数据集可视化，如下图所示：\n评估函数 我们采用准确率(Accuracy)、精确率(Precision)、召回率(Recall)、F1值(F1-score)、R2值(R2-score)，这5个指标来评估模型的性能。\n准确率(Accuracy) 准确率是指分类正确的样本数占总样本数的比例，即：\n$Accuracy = \\frac{TP\u002bTN}{TP\u002bTN\u002bFP\u002bFN}$\n其中，TP是真正例，TN是真负例，FP是假正例，FN是假负例。\n精确率(Precision) 精确率是指分类正确的正例数占分类为正例的样本数的比例，即：\n$$ Precision = \\frac{TP}{TP\u002bFP} $$ 其中，TP是真正例，FP是假正例。\n召回率(Recall) 召回率是指分类正确的正例数占真正例的比例，即：\n$Recall = \\frac{TP}{TP\u002bFN}$\n其中，TP是真正例，FN是假负例。\nF1值(F1-score) F1值是精确率和召回率的调和平均数，即：\n$$ F1 = \\frac{2*Precision*Recall}{Precision\u002bRecall} $$ F1值越接近1，表明模型的性能越好。\nR2值(R2-score) R2值是指预测值与真实值的相关系数，即：\n$$ R2 = 1-\\frac{\\sum_{i=1}^{n}(y_i-\\hat{y_i})^2}{\\sum_{i=1}^{n}(y_i-\\bar{y})^2} $$ 其中，$y_i$是真实值，$\\hat{y_i}$是预测值，$\\bar{y}$是真实值的均值。\nR2值越接近1，表明模型的性能越好。\n各模型表现 1. GaussianNB 其中GaussianNB的参数priors为None，var_smoothing为1e-09，表明我们没有对先验概率进行设置，而且我们对方差进行了平滑处理。\n2. MultinomialNB 其中MultinomialNB的参数alpha为1.0，fit_prior为True，class_prior为None，表明我们对先验概率进行了设置，而且我们对先验概率进行了平滑处理。\n3. KNNeighbors 其中KNNeighbors的参数n_neighbors为30，表明我们对最近邻的个数为30。\n4. SVC 5. DecisionTree 6. RandomForest ",
   "inLanguage" : "en",
-  "wordCount":  371 ,
+  "wordCount":  386 ,
   "datePublished" : "2023-06-19T22:42:48\u002b00:00",
   "dateModified" : "2025-12-01T10:19:20\u002b00:00",
   "image" : "https:\/\/cywd123.github.io\/",
@@ -152,6 +164,10 @@ $Accuracy = \frac{TP&#43;TN}{TP&#43;TN&#43;FP&#43;FN}$
 精确率(Precision)
 精确率是指分类正确的正例数占分类为正例的样本数的比例，即：
 
+$$
+Precision = \frac{TP}{TP&#43;FP}
+$$
+
 其中，TP是真正例，FP是假正例。
 召回率(Recall)
 召回率是指分类正确的正例数占真正例的比例，即：
@@ -160,9 +176,17 @@ $Recall = \frac{TP}{TP&#43;FN}$
 F1值(F1-score)
 F1值是精确率和召回率的调和平均数，即：
 
+$$
+F1 = \frac{2*Precision*Recall}{Precision&#43;Recall}
+$$
+
 F1值越接近1，表明模型的性能越好。
 R2值(R2-score)
 R2值是指预测值与真实值的相关系数，即：
+
+$$
+R2 = 1-\frac{\sum_{i=1}^{n}(y_i-\hat{y_i})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}
+$$
 
 其中，$y_i$是真实值，$\hat{y_i}$是预测值，$\bar{y}$是真实值的均值。
 R2值越接近1，表明模型的性能越好。
@@ -345,7 +369,11 @@ R2值越接近1，表明模型的性能越好。
 <p>其中，TP是真正例，TN是真负例，FP是假正例，FN是假负例。</p>
 <h4 id="精确率precision">精确率(Precision)</h4>
 <p>精确率是指分类正确的正例数占分类为正例的样本数的比例，即：</p>
-<!-- raw HTML omitted -->
+<div>
+$$
+Precision = \frac{TP}{TP+FP}
+$$
+</div>
 <p>其中，TP是真正例，FP是假正例。</p>
 <h4 id="召回率recall">召回率(Recall)</h4>
 <p>召回率是指分类正确的正例数占真正例的比例，即：</p>
@@ -353,11 +381,19 @@ R2值越接近1，表明模型的性能越好。
 <p>其中，TP是真正例，FN是假负例。</p>
 <h4 id="f1值f1-score">F1值(F1-score)</h4>
 <p>F1值是精确率和召回率的调和平均数，即：</p>
-<!-- raw HTML omitted -->
+<div>
+$$
+F1 = \frac{2*Precision*Recall}{Precision+Recall}
+$$
+</div>
 <p>F1值越接近1，表明模型的性能越好。</p>
 <h4 id="r2值r2-score">R2值(R2-score)</h4>
 <p>R2值是指预测值与真实值的相关系数，即：</p>
-<!-- raw HTML omitted -->
+<div>
+$$
+R2 = 1-\frac{\sum_{i=1}^{n}(y_i-\hat{y_i})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}
+$$
+</div>
 <p>其中，$y_i$是真实值，$\hat{y_i}$是预测值，$\bar{y}$是真实值的均值。</p>
 <p>R2值越接近1，表明模型的性能越好。</p>
 <h2 id="各模型表现">各模型表现</h2>

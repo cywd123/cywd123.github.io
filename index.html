@@ -210,10 +210,30 @@
     </p>
     <div class="post-entry">
         
-        <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+        <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本地图片OCR工具 - 极简版</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
+  <style>
+    .drag-active { border-color: #10b981; background-color: #ecfdf5; }
+    /* 隐藏滚动条但允许滚动 */
+    textarea::-webkit-scrollbar { width: 8px; }
+    textarea::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans text-slate-800">
+  <header class="bg-white shadow-sm py-4 px-6">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold text-slate-800"><i class="fa fa-cube text-blue-500 mr-2"></i>本地OCR识别</h1>
+      <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">本地运算 · 不上传服务器</span>
+    </div>
+  </header>
+  <main class="flex-grow container mx-auto py-6 px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
 <pre tabindex="0"><code>&lt;div class=&#34;bg-white rounded-xl shadow-md p-6 flex flex-col h-full&#34;&gt;
   &lt;h2 class=&#34;font-semibold mb-4 text-slate-700&#34;&gt;&lt;i class=&#34;fa fa-upload text-blue-500 mr-2&#34;&gt;&lt;/i&gt;上传图片&lt;/h2&gt;
   
@@ -264,10 +284,132 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+</code></pre>  </main>
+  <script>
+    // 元素引用
+    const els = {
+      dropArea: document.getElementById('dropArea'),
+      fileInput: document.getElementById('fileInput'),
+      previewImg: document.getElementById('previewImg'),
+      uploadPrompt: document.getElementById('uploadPrompt'),
+      clearBtn: document.getElementById('clearBtn'),
+      runBtn: document.getElementById('runBtn'),
+      progressBox: document.getElementById('progressBox'),
+      progressBar: document.getElementById('progressBar'),
+      progressText: document.getElementById('progressText'),
+      resultBox: document.getElementById('resultBox'),
+      copyBtn: document.getElementById('copyBtn'),
+      toast: document.getElementById('toast')
+    };
+
+    let currentFile = null;
+
+    // --- 工具函数：清理文本空格 ---
+    // 1. 去除中文字符之间的空格
+    // 2. 将多个空行合并为一个换行
+    // 3. 去除每行首尾空格
+    function cleanText(text) {
+      return text
+        .replace(/([^\x00-\xff])\s+([^\x00-\xff])/g, '$1$2') // 去除汉字间空格
+        .replace(/[\r\n]+/g, '\n')  // 合并多个换行符
+        .split('\n').map(line => line.trim()).filter(line => line.length > 0).join('\n') // 去空行并Trim每一行
+        .trim();
+    }
+
+    // --- 交互逻辑 ---
+
+    // 拖拽效果
+    ['dragenter', 'dragover'].forEach(e => els.dropArea.addEventListener(e, (ev) => {
+      ev.preventDefault(); els.dropArea.classList.add('drag-active');
+    }));
+    ['dragleave', 'drop'].forEach(e => els.dropArea.addEventListener(e, (ev) => {
+      ev.preventDefault(); els.dropArea.classList.remove('drag-active');
+    }));
+
+    // 文件处理
+    const handleFile = (file) => {
+      if (!file || !file.type.startsWith('image/')) return alert('请上传图片文件');
+      currentFile = file;
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        els.previewImg.src = e.target.result;
+        els.previewImg.classList.remove('hidden');
+        els.clearBtn.classList.remove('hidden');
+        els.uploadPrompt.classList.add('hidden');
+        
+        // 激活按钮
+        els.runBtn.disabled = false;
+        els.runBtn.className = 'mt-4 w-full py-3 rounded-lg font-medium text-white bg-blue-500 hover:bg-blue-600 transition-colors shadow-md hover:shadow-lg';
+        
+        // 重置结果区
+        els.resultBox.value = '';
+        els.copyBtn.disabled = true;
+        els.progressBox.classList.add('hidden');
+      };
+      reader.readAsDataURL(file);
+    };
+
+    els.dropArea.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+    els.dropArea.addEventListener('click', (e) => {
+      if(e.target !== els.clearBtn && e.target.parentNode !== els.clearBtn) els.fileInput.click();
+    });
+    els.fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+    // 清除图片
+    els.clearBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentFile = null;
+      els.previewImg.classList.add('hidden');
+      els.clearBtn.classList.add('hidden');
+      els.uploadPrompt.classList.remove('hidden');
+      els.runBtn.disabled = true;
+      els.runBtn.className = 'mt-4 w-full py-3 rounded-lg font-medium text-white bg-slate-300 cursor-not-allowed transition-colors';
+      els.fileInput.value = '';
+    });
+
+    // 执行OCR
+    els.runBtn.addEventListener('click', async () => {
+      if (!currentFile) return;
+
+      els.progressBox.classList.remove('hidden');
+      els.runBtn.disabled = true;
+      els.runBtn.classList.add('opacity-75');
+      
+      try {
+        const { data: { text } } = await Tesseract.recognize(currentFile, 'chi_sim', {
+          logger: m => {
+            if (m.status === 'recognizing text') {
+              const pct = Math.floor(m.progress * 100) + '%';
+              els.progressBar.style.width = pct;
+              els.progressText.innerText = pct;
+            }
+          }
+        });
+
+        // 关键：使用 cleanText 处理结果
+        const finalText = cleanText(text);
+        
+        els.resultBox.value = finalText || '未能识别出文字';
+        els.copyBtn.disabled = !finalText;
+      } catch (err) {
+        els.resultBox.value = '识别出错: ' + err.message;
+      } finally {
+        els.runBtn.disabled = false;
+        els.runBtn.classList.remove('opacity-75');
+      }
+    });
+
+    // 复制功能
+    els.copyBtn.addEventListener('click', () => {
+      els.resultBox.select();
+      document.execCommand('copy');
+      els.toast.classList.remove('opacity-0');
+      setTimeout(() => els.toast.classList.add('opacity-0'), 2000);
+    });
+  </script>
+</body>
+</html>
 
         
     </div>
@@ -306,7 +448,20 @@
     </p>
     <div class="post-entry">
         
-        <!-- raw HTML omitted -->
+        <div id="decryptBox">
+  <input type="password" id="p" placeholder="密码" autocomplete="off">
+  <button onclick="u()">解锁</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+<script>
+const enc='U2FsdGVkX1/oFhOAnfWf+QoLoDjdZHY7aJMbyGhbSIFfoIj58RdEv+7x2nWFhja1Z5c+D0ZXsITeuA1UEbm728+rLtWhIPDpTa1kCRuJmko=';
+function u(){
+  try{
+    const d=CryptoJS.AES.decrypt(enc,p.value).toString(CryptoJS.enc.Utf8);
+    d&&(document.getElementById('decryptBox').innerHTML=d);
+  }catch{}
+}
+</script>
 <pre tabindex="0"><code>前端内容加密，密码123
 &lt;div id=&#34;decryptBox&#34;&gt;
   &lt;input type=&#34;password&#34; id=&#34;p&#34; placeholder=&#34;密码&#34; autocomplete=&#34;off&#34;&gt;
@@ -360,11 +515,25 @@ function u(){
     </p>
     <div class="post-entry">
         
-        <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+        <textarea id=t placeholder="原文" style="width:100%;height:100px"></textarea>
+<input id=p type=password placeholder="密码" style="width:100%;margin:8px 0">
+<button onclick=e()>加密</button>
+<textarea id=c placeholder="密文" style="width:100%;height:80px" readonly></textarea>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+<script>
+e=()=>{
+const t=document.getElementById('t').value.trim(),p=document.getElementById('p').value.trim();
+if(!t||!p)alert('填全原文和密码！');
+else{
+const c=CryptoJS.AES.encrypt(t,p).toString();
+document.getElementById('c').value=c;
+document.getElementById('c').select();
+navigator.clipboard.writeText(c).catch(()=>{})
+}
+}
+document.getElementById('t').addEventListener('keypress',e=>e.ctrlKey&&e.key==='Enter'&&e());
+document.getElementById('p').addEventListener('keypress',e=>e.key==='Enter'&&e());
+</script>
 
         
     </div>
@@ -847,7 +1016,23 @@ MsgBox &#34;PPT和Word文件已成功转换为PDF格式！&#34;
         <p>务必通过<a href="http://juiceright-github-io-s.webvpn.stu.edu.cn:8118/post/lGBTFf1szi/">WebVPN</a>访问本页面，直连访问将无法获取twfid</p>
 <p><a href="http://juiceright-github-io-s.webvpn.stu.edu.cn:8118/post/lGBTFf1szi/">http://juiceright-github-io-s.webvpn.stu.edu.cn:8118/post/lGBTFf1szi/</a></p>
 <hr>
-<!-- raw HTML omitted -->
+<body>
+<button onclick="checkTwfidCookie()">查看 twfid Cookie 值</button>
+    <p id="result"></p>
+    <script>
+        function checkTwfidCookie() {
+            const cookies = document.cookie.split('; ');
+            for (let i = 0; i < cookies.length; i++) {
+                const parts = cookies[i].split('=');
+                if (parts[0] === 'TWFID') {
+                    document.getElementById('result').textContent = 'TWFID Cookie 的值为: ' + parts[1];
+                    return;
+                }
+            }
+            document.getElementById('result').textContent = '未找到 TWFID Cookie。';
+        }
+    </script>
+</body>
 <hr>
 <p>以下是源码，该工具仅在本地处理，不会上传任何数据。</p>
 <pre tabindex="0"><code>    &lt;button onclick=&#34;checkTwfidCookie()&#34;&gt;查看 twfid Cookie 值&lt;/button&gt;

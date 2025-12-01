@@ -494,7 +494,11 @@
 <p>其中，TP是真正例，TN是真负例，FP是假正例，FN是假负例。</p>
 <h4 id="精确率precision">精确率(Precision)</h4>
 <p>精确率是指分类正确的正例数占分类为正例的样本数的比例，即：</p>
-<!-- raw HTML omitted -->
+<div>
+$$
+Precision = \frac{TP}{TP+FP}
+$$
+</div>
 <p>其中，TP是真正例，FP是假正例。</p>
 <h4 id="召回率recall">召回率(Recall)</h4>
 <p>召回率是指分类正确的正例数占真正例的比例，即：</p>
@@ -502,11 +506,19 @@
 <p>其中，TP是真正例，FN是假负例。</p>
 <h4 id="f1值f1-score">F1值(F1-score)</h4>
 <p>F1值是精确率和召回率的调和平均数，即：</p>
-<!-- raw HTML omitted -->
+<div>
+$$
+F1 = \frac{2*Precision*Recall}{Precision+Recall}
+$$
+</div>
 <p>F1值越接近1，表明模型的性能越好。</p>
 <h4 id="r2值r2-score">R2值(R2-score)</h4>
 <p>R2值是指预测值与真实值的相关系数，即：</p>
-<!-- raw HTML omitted -->
+<div>
+$$
+R2 = 1-\frac{\sum_{i=1}^{n}(y_i-\hat{y_i})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}
+$$
+</div>
 <p>其中，$y_i$是真实值，$\hat{y_i}$是预测值，$\bar{y}$是真实值的均值。</p>
 <p>R2值越接近1，表明模型的性能越好。</p>
 <h2 id="各模型表现">各模型表现</h2>

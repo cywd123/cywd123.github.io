@@ -14,10 +14,25 @@
 
       <title>tesseract.JS OCR - </title>
 
-  <meta name="description" content="
+  <meta name="description" content="&lt;!DOCTYPE html&gt;
 
 
+  
+  
+  本地图片OCR工具 - 极简版
+  
+  
+  
+  
 
+
+  
+    
+      本地OCR识别
+      本地运算 · 不上传服务器
+    
+  
+  
 &lt;div class=&#34;bg-white rounded-xl shadow-md p-6 flex flex-col h-full&#34;&gt;
   &lt;h2 class=&#34;font-semibold mb-4 text-slate-700&#34;&gt;&lt;i class=&#34;fa fa-upload text-blue-500 mr-2&#34;&gt;&lt;/i&gt;上传图片&lt;/h2&gt;
   
@@ -68,8 +83,8 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-
-
+  
+  
 
 "><script type="application/ld+json">
 {
@@ -119,9 +134,9 @@
     "name" : ""
   },
   "headline": "tesseract.JS OCR",
-  "description" : " \u0026lt;div class=\u0026#34;bg-white rounded-xl shadow-md p-6 flex flex-col h-full\u0026#34;\u0026gt; \u0026lt;h2 class=\u0026#34;font-semibold mb-4 text-slate-700\u0026#34;\u0026gt;\u0026lt;i class=\u0026#34;fa fa-upload text-blue-500 mr-2\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt;上传图片\u0026lt;\/h2\u0026gt; \u0026lt;div id=\u0026#34;dropArea\u0026#34; class=\u0026#34;flex-1 border-2 border-dashed border-slate-300 rounded-lg flex flex-col items-center justify-center p-6 transition-colors cursor-pointer min-h-[200px] relative\u0026#34;\u0026gt; \u0026lt;input type=\u0026#34;file\u0026#34; id=\u0026#34;fileInput\u0026#34; accept=\u0026#34;image\/*\u0026#34; class=\u0026#34;hidden\u0026#34;\u0026gt; \u0026lt;div id=\u0026#34;uploadPrompt\u0026#34; class=\u0026#34;text-center\u0026#34;\u0026gt; \u0026lt;i class=\u0026#34;fa fa-cloud-upload text-4xl text-slate-300 mb-3\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt; \u0026lt;p class=\u0026#34;text-sm text-slate-500\u0026#34;\u0026gt;点击或拖拽图片至此\u0026lt;\/p\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;img id=\u0026#34;previewImg\u0026#34; class=\u0026#34;hidden max-h-64 max-w-full object-contain rounded shadow-sm z-10\u0026#34;\u0026gt; \u0026lt;button id=\u0026#34;clearBtn\u0026#34; class=\u0026#34;hidden absolute top-2 right-2 bg-red-500 text-white w-6 h-6 rounded-full hover:bg-red-600 z-20 items-center justify-center text-xs\u0026#34;\u0026gt; \u0026lt;i class=\u0026#34;fa fa-times\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt; \u0026lt;\/button\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;div id=\u0026#34;progressBox\u0026#34; class=\u0026#34;hidden mt-4\u0026#34;\u0026gt; \u0026lt;div class=\u0026#34;flex justify-between text-xs text-slate-500 mb-1\u0026#34;\u0026gt; \u0026lt;span\u0026gt;正在识别...\u0026lt;\/span\u0026gt; \u0026lt;span id=\u0026#34;progressText\u0026#34;\u0026gt;0%\u0026lt;\/span\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;div class=\u0026#34;h-2 bg-slate-100 rounded-full overflow-hidden\u0026#34;\u0026gt; \u0026lt;div id=\u0026#34;progressBar\u0026#34; class=\u0026#34;h-full bg-blue-500 transition-all duration-300 w-0\u0026#34;\u0026gt;\u0026lt;\/div\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;button id=\u0026#34;runBtn\u0026#34; disabled class=\u0026#34;mt-4 w-full py-3 rounded-lg font-medium text-white bg-slate-300 cursor-not-allowed transition-colors flex justify-center items-center\u0026#34;\u0026gt; 开始识别 \u0026lt;\/button\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;div class=\u0026#34;bg-white rounded-xl shadow-md p-6 flex flex-col h-full\u0026#34;\u0026gt; \u0026lt;div class=\u0026#34;flex justify-between items-center mb-4\u0026#34;\u0026gt; \u0026lt;h2 class=\u0026#34;font-semibold text-slate-700\u0026#34;\u0026gt;\u0026lt;i class=\u0026#34;fa fa-file-text text-emerald-500 mr-2\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt;识别结果\u0026lt;\/h2\u0026gt; \u0026lt;button id=\u0026#34;copyBtn\u0026#34; class=\u0026#34;text-sm text-blue-500 hover:text-blue-700 disabled:text-slate-300\u0026#34; disabled\u0026gt; \u0026lt;i class=\u0026#34;fa fa-copy mr-1\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt;复制 \u0026lt;\/button\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;div class=\u0026#34;flex-grow relative bg-slate-50 rounded-lg border border-slate-200\u0026#34;\u0026gt; \u0026lt;textarea id=\u0026#34;resultBox\u0026#34; class=\u0026#34;w-full h-full p-4 bg-transparent resize-none focus:outline-none text-sm leading-relaxed\u0026#34; placeholder=\u0026#34;等待识别...\u0026#34; readonly\u0026gt;\u0026lt;\/textarea\u0026gt; \u0026lt;div id=\u0026#34;toast\u0026#34; class=\u0026#34;absolute bottom-4 right-4 bg-slate-800 text-white text-xs px-3 py-1.5 rounded opacity-0 transition-opacity pointer-events-none\u0026#34;\u0026gt; 已复制 \u0026lt;\/div\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;\/div\u0026gt; ",
+  "description" : "\u003c!DOCTYPE html\u003e 本地图片OCR工具 - 极简版 本地OCR识别 本地运算 · 不上传服务器 \u0026lt;div class=\u0026#34;bg-white rounded-xl shadow-md p-6 flex flex-col h-full\u0026#34;\u0026gt; \u0026lt;h2 class=\u0026#34;font-semibold mb-4 text-slate-700\u0026#34;\u0026gt;\u0026lt;i class=\u0026#34;fa fa-upload text-blue-500 mr-2\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt;上传图片\u0026lt;\/h2\u0026gt; \u0026lt;div id=\u0026#34;dropArea\u0026#34; class=\u0026#34;flex-1 border-2 border-dashed border-slate-300 rounded-lg flex flex-col items-center justify-center p-6 transition-colors cursor-pointer min-h-[200px] relative\u0026#34;\u0026gt; \u0026lt;input type=\u0026#34;file\u0026#34; id=\u0026#34;fileInput\u0026#34; accept=\u0026#34;image\/*\u0026#34; class=\u0026#34;hidden\u0026#34;\u0026gt; \u0026lt;div id=\u0026#34;uploadPrompt\u0026#34; class=\u0026#34;text-center\u0026#34;\u0026gt; \u0026lt;i class=\u0026#34;fa fa-cloud-upload text-4xl text-slate-300 mb-3\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt; \u0026lt;p class=\u0026#34;text-sm text-slate-500\u0026#34;\u0026gt;点击或拖拽图片至此\u0026lt;\/p\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;img id=\u0026#34;previewImg\u0026#34; class=\u0026#34;hidden max-h-64 max-w-full object-contain rounded shadow-sm z-10\u0026#34;\u0026gt; \u0026lt;button id=\u0026#34;clearBtn\u0026#34; class=\u0026#34;hidden absolute top-2 right-2 bg-red-500 text-white w-6 h-6 rounded-full hover:bg-red-600 z-20 items-center justify-center text-xs\u0026#34;\u0026gt; \u0026lt;i class=\u0026#34;fa fa-times\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt; \u0026lt;\/button\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;div id=\u0026#34;progressBox\u0026#34; class=\u0026#34;hidden mt-4\u0026#34;\u0026gt; \u0026lt;div class=\u0026#34;flex justify-between text-xs text-slate-500 mb-1\u0026#34;\u0026gt; \u0026lt;span\u0026gt;正在识别...\u0026lt;\/span\u0026gt; \u0026lt;span id=\u0026#34;progressText\u0026#34;\u0026gt;0%\u0026lt;\/span\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;div class=\u0026#34;h-2 bg-slate-100 rounded-full overflow-hidden\u0026#34;\u0026gt; \u0026lt;div id=\u0026#34;progressBar\u0026#34; class=\u0026#34;h-full bg-blue-500 transition-all duration-300 w-0\u0026#34;\u0026gt;\u0026lt;\/div\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;button id=\u0026#34;runBtn\u0026#34; disabled class=\u0026#34;mt-4 w-full py-3 rounded-lg font-medium text-white bg-slate-300 cursor-not-allowed transition-colors flex justify-center items-center\u0026#34;\u0026gt; 开始识别 \u0026lt;\/button\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;div class=\u0026#34;bg-white rounded-xl shadow-md p-6 flex flex-col h-full\u0026#34;\u0026gt; \u0026lt;div class=\u0026#34;flex justify-between items-center mb-4\u0026#34;\u0026gt; \u0026lt;h2 class=\u0026#34;font-semibold text-slate-700\u0026#34;\u0026gt;\u0026lt;i class=\u0026#34;fa fa-file-text text-emerald-500 mr-2\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt;识别结果\u0026lt;\/h2\u0026gt; \u0026lt;button id=\u0026#34;copyBtn\u0026#34; class=\u0026#34;text-sm text-blue-500 hover:text-blue-700 disabled:text-slate-300\u0026#34; disabled\u0026gt; \u0026lt;i class=\u0026#34;fa fa-copy mr-1\u0026#34;\u0026gt;\u0026lt;\/i\u0026gt;复制 \u0026lt;\/button\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;div class=\u0026#34;flex-grow relative bg-slate-50 rounded-lg border border-slate-200\u0026#34;\u0026gt; \u0026lt;textarea id=\u0026#34;resultBox\u0026#34; class=\u0026#34;w-full h-full p-4 bg-transparent resize-none focus:outline-none text-sm leading-relaxed\u0026#34; placeholder=\u0026#34;等待识别...\u0026#34; readonly\u0026gt;\u0026lt;\/textarea\u0026gt; \u0026lt;div id=\u0026#34;toast\u0026#34; class=\u0026#34;absolute bottom-4 right-4 bg-slate-800 text-white text-xs px-3 py-1.5 rounded opacity-0 transition-opacity pointer-events-none\u0026#34;\u0026gt; 已复制 \u0026lt;\/div\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;\/div\u0026gt; ",
   "inLanguage" : "en",
-  "wordCount":  196 ,
+  "wordCount":  205 ,
   "datePublished" : "2025-11-26T11:11:27\u002b00:00",
   "dateModified" : "2025-12-01T09:31:17\u002b00:00",
   "image" : "https:\/\/cywd123.github.io\/",
@@ -142,10 +157,25 @@
 
 
 <meta property="og:title" content="tesseract.JS OCR" />
-<meta property="og:description" content="
+<meta property="og:description" content="&lt;!DOCTYPE html&gt;
 
 
+  
+  
+  本地图片OCR工具 - 极简版
+  
+  
+  
+  
 
+
+  
+    
+      本地OCR识别
+      本地运算 · 不上传服务器
+    
+  
+  
 &lt;div class=&#34;bg-white rounded-xl shadow-md p-6 flex flex-col h-full&#34;&gt;
   &lt;h2 class=&#34;font-semibold mb-4 text-slate-700&#34;&gt;&lt;i class=&#34;fa fa-upload text-blue-500 mr-2&#34;&gt;&lt;/i&gt;上传图片&lt;/h2&gt;
   
@@ -196,8 +226,8 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-
-
+  
+  
 
 ">
 <meta property="og:url" content="https://cywd123.github.io/posts/25srxbxlnp/" />
@@ -205,12 +235,16 @@
 <meta property="og:site_name" content="Juiceright" />
 
   <meta name="twitter:title" content="tesseract.JS OCR" />
-  <meta name="twitter:description" content="
+  <meta name="twitter:description" content="&lt;!DOCTYPE html&gt;
 
 
-
-&lt;div class=&#34;bg-white rounded-xl shadow-md p-6 flex flex-col h-full&#34;&gt;
-  &lt;h2 class=&#34;font-semibold mb-4 text-slate-700&#34;&gt;&lt;i class=&#34;fa fa-upload text-blue-500 …&lt;/!--&gt;&lt;/!--&gt;&lt;/!--&gt;&lt;/!--&gt;">
+  
+  
+  本地图片OCR工具 - 极简版
+  
+  
+  
+  &lt;/!DOCTYPE&gt;">
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="generator" content="Hugo 0.152.2">
   <link rel="alternate" href="https://cywd123.github.io/index.xml" type="application/rss+xml" title="Juiceright"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
@@ -348,10 +382,30 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+        <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本地图片OCR工具 - 极简版</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
+  <style>
+    .drag-active { border-color: #10b981; background-color: #ecfdf5; }
+    /* 隐藏滚动条但允许滚动 */
+    textarea::-webkit-scrollbar { width: 8px; }
+    textarea::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans text-slate-800">
+  <header class="bg-white shadow-sm py-4 px-6">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold text-slate-800"><i class="fa fa-cube text-blue-500 mr-2"></i>本地OCR识别</h1>
+      <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">本地运算 · 不上传服务器</span>
+    </div>
+  </header>
+  <main class="flex-grow container mx-auto py-6 px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
 <pre tabindex="0"><code>&lt;div class=&#34;bg-white rounded-xl shadow-md p-6 flex flex-col h-full&#34;&gt;
   &lt;h2 class=&#34;font-semibold mb-4 text-slate-700&#34;&gt;&lt;i class=&#34;fa fa-upload text-blue-500 mr-2&#34;&gt;&lt;/i&gt;上传图片&lt;/h2&gt;
   
@@ -402,10 +456,132 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+</code></pre>  </main>
+  <script>
+    // 元素引用
+    const els = {
+      dropArea: document.getElementById('dropArea'),
+      fileInput: document.getElementById('fileInput'),
+      previewImg: document.getElementById('previewImg'),
+      uploadPrompt: document.getElementById('uploadPrompt'),
+      clearBtn: document.getElementById('clearBtn'),
+      runBtn: document.getElementById('runBtn'),
+      progressBox: document.getElementById('progressBox'),
+      progressBar: document.getElementById('progressBar'),
+      progressText: document.getElementById('progressText'),
+      resultBox: document.getElementById('resultBox'),
+      copyBtn: document.getElementById('copyBtn'),
+      toast: document.getElementById('toast')
+    };
+
+    let currentFile = null;
+
+    // --- 工具函数：清理文本空格 ---
+    // 1. 去除中文字符之间的空格
+    // 2. 将多个空行合并为一个换行
+    // 3. 去除每行首尾空格
+    function cleanText(text) {
+      return text
+        .replace(/([^\x00-\xff])\s+([^\x00-\xff])/g, '$1$2') // 去除汉字间空格
+        .replace(/[\r\n]+/g, '\n')  // 合并多个换行符
+        .split('\n').map(line => line.trim()).filter(line => line.length > 0).join('\n') // 去空行并Trim每一行
+        .trim();
+    }
+
+    // --- 交互逻辑 ---
+
+    // 拖拽效果
+    ['dragenter', 'dragover'].forEach(e => els.dropArea.addEventListener(e, (ev) => {
+      ev.preventDefault(); els.dropArea.classList.add('drag-active');
+    }));
+    ['dragleave', 'drop'].forEach(e => els.dropArea.addEventListener(e, (ev) => {
+      ev.preventDefault(); els.dropArea.classList.remove('drag-active');
+    }));
+
+    // 文件处理
+    const handleFile = (file) => {
+      if (!file || !file.type.startsWith('image/')) return alert('请上传图片文件');
+      currentFile = file;
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        els.previewImg.src = e.target.result;
+        els.previewImg.classList.remove('hidden');
+        els.clearBtn.classList.remove('hidden');
+        els.uploadPrompt.classList.add('hidden');
+        
+        // 激活按钮
+        els.runBtn.disabled = false;
+        els.runBtn.className = 'mt-4 w-full py-3 rounded-lg font-medium text-white bg-blue-500 hover:bg-blue-600 transition-colors shadow-md hover:shadow-lg';
+        
+        // 重置结果区
+        els.resultBox.value = '';
+        els.copyBtn.disabled = true;
+        els.progressBox.classList.add('hidden');
+      };
+      reader.readAsDataURL(file);
+    };
+
+    els.dropArea.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+    els.dropArea.addEventListener('click', (e) => {
+      if(e.target !== els.clearBtn && e.target.parentNode !== els.clearBtn) els.fileInput.click();
+    });
+    els.fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+    // 清除图片
+    els.clearBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentFile = null;
+      els.previewImg.classList.add('hidden');
+      els.clearBtn.classList.add('hidden');
+      els.uploadPrompt.classList.remove('hidden');
+      els.runBtn.disabled = true;
+      els.runBtn.className = 'mt-4 w-full py-3 rounded-lg font-medium text-white bg-slate-300 cursor-not-allowed transition-colors';
+      els.fileInput.value = '';
+    });
+
+    // 执行OCR
+    els.runBtn.addEventListener('click', async () => {
+      if (!currentFile) return;
+
+      els.progressBox.classList.remove('hidden');
+      els.runBtn.disabled = true;
+      els.runBtn.classList.add('opacity-75');
+      
+      try {
+        const { data: { text } } = await Tesseract.recognize(currentFile, 'chi_sim', {
+          logger: m => {
+            if (m.status === 'recognizing text') {
+              const pct = Math.floor(m.progress * 100) + '%';
+              els.progressBar.style.width = pct;
+              els.progressText.innerText = pct;
+            }
+          }
+        });
+
+        // 关键：使用 cleanText 处理结果
+        const finalText = cleanText(text);
+        
+        els.resultBox.value = finalText || '未能识别出文字';
+        els.copyBtn.disabled = !finalText;
+      } catch (err) {
+        els.resultBox.value = '识别出错: ' + err.message;
+      } finally {
+        els.runBtn.disabled = false;
+        els.runBtn.classList.remove('opacity-75');
+      }
+    });
+
+    // 复制功能
+    els.copyBtn.addEventListener('click', () => {
+      els.resultBox.select();
+      document.execCommand('copy');
+      els.toast.classList.remove('opacity-0');
+      setTimeout(() => els.toast.classList.add('opacity-0'), 2000);
+    });
+  </script>
+</body>
+</html>
 
 
         
