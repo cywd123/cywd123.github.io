@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Juiceright</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Dec 2025 11:40:31 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Dec 2025 12:34:29 +0000</lastBuildDate>
     <atom:link href="https://cywd123.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>tesseract.JS OCR</title>
@@ -132,7 +132,7 @@
       <link>https://cywd123.github.io/posts/byprsldhih/</link>
       <pubDate>Fri, 14 Mar 2025 20:49:01 +0000</pubDate>
       <guid>https://cywd123.github.io/posts/byprsldhih/</guid>
-      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import netifaces&#xD;&#xA;import os&#xD;&#xA;# 获取所有网络接口&#xD;&#xA;interfaces = netifaces.interfaces()&#xD;&#xA;&#xD;&#xA;for iface in interfaces:&#xD;&#xA;    # 获取接口的地址信息&#xD;&#xA;    addresses = netifaces.ifaddresses(iface)&#xD;&#xA;    # 提取 IPv4 地址&#xD;&#xA;    if netifaces.AF_INET in addresses:&#xD;&#xA;        for addr_info in addresses[netifaces.AF_INET]:&#xD;&#xA;            ip = addr_info.get(&amp;#39;addr&amp;#39;)&#xD;&#xA;            if ip:&#xD;&#xA;                print(f&amp;#34;适配器 {iface} 的IP地址: {ip}&amp;#34;)&#xD;&#xA;                os.system(&amp;#39;curl --data &amp;#34;opr=pwdLogin&amp;amp;userName=账号&amp;amp;pwd=密码&amp;amp;rememberPwd=1&amp;#34; http://1.1.1.2/ac_portal/login.php  --interface &amp;#39; + ip)&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import netifaces&#xA;import os&#xA;# 获取所有网络接口&#xA;interfaces = netifaces.interfaces()&#xA;&#xA;for iface in interfaces:&#xA;    # 获取接口的地址信息&#xA;    addresses = netifaces.ifaddresses(iface)&#xA;    # 提取 IPv4 地址&#xA;    if netifaces.AF_INET in addresses:&#xA;        for addr_info in addresses[netifaces.AF_INET]:&#xA;            ip = addr_info.get(&amp;#39;addr&amp;#39;)&#xA;            if ip:&#xA;                print(f&amp;#34;适配器 {iface} 的IP地址: {ip}&amp;#34;)&#xA;                os.system(&amp;#39;curl --data &amp;#34;opr=pwdLogin&amp;amp;userName=账号&amp;amp;pwd=密码&amp;amp;rememberPwd=1&amp;#34; http://1.1.1.2/ac_portal/login.php  --interface &amp;#39; + ip)&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>snakemake流程——SMR&#43;MR&#43;MAGMA分析</title>

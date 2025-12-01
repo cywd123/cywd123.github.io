@@ -77,11 +77,11 @@ for iface in interfaces:
     "name" : ""
   },
   "headline": "python 利用curl将全部网卡适配器登录STU校园网",
-  "description" : "import netifaces\rimport os\r# 获取所有网络接口\rinterfaces = netifaces.interfaces()\rfor iface in interfaces:\r# 获取接口的地址信息\raddresses = netifaces.ifaddresses(iface)\r# 提取 IPv4 地址\rif netifaces.AF_INET in addresses:\rfor addr_info in addresses[netifaces.AF_INET]:\rip = addr_info.get(\u0026#39;addr\u0026#39;)\rif ip:\rprint(f\u0026#34;适配器 {iface} 的IP地址: {ip}\u0026#34;)\ros.system(\u0026#39;curl --data \u0026#34;opr=pwdLogin\u0026amp;userName=账号\u0026amp;pwd=密码\u0026amp;rememberPwd=1\u0026#34; http:\/\/1.1.1.2\/ac_portal\/login.php --interface \u0026#39; \u002b ip) ",
+  "description" : "import netifaces import os # 获取所有网络接口 interfaces = netifaces.interfaces() for iface in interfaces: # 获取接口的地址信息 addresses = netifaces.ifaddresses(iface) # 提取 IPv4 地址 if netifaces.AF_INET in addresses: for addr_info in addresses[netifaces.AF_INET]: ip = addr_info.get(\u0026#39;addr\u0026#39;) if ip: print(f\u0026#34;适配器 {iface} 的IP地址: {ip}\u0026#34;) os.system(\u0026#39;curl --data \u0026#34;opr=pwdLogin\u0026amp;userName=账号\u0026amp;pwd=密码\u0026amp;rememberPwd=1\u0026#34; http:\/\/1.1.1.2\/ac_portal\/login.php --interface \u0026#39; \u002b ip) ",
   "inLanguage" : "en",
   "wordCount":  47 ,
   "datePublished" : "2025-03-14T20:49:01\u002b00:00",
-  "dateModified" : "2025-12-01T09:31:17\u002b00:00",
+  "dateModified" : "2025-12-01T12:34:29\u002b00:00",
   "image" : "https:\/\/cywd123.github.io\/",
   "keywords" : [ "编程, python, 小脚本" ],
   "mainEntityOfPage" : "https:\/\/cywd123.github.io\/posts\/byprsldhih\/",
