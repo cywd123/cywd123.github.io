@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>高中 on Juiceright</title>
     <link>https://cywd123.github.io/tags/%E9%AB%98%E4%B8%AD/</link>
     <description>Recent content in 高中 on Juiceright</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 01 Dec 2025 10:19:20 +0000</lastBuildDate>
     <atom:link href="https://cywd123.github.io/tags/%E9%AB%98%E4%B8%AD/index.xml" rel="self" type="application/rss+xml" />
@@ -20,35 +20,50 @@
       <link>https://cywd123.github.io/posts/%E6%9A%91%E5%81%87%E5%B0%86%E7%BB%93%E6%9D%9F%E6%96%B0%E7%9A%84%E7%94%9F%E6%B4%BB%E5%B0%86%E6%9D%A5%E5%88%B0/</link>
       <pubDate>Mon, 26 Aug 2019 11:02:00 +0000</pubDate>
       <guid>https://cywd123.github.io/posts/%E6%9A%91%E5%81%87%E5%B0%86%E7%BB%93%E6%9D%9F%E6%96%B0%E7%9A%84%E7%94%9F%E6%B4%BB%E5%B0%86%E6%9D%A5%E5%88%B0/</guid>
-      <description>&lt;h2 id=&#34;暑假将结束新的生活将来到&#34;&gt;&lt;strong&gt;暑假将结束，新的生活将来到&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;p&gt;金中，我来了。&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;暑假将结束新的生活将来到&#34;&gt;&lt;strong&gt;暑假将结束，新的生活将来到&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;金中，我来了。&lt;/p&gt;</description>
     </item>
     <item>
       <title>潮汕星河奖</title>
       <link>https://cywd123.github.io/posts/%E6%BD%AE%E6%B1%95%E6%98%9F%E6%B2%B3%E5%A5%96/</link>
       <pubDate>Tue, 20 Aug 2019 18:39:00 +0000</pubDate>
       <guid>https://cywd123.github.io/posts/%E6%BD%AE%E6%B1%95%E6%98%9F%E6%B2%B3%E5%A5%96/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/mI8Apt&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/27/mI8Apt.md.jpg&#34; alt=&#34;mI8Apt.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://imgchr.com/i/mI8itA&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/27/mI8itA.md.jpg&#34; alt=&#34;mI8itA.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://imgchr.com/i/mI8V6f&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/27/mI8V6f.md.jpg&#34; alt=&#34;mI8V6f.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://imgchr.com/i/mI8E1P&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/27/mI8E1P.md.jpg&#34; alt=&#34;mI8E1P.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://imgchr.com/i/mI8ZX8&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/27/mI8ZX8.md.jpg&#34; alt=&#34;mI8ZX8.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://imgchr.com/i/mI8mnS&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/27/mI8mnS.md.jpg&#34; alt=&#34;mI8mnS.md.jpg&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/mI8Apt&#34;&gt;&lt;img alt=&#34;mI8Apt.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/27/mI8Apt.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://imgchr.com/i/mI8itA&#34;&gt;&lt;img alt=&#34;mI8itA.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/27/mI8itA.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://imgchr.com/i/mI8V6f&#34;&gt;&lt;img alt=&#34;mI8V6f.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/27/mI8V6f.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://imgchr.com/i/mI8E1P&#34;&gt;&lt;img alt=&#34;mI8E1P.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/27/mI8E1P.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://imgchr.com/i/mI8ZX8&#34;&gt;&lt;img alt=&#34;mI8ZX8.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/27/mI8ZX8.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://imgchr.com/i/mI8mnS&#34;&gt;&lt;img alt=&#34;mI8mnS.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/27/mI8mnS.md.jpg&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>夏令营——外出</title>
       <link>https://cywd123.github.io/posts/%E5%A4%8F%E4%BB%A4%E8%90%A5%E5%A4%96%E5%87%BA/</link>
       <pubDate>Thu, 25 Jul 2019 16:39:00 +0000</pubDate>
       <guid>https://cywd123.github.io/posts/%E5%A4%8F%E4%BB%A4%E8%90%A5%E5%A4%96%E5%87%BA/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/mLZ36K&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/29/mLZ36K.md.jpg&#34; alt=&#34;mLZ36K.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://imgchr.com/i/mLZJmD&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/29/mLZJmD.md.jpg&#34; alt=&#34;mLZJmD.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://imgchr.com/i/mLZUkd&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/29/mLZUkd.md.jpg&#34; alt=&#34;mLZUkd.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://imgchr.com/i/mLZlSx&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/29/mLZlSx.md.jpg&#34; alt=&#34;mLZlSx.md.jpg&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/mLZ36K&#34;&gt;&lt;img alt=&#34;mLZ36K.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/29/mLZ36K.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://imgchr.com/i/mLZJmD&#34;&gt;&lt;img alt=&#34;mLZJmD.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/29/mLZJmD.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://imgchr.com/i/mLZUkd&#34;&gt;&lt;img alt=&#34;mLZUkd.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/29/mLZUkd.md.jpg&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://imgchr.com/i/mLZlSx&#34;&gt;&lt;img alt=&#34;mLZlSx.md.jpg&#34; loading=&#34;lazy&#34; src=&#34;https://s2.ax1x.com/2019/08/29/mLZlSx.md.jpg&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>进入金中，感觉很棒！</title>
       <link>https://cywd123.github.io/posts/%E8%BF%9B%E5%85%A5%E9%87%91%E4%B8%AD%E6%84%9F%E8%A7%89%E5%BE%88%E6%A3%92/</link>
       <pubDate>Fri, 12 Jul 2019 13:53:00 +0000</pubDate>
       <guid>https://cywd123.github.io/posts/%E8%BF%9B%E5%85%A5%E9%87%91%E4%B8%AD%E6%84%9F%E8%A7%89%E5%BE%88%E6%A3%92/</guid>
-      <description>&lt;h1 id=&#34;进了金中也就那样了高兴&#34;&gt;进了金中，也就那样了，高兴！&lt;/h1&gt;&#xA;&lt;p&gt;我很开心，但也有点悲伤。&lt;/p&gt;&#xA;&lt;p&gt;这次中考出题不行，平时成绩好的同学都不习惯中考题，最后以悲剧结尾。&lt;/p&gt;&#xA;&lt;p&gt;幸好我是保送，选择了金中，才避免了差1分潮实半费的遗憾。&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;进了金中也就那样了高兴&#34;&gt;进了金中，也就那样了，高兴！&lt;/h1&gt;
+&lt;p&gt;我很开心，但也有点悲伤。&lt;/p&gt;
+&lt;p&gt;这次中考出题不行，平时成绩好的同学都不习惯中考题，最后以悲剧结尾。&lt;/p&gt;
+&lt;p&gt;幸好我是保送，选择了金中，才避免了差1分潮实半费的遗憾。&lt;/p&gt;</description>
     </item>
     <item>
       <title>模考加油</title>
       <link>https://cywd123.github.io/posts/%E6%A8%A1%E8%80%83%E5%8A%A0%E6%B2%B9/</link>
       <pubDate>Thu, 02 May 2019 17:41:00 +0000</pubDate>
       <guid>https://cywd123.github.io/posts/%E6%A8%A1%E8%80%83%E5%8A%A0%E6%B2%B9/</guid>
-      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;模考加油。     愿自己取得胜利。    &#xA;&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;&#xA;&lt;p&gt;加油喝彩。   你可以。&lt;img src=&#34;https://cywd123.github.io/images/1741976225587.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;模考加油。     愿自己取得胜利。    
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;加油喝彩。   你可以。&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/1741976225587.png&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
   </channel>
 </rss>
