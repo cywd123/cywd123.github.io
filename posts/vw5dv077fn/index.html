@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>snakemake流程——SMR&#43;MR&#43;MAGMA分析 - </title>
+
+  <meta name="description" content="
+# 定义染色体列表，包含 1 到 22 号染色体
+chromosomes = list(range(1, 23))
+
+# 获取组学暴露数据文件的名称
+(MRname,) = glob_wildcards(&#34;../dataset/组学暴露数据/{file}.rds&#34;)
+
+# 获取 SMR 数据文件的名称
+GTExname = glob_wildcards(&#34;../dataset/SMR/{file}.besd&#34;).file
+
+# 获取 GWAS 数据文件的名称
+GWASfilename = glob_wildcards(&#34;../../SMR/input/{file}&#34;).file
+
+# 定义 all 规则，用于指定整个流程的最终输出文件
+rule all:
+    input:
+        expand(&#34;result/GTEx的{GTEx}之{file}.smr&#34;, GTEx=GTExname, file=GWASfilename),
+        #expand(&#34;result/MR的{file}之{MR}.csv&#34;, MR=MRname, file=GWASfilename),
+        expand(&#34;result/{file}.gsa.out.txt&#34;,file=GWASfilename),
+        #expand(&#34;result/Gene_disease_association/{file}.fusion_twas.txt&#34;,file=GWASfilename),  #TWAS 若全部49个组织非常慢10小时
+        
+
+# 定义 trans 规则，用于将输入文件转换为输出文件
+rule trans:   #OK
+    input:
+        # 输入文件路径
+        &#34;../../SMR/input/{file}&#34;
+    output:
+        # 输出文件路径
+        &#34;tmp/{file}.ma&#34;,
+        &#34;tmp/{file}.sumstats.gz&#34;,
+        &#34;tmp/{file}.mendelR.txt&#34;
+    # 规则执行时使用的线程数
+    threads: 6
+    shell:
+        # 调用 R 脚本进行文件转换
+        &#34;r -f tools/trans.R --args {wildcards.file}&#34;    
+
+rule run_GTEx:  #OK
+    input:
+        &#34;tmp/{file}.ma&#34;,
+    output:
+        &#34;result/GTEx的{GTEx}之{file}.smr&#34;
+    threads: 5
+    shell:
+        &#34;tools\\smr.exe --gwas-summary  {input}  --out  result/GTEx的{wildcards.GTEx}之{wildcards.file}  --bfile ../dataset/EUR --beqtl-summary ../dataset/SMR/{wildcards.GTEx} --maf 0.01 --thread-num 18 --diff-freq-prop 1.000000&#34;
+
+rule run_MAGMA:  #OK
+    input:
+        &#34;tmp/{file}.ma&#34;,
+    output:
+        &#34;result/{file}.gsa.out.txt&#34;,
+    shell:
+        &#34;r -f tools/run_MAGMA.R --args {wildcards.file}&#34;
+        
+rule run_MR:  #OK
+    input:
+        &#34;tmp/{file}.ma&#34;,
+    output:
+        &#34;result/MR的{file}之{MR}.csv&#34;,
+    threads: 2
+    shell:
+        &#34;r -f tools/run_MR.R --args {wildcards.file} {wildcards.MR}&#34;
+"><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "My New Hugo Site",
+    
+    "url": "https:\/\/cywd123.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/cywd123.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/posts\/vw5dv077fn\/",
+          "name": "Snakemake流程—— smr mr magma分析"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "snakemake流程——SMR\u002bMR\u002bMAGMA分析",
+  "description" : " # 定义染色体列表，包含 1 到 22 号染色体 chromosomes = list(range(1, 23)) # 获取组学暴露数据文件的名称 (MRname,) = glob_wildcards(\u0026#34;..\/dataset\/组学暴露数据\/{file}.rds\u0026#34;) # 获取 SMR 数据文件的名称 GTExname = glob_wildcards(\u0026#34;..\/dataset\/SMR\/{file}.besd\u0026#34;).file # 获取 GWAS 数据文件的名称 GWASfilename = glob_wildcards(\u0026#34;..\/..\/SMR\/input\/{file}\u0026#34;).file # 定义 all 规则，用于指定整个流程的最终输出文件 rule all: input: expand(\u0026#34;result\/GTEx的{GTEx}之{file}.smr\u0026#34;, GTEx=GTExname, file=GWASfilename), #expand(\u0026#34;result\/MR的{file}之{MR}.csv\u0026#34;, MR=MRname, file=GWASfilename), expand(\u0026#34;result\/{file}.gsa.out.txt\u0026#34;,file=GWASfilename), #expand(\u0026#34;result\/Gene_disease_association\/{file}.fusion_twas.txt\u0026#34;,file=GWASfilename), #TWAS 若全部49个组织非常慢10小时 # 定义 trans 规则，用于将输入文件转换为输出文件 rule trans: #OK input: # 输入文件路径 \u0026#34;..\/..\/SMR\/input\/{file}\u0026#34; output: # 输出文件路径 \u0026#34;tmp\/{file}.ma\u0026#34;, \u0026#34;tmp\/{file}.sumstats.gz\u0026#34;, \u0026#34;tmp\/{file}.mendelR.txt\u0026#34; # 规则执行时使用的线程数 threads: 6 shell: # 调用 R 脚本进行文件转换 \u0026#34;r -f tools\/trans.R --args {wildcards.file}\u0026#34; rule run_GTEx: #OK input: \u0026#34;tmp\/{file}.ma\u0026#34;, output: \u0026#34;result\/GTEx的{GTEx}之{file}.smr\u0026#34; threads: 5 shell: \u0026#34;tools\\\\smr.exe --gwas-summary {input} --out result\/GTEx的{wildcards.GTEx}之{wildcards.file} --bfile ..\/dataset\/EUR --beqtl-summary ..\/dataset\/SMR\/{wildcards.GTEx} --maf 0.01 --thread-num 18 --diff-freq-prop 1.000000\u0026#34; rule run_MAGMA: #OK input: \u0026#34;tmp\/{file}.ma\u0026#34;, output: \u0026#34;result\/{file}.gsa.out.txt\u0026#34;, shell: \u0026#34;r -f tools\/run_MAGMA.R --args {wildcards.file}\u0026#34; rule run_MR: #OK input: \u0026#34;tmp\/{file}.ma\u0026#34;, output: \u0026#34;result\/MR的{file}之{MR}.csv\u0026#34;, threads: 2 shell: \u0026#34;r -f tools\/run_MR.R --args {wildcards.file} {wildcards.MR}\u0026#34; ",
+  "inLanguage" : "en",
+  "wordCount":  131 ,
+  "datePublished" : "2025-03-14T20:46:52\u002b00:00",
+  "dateModified" : "2025-12-01T09:31:17\u002b00:00",
+  "image" : "https:\/\/cywd123.github.io\/",
+  "keywords" : [ "编程, 生信" ],
+  "mainEntityOfPage" : "https:\/\/cywd123.github.io\/posts\/vw5dv077fn\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/cywd123.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/cywd123.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="snakemake流程——SMR&#43;MR&#43;MAGMA分析" />
+<meta property="og:description" content="
+# 定义染色体列表，包含 1 到 22 号染色体
+chromosomes = list(range(1, 23))
+
+# 获取组学暴露数据文件的名称
+(MRname,) = glob_wildcards(&#34;../dataset/组学暴露数据/{file}.rds&#34;)
+
+# 获取 SMR 数据文件的名称
+GTExname = glob_wildcards(&#34;../dataset/SMR/{file}.besd&#34;).file
+
+# 获取 GWAS 数据文件的名称
+GWASfilename = glob_wildcards(&#34;../../SMR/input/{file}&#34;).file
+
+# 定义 all 规则，用于指定整个流程的最终输出文件
+rule all:
+    input:
+        expand(&#34;result/GTEx的{GTEx}之{file}.smr&#34;, GTEx=GTExname, file=GWASfilename),
+        #expand(&#34;result/MR的{file}之{MR}.csv&#34;, MR=MRname, file=GWASfilename),
+        expand(&#34;result/{file}.gsa.out.txt&#34;,file=GWASfilename),
+        #expand(&#34;result/Gene_disease_association/{file}.fusion_twas.txt&#34;,file=GWASfilename),  #TWAS 若全部49个组织非常慢10小时
+        
+
+# 定义 trans 规则，用于将输入文件转换为输出文件
+rule trans:   #OK
+    input:
+        # 输入文件路径
+        &#34;../../SMR/input/{file}&#34;
+    output:
+        # 输出文件路径
+        &#34;tmp/{file}.ma&#34;,
+        &#34;tmp/{file}.sumstats.gz&#34;,
+        &#34;tmp/{file}.mendelR.txt&#34;
+    # 规则执行时使用的线程数
+    threads: 6
+    shell:
+        # 调用 R 脚本进行文件转换
+        &#34;r -f tools/trans.R --args {wildcards.file}&#34;    
+
+rule run_GTEx:  #OK
+    input:
+        &#34;tmp/{file}.ma&#34;,
+    output:
+        &#34;result/GTEx的{GTEx}之{file}.smr&#34;
+    threads: 5
+    shell:
+        &#34;tools\\smr.exe --gwas-summary  {input}  --out  result/GTEx的{wildcards.GTEx}之{wildcards.file}  --bfile ../dataset/EUR --beqtl-summary ../dataset/SMR/{wildcards.GTEx} --maf 0.01 --thread-num 18 --diff-freq-prop 1.000000&#34;
+
+rule run_MAGMA:  #OK
+    input:
+        &#34;tmp/{file}.ma&#34;,
+    output:
+        &#34;result/{file}.gsa.out.txt&#34;,
+    shell:
+        &#34;r -f tools/run_MAGMA.R --args {wildcards.file}&#34;
+        
+rule run_MR:  #OK
+    input:
+        &#34;tmp/{file}.ma&#34;,
+    output:
+        &#34;result/MR的{file}之{MR}.csv&#34;,
+    threads: 2
+    shell:
+        &#34;r -f tools/run_MR.R --args {wildcards.file} {wildcards.MR}&#34;
+">
+<meta property="og:url" content="https://cywd123.github.io/posts/vw5dv077fn/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+  <meta name="twitter:title" content="snakemake流程——SMR&#43;MR&#43;MAGMA分析" />
+  <meta name="twitter:description" content="
+# 定义染色体列表，包含 1 到 22 号染色体
+chromosomes = list(range(1, 23))
+
+# 获取组学暴露数据文件的名称
+(MRname,) = glob_wildcards(&#34;../dataset/组学暴露数据/{file}.rds&#34;)
+
+# 获取 SMR 数据文件的名称
+GTExname = …">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="generator" content="Hugo 0.152.2">
+  <link rel="alternate" href="https://cywd123.github.io/index.xml" type="application/rss+xml" title="My New Hugo Site"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/brands.css" integrity="sha384-+eXGm6TmVoCZR1gX03US+L++L2mJIfOvp2X0+luTuEktXaF5F+e3zn0sO0HBvOyT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/fontawesome.css" integrity="sha384-B5nyPZa7e84uCJEYHtevCdVYtQosWsbDSRtq3cy/jeSVtQW05GL8CKXO7waXsjPK" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/regular.css" integrity="sha384-V71z/A/p/DGaZAryHhiSXRQj8HdQmK2nBgL2bX23MGD+h6ZKpyxOO76f5eSXmIaj" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/solid.css" integrity="sha384-1IIShlrK5iYgvS7OAgIH3prz4RAFP7hHZ2MaLIb9l3+trFwwnw/NdCWcUHlymZDU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg.css" integrity="sha384-iBa7uugTOHXqQ2ngvDYJyKrPPQbd9n2P3EQe+o/0+HZe5TNvV+LO5X0lLLUrXLHP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg-with-js.css" integrity="sha384-STWnS5AGz6M2YxsnGAd536EqcE2y+ktGovMMuhtXLsCBtl7lujeQj2eN4eDxa57x" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-font-face.css" integrity="sha384-fH83IkgQi7kturzlxpXfNdsR8aUOcqj5HUORRVnSvJgObZkIw6aqKAaQx20IWyB/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-shims.css" integrity="sha384-cCODJHSivNBsaHei/8LC0HUD58kToSbDU+xT7Rs51BO1v/IvgT/uM0W6xMoUqKfn" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v5-font-face.css" integrity="sha384-atSdF89mIn15dv+o2LKkDM6mCh3hwh6A7mwZ6F2it/kenqZbMu+QW/ye1OG4XSWV" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://cywd123.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cywd123.github.io/css/syntax.css" /><link rel="stylesheet" href="https://cywd123.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://cywd123.github.io/">My New Hugo Site</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>snakemake流程——SMR&#43;MR&#43;MAGMA分析</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <pre tabindex="0"><code>
+# 定义染色体列表，包含 1 到 22 号染色体
+chromosomes = list(range(1, 23))
+
+# 获取组学暴露数据文件的名称
+(MRname,) = glob_wildcards(&#34;../dataset/组学暴露数据/{file}.rds&#34;)
+
+# 获取 SMR 数据文件的名称
+GTExname = glob_wildcards(&#34;../dataset/SMR/{file}.besd&#34;).file
+
+# 获取 GWAS 数据文件的名称
+GWASfilename = glob_wildcards(&#34;../../SMR/input/{file}&#34;).file
+
+# 定义 all 规则，用于指定整个流程的最终输出文件
+rule all:
+    input:
+        expand(&#34;result/GTEx的{GTEx}之{file}.smr&#34;, GTEx=GTExname, file=GWASfilename),
+        #expand(&#34;result/MR的{file}之{MR}.csv&#34;, MR=MRname, file=GWASfilename),
+        expand(&#34;result/{file}.gsa.out.txt&#34;,file=GWASfilename),
+        #expand(&#34;result/Gene_disease_association/{file}.fusion_twas.txt&#34;,file=GWASfilename),  #TWAS 若全部49个组织非常慢10小时
+        
+
+# 定义 trans 规则，用于将输入文件转换为输出文件
+rule trans:   #OK
+    input:
+        # 输入文件路径
+        &#34;../../SMR/input/{file}&#34;
+    output:
+        # 输出文件路径
+        &#34;tmp/{file}.ma&#34;,
+        &#34;tmp/{file}.sumstats.gz&#34;,
+        &#34;tmp/{file}.mendelR.txt&#34;
+    # 规则执行时使用的线程数
+    threads: 6
+    shell:
+        # 调用 R 脚本进行文件转换
+        &#34;r -f tools/trans.R --args {wildcards.file}&#34;    
+
+rule run_GTEx:  #OK
+    input:
+        &#34;tmp/{file}.ma&#34;,
+    output:
+        &#34;result/GTEx的{GTEx}之{file}.smr&#34;
+    threads: 5
+    shell:
+        &#34;tools\\smr.exe --gwas-summary  {input}  --out  result/GTEx的{wildcards.GTEx}之{wildcards.file}  --bfile ../dataset/EUR --beqtl-summary ../dataset/SMR/{wildcards.GTEx} --maf 0.01 --thread-num 18 --diff-freq-prop 1.000000&#34;
+
+rule run_MAGMA:  #OK
+    input:
+        &#34;tmp/{file}.ma&#34;,
+    output:
+        &#34;result/{file}.gsa.out.txt&#34;,
+    shell:
+        &#34;r -f tools/run_MAGMA.R --args {wildcards.file}&#34;
+        
+rule run_MR:  #OK
+    input:
+        &#34;tmp/{file}.ma&#34;,
+    output:
+        &#34;result/MR的{file}之{MR}.csv&#34;,
+    threads: 2
+    shell:
+        &#34;r -f tools/run_MR.R --args {wildcards.file} {wildcards.MR}&#34;
+</code></pre>
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;
+            
+              
+              <a href="https://cywd123.github.io/tags/%E7%94%9F%E4%BF%A1/">生信</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://cywd123.github.io/posts/st6eftek36/" data-toggle="tooltip" data-placement="top" title="playwright自动登录STU WebVPN">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://cywd123.github.io/posts/byprsldhih/" data-toggle="tooltip" data-placement="top" title="python 利用curl将全部网卡适配器登录STU校园网">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2025
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://cywd123.github.io/">My New Hugo Site</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.152.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://cywd123.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://cywd123.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

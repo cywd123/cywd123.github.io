@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>【机器学习】可拟合任意线性函数的小玩意儿 - </title>
+
+  <meta name="description" content="【机器学习】可拟合任意线性函数的小玩意儿
+先上完整代码
+import torch as t
+import torch.nn as nn
+import torch.optim as optim
+
+def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c):
+    for epoch in range(1, n_epochs &#43; 1):
+        t_p = model(t_u)          #计算当前模型的预测值
+        loss = loss_fn(t_p, t_c)  #计算损失函数
+        optimizer.zero_grad()   
+        loss.backward()   #回溯累计损失
+        optimizer.step()
+        if epoch % 50 == 0:
+            print(&#39;Epoch %d, Loss %f&#39; % (epoch, float(loss)))
+    return model
+
+
+epoches=30000  #迭代次数 一般次数适中，为防止过度拟合不建议迭代次数过多
+num=50000  #随机生成的样本数 一般越多越好，看运行配置
+
+learning_rate=1e-4   #学习率（数值越大学得越快（但不一定准确），数值越小拟合越好（时间较长））建议取 1e-2 、1e-3、1e-4、1e-5
+
+x = t.randn(num, 1)
+def f(x):
+    return 30 * x &#43; 10
+    #待拟合的式子为 y=30*x &#43;10  可自行修改if you like。
+
+
+y = f(x)&#43; t.randn(num, 1)*10  #  后面的 t.randn(num, 1)*10 是偏离值，降低训练的精确性（给你的模型更多的挑战）
+linear_model = nn.Linear(1, 1)
+optimizer = optim.SGD(linear_model.parameters(), lr=learning_rate)
+training_loop(n_epochs=epoches,optimizer=optimizer,model=linear_model,loss_fn=nn.MSELoss(),t_u=x,t_c=y)
+print(&#39;\n&#39;)
+#print(linear_model.weight)
+#print(linear_model.bias)
+
+while(1):
+    x=float(input(&#39;请输入想预测的x值：&#39;))
+    tmp=float(linear_model(t.tensor([x]))[0])
+    print(&#34;拟合值:&#34;,tmp)
+    print(&#34;真实值:&#34;,f(x))
+    print(&#34;相对误差:&#34;,1-tmp/f(x))
+    print(&#39;\n&#39;)
+这个程序可以分为两个部分(生成训练数据、机器学习模型)，其中生成训练数据部分可有可无(因为在实际应用中，一般数据为人工导入，不是系统随机生成)。"><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "My New Hugo Site",
+    
+    "url": "https:\/\/cywd123.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/cywd123.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/posts\/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF\/",
+          "name": "【机器学习】可拟合任意线性函数的小玩意儿"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "【机器学习】可拟合任意线性函数的小玩意儿",
+  "description" : "【机器学习】可拟合任意线性函数的小玩意儿 先上完整代码 import torch as t import torch.nn as nn import torch.optim as optim def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c): for epoch in range(1, n_epochs \u002b 1): t_p = model(t_u) #计算当前模型的预测值 loss = loss_fn(t_p, t_c) #计算损失函数 optimizer.zero_grad() loss.backward() #回溯累计损失 optimizer.step() if epoch % 50 == 0: print(\u0026#39;Epoch %d, Loss %f\u0026#39; % (epoch, float(loss))) return model epoches=30000 #迭代次数 一般次数适中，为防止过度拟合不建议迭代次数过多 num=50000 #随机生成的样本数 一般越多越好，看运行配置 learning_rate=1e-4 #学习率（数值越大学得越快（但不一定准确），数值越小拟合越好（时间较长））建议取 1e-2 、1e-3、1e-4、1e-5 x = t.randn(num, 1) def f(x): return 30 * x \u002b 10 #待拟合的式子为 y=30*x \u002b10 可自行修改if you like。 y = f(x)\u002b t.randn(num, 1)*10 # 后面的 t.randn(num, 1)*10 是偏离值，降低训练的精确性（给你的模型更多的挑战） linear_model = nn.Linear(1, 1) optimizer = optim.SGD(linear_model.parameters(), lr=learning_rate) training_loop(n_epochs=epoches,optimizer=optimizer,model=linear_model,loss_fn=nn.MSELoss(),t_u=x,t_c=y) print(\u0026#39;\\n\u0026#39;) #print(linear_model.weight) #print(linear_model.bias) while(1): x=float(input(\u0026#39;请输入想预测的x值：\u0026#39;)) tmp=float(linear_model(t.tensor([x]))[0]) print(\u0026#34;拟合值:\u0026#34;,tmp) print(\u0026#34;真实值:\u0026#34;,f(x)) print(\u0026#34;相对误差:\u0026#34;,1-tmp\/f(x)) print(\u0026#39;\\n\u0026#39;) 这个程序可以分为两个部分(生成训练数据、机器学习模型)，其中生成训练数据部分可有可无(因为在实际应用中，一般数据为人工导入，不是系统随机生成)。\n",
+  "inLanguage" : "en",
+  "wordCount":  142 ,
+  "datePublished" : "2023-03-27T22:27:23\u002b00:00",
+  "dateModified" : "2025-12-01T09:31:17\u002b00:00",
+  "image" : "https:\/\/cywd123.github.io\/",
+  "keywords" : [ "编程, 机器学习" ],
+  "mainEntityOfPage" : "https:\/\/cywd123.github.io\/posts\/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/cywd123.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/cywd123.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="【机器学习】可拟合任意线性函数的小玩意儿" />
+<meta property="og:description" content="【机器学习】可拟合任意线性函数的小玩意儿
+先上完整代码
+import torch as t
+import torch.nn as nn
+import torch.optim as optim
+
+def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c):
+    for epoch in range(1, n_epochs &#43; 1):
+        t_p = model(t_u)          #计算当前模型的预测值
+        loss = loss_fn(t_p, t_c)  #计算损失函数
+        optimizer.zero_grad()   
+        loss.backward()   #回溯累计损失
+        optimizer.step()
+        if epoch % 50 == 0:
+            print(&#39;Epoch %d, Loss %f&#39; % (epoch, float(loss)))
+    return model
+
+
+epoches=30000  #迭代次数 一般次数适中，为防止过度拟合不建议迭代次数过多
+num=50000  #随机生成的样本数 一般越多越好，看运行配置
+
+learning_rate=1e-4   #学习率（数值越大学得越快（但不一定准确），数值越小拟合越好（时间较长））建议取 1e-2 、1e-3、1e-4、1e-5
+
+x = t.randn(num, 1)
+def f(x):
+    return 30 * x &#43; 10
+    #待拟合的式子为 y=30*x &#43;10  可自行修改if you like。
+
+
+y = f(x)&#43; t.randn(num, 1)*10  #  后面的 t.randn(num, 1)*10 是偏离值，降低训练的精确性（给你的模型更多的挑战）
+linear_model = nn.Linear(1, 1)
+optimizer = optim.SGD(linear_model.parameters(), lr=learning_rate)
+training_loop(n_epochs=epoches,optimizer=optimizer,model=linear_model,loss_fn=nn.MSELoss(),t_u=x,t_c=y)
+print(&#39;\n&#39;)
+#print(linear_model.weight)
+#print(linear_model.bias)
+
+while(1):
+    x=float(input(&#39;请输入想预测的x值：&#39;))
+    tmp=float(linear_model(t.tensor([x]))[0])
+    print(&#34;拟合值:&#34;,tmp)
+    print(&#34;真实值:&#34;,f(x))
+    print(&#34;相对误差:&#34;,1-tmp/f(x))
+    print(&#39;\n&#39;)
+这个程序可以分为两个部分(生成训练数据、机器学习模型)，其中生成训练数据部分可有可无(因为在实际应用中，一般数据为人工导入，不是系统随机生成)。">
+<meta property="og:url" content="https://cywd123.github.io/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+  <meta name="twitter:title" content="【机器学习】可拟合任意线性函数的小玩意儿" />
+  <meta name="twitter:description" content="【机器学习】可拟合任意线性函数的小玩意儿
+先上完整代码
+import torch as t
+import torch.nn as nn
+import torch.optim as optim
+
+def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c):
+    for epoch in range(1, n_epochs &#43; …">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="generator" content="Hugo 0.152.2">
+  <link rel="alternate" href="https://cywd123.github.io/index.xml" type="application/rss+xml" title="My New Hugo Site"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/brands.css" integrity="sha384-+eXGm6TmVoCZR1gX03US+L++L2mJIfOvp2X0+luTuEktXaF5F+e3zn0sO0HBvOyT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/fontawesome.css" integrity="sha384-B5nyPZa7e84uCJEYHtevCdVYtQosWsbDSRtq3cy/jeSVtQW05GL8CKXO7waXsjPK" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/regular.css" integrity="sha384-V71z/A/p/DGaZAryHhiSXRQj8HdQmK2nBgL2bX23MGD+h6ZKpyxOO76f5eSXmIaj" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/solid.css" integrity="sha384-1IIShlrK5iYgvS7OAgIH3prz4RAFP7hHZ2MaLIb9l3+trFwwnw/NdCWcUHlymZDU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg.css" integrity="sha384-iBa7uugTOHXqQ2ngvDYJyKrPPQbd9n2P3EQe+o/0+HZe5TNvV+LO5X0lLLUrXLHP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg-with-js.css" integrity="sha384-STWnS5AGz6M2YxsnGAd536EqcE2y+ktGovMMuhtXLsCBtl7lujeQj2eN4eDxa57x" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-font-face.css" integrity="sha384-fH83IkgQi7kturzlxpXfNdsR8aUOcqj5HUORRVnSvJgObZkIw6aqKAaQx20IWyB/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-shims.css" integrity="sha384-cCODJHSivNBsaHei/8LC0HUD58kToSbDU+xT7Rs51BO1v/IvgT/uM0W6xMoUqKfn" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v5-font-face.css" integrity="sha384-atSdF89mIn15dv+o2LKkDM6mCh3hwh6A7mwZ6F2it/kenqZbMu+QW/ye1OG4XSWV" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://cywd123.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cywd123.github.io/css/syntax.css" /><link rel="stylesheet" href="https://cywd123.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://cywd123.github.io/">My New Hugo Site</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>【机器学习】可拟合任意线性函数的小玩意儿</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h1 id="机器学习可拟合任意线性函数的小玩意儿">【机器学习】可拟合任意线性函数的小玩意儿</h1>
+<h3 id="先上完整代码">先上完整代码</h3>
+<pre tabindex="0"><code>import torch as t
+import torch.nn as nn
+import torch.optim as optim
+
+def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c):
+    for epoch in range(1, n_epochs + 1):
+        t_p = model(t_u)          #计算当前模型的预测值
+        loss = loss_fn(t_p, t_c)  #计算损失函数
+        optimizer.zero_grad()   
+        loss.backward()   #回溯累计损失
+        optimizer.step()
+        if epoch % 50 == 0:
+            print(&#39;Epoch %d, Loss %f&#39; % (epoch, float(loss)))
+    return model
+
+
+epoches=30000  #迭代次数 一般次数适中，为防止过度拟合不建议迭代次数过多
+num=50000  #随机生成的样本数 一般越多越好，看运行配置
+
+learning_rate=1e-4   #学习率（数值越大学得越快（但不一定准确），数值越小拟合越好（时间较长））建议取 1e-2 、1e-3、1e-4、1e-5
+
+x = t.randn(num, 1)
+def f(x):
+    return 30 * x + 10
+    #待拟合的式子为 y=30*x +10  可自行修改if you like。
+
+
+y = f(x)+ t.randn(num, 1)*10  #  后面的 t.randn(num, 1)*10 是偏离值，降低训练的精确性（给你的模型更多的挑战）
+linear_model = nn.Linear(1, 1)
+optimizer = optim.SGD(linear_model.parameters(), lr=learning_rate)
+training_loop(n_epochs=epoches,optimizer=optimizer,model=linear_model,loss_fn=nn.MSELoss(),t_u=x,t_c=y)
+print(&#39;\n&#39;)
+#print(linear_model.weight)
+#print(linear_model.bias)
+
+while(1):
+    x=float(input(&#39;请输入想预测的x值：&#39;))
+    tmp=float(linear_model(t.tensor([x]))[0])
+    print(&#34;拟合值:&#34;,tmp)
+    print(&#34;真实值:&#34;,f(x))
+    print(&#34;相对误差:&#34;,1-tmp/f(x))
+    print(&#39;\n&#39;)
+</code></pre><p>这个程序可以分为两个部分(生成训练数据、机器学习模型)，其中生成训练数据部分可有可无(因为在实际应用中，一般数据为人工导入，不是系统随机生成)。</p>
+<h4 id="不得不说pytorch真香">不得不说，PyTorch真香。</h4>
+<p>下面来简单地介绍一下这个模型：<br>
+它基于PyTorch深度学习框架，实现了简单的机器学习，主体采用梯度下降法，内部调用PyTorch的SGD计算梯度函数</p>
+<p>基本功能是根据已有的训练数据，拟合出X与Y的线性对应关系</p>
+<h2 id="我们用这个模型拟合-y30--x--10--这个函数">我们用这个模型拟合 Y=30 * X + 10  这个函数</h2>
+<p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/1.jpg" alt=""><br>
+这是代码的主要配置界面，想玩的在这里配置参数</p>
+<p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/2.jpg" alt=""></p>
+<p>目前随机生成50000个不太准确的训练数据(准确值+一个随机数)，进行30000轮迭代。<br>
+（普通电脑能够在3秒内完成所有训练的超小规模训练=。=）<br>
+可以看到，随着迭代次数的增加，LOSS(拟合偏离值)在不断减小。说明训练效果不错</p>
+<p><img src="/img/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/3.jpg" alt=""><br>
+可以看到预测值与真实值非常接近，相对误差在0.3%以内。<br>
+（这个应该比较精确了，如果需要，可以加大训练数据，加深迭代次数进行更加精确的训练）</p>
+<h3 id="这个只是简单的机器学习模型甚至都没有建立人工神经网络">这个只是简单的机器学习模型，甚至都没有建立人工神经网络。。。</h3>
+<p>不过要怎么说呢，学起来！！！</p>
+<h1 id="反思">反思</h1>
+<h4 id="缺点">缺点：</h4>
+<p>或许，这个模型实用性为零。因为它只能拟合线性函数，无法拟合其它函数。<br>
+（说实话与其用这个模型，还不如用R语言分析，再不济也能用Excel计算 线性回归方程 。这样效率会高很多很多。。。。</p>
+<h4 id="前景">前景：</h4>
+<ol>
+<li>在这个模型的基础上可以编写能拟合非线性函数的模型。</li>
+<li>如果输入的参数很多，例如Y=f(x1,x2,x3&hellip;),那么回归方程不太适用的时候，这类模型依旧能拟合出Y与各个参数的关系。</li>
+<li>不需要关注目标函数的构成：在更加深层次的机器学习模型中，我们并不关注目标函数的构成（即不需要预先知道Y与X是否符合特定的关系，如Y=aX+b，Y=aX^b+c等构成式），这样能够大大减轻拟合一个函数的负担。</li>
+</ol>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;
+            
+              
+              <a href="https://cywd123.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://cywd123.github.io/posts/%E7%88%AC%E8%99%AB%E8%B1%86%E7%93%A3top250%E7%88%AC%E5%8F%96/" data-toggle="tooltip" data-placement="top" title="【爬虫】豆瓣Top250爬取">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://cywd123.github.io/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/" data-toggle="tooltip" data-placement="top" title="【机器学习】四层人工神经网络拟合二元二次函数">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2025
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://cywd123.github.io/">My New Hugo Site</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.152.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://cywd123.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://cywd123.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

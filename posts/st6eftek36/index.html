@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>playwright自动登录STU WebVPN - </title>
+
+  <meta name="description" content="
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+import time
+import os
+
+import hmac
+import hashlib
+
+def totp(key, t, digits=6):
+    step = 30
+    t = int(t / step)
+    key = key.encode()
+    counter = t.to_bytes(8, &#39;big&#39;)
+    h = hmac.new(key, counter, hashlib.sha1).digest()
+    offset = h[-1] &amp; 0x0f
+    truncated = h[offset:offset &#43; 4]
+    code = int.from_bytes(truncated, &#39;big&#39;) &amp; 0x7fffffff
+    code = str(code % 10 ** digits).zfill(digits)
+    return code
+
+# %%
+
+
+def run(playwright: Playwright) -&gt; None:
+    browser = playwright.chromium.launch(headless=True)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto(&#34;https://webvpn.stu.edu.cn/portal/#!/login&#34;)
+    page.locator(&#34;#Calc input[type=\&#34;text\&#34;]&#34;).fill(&#34;校园网账号&#34;)
+    page.locator(&#34;#loginPwd&#34;).click()
+    page.locator(&#34;#loginPwd&#34;).fill(&#34;校园网密码&#34;)
+    page.locator(&#34;span&#34;).filter(has_text=&#34;我已阅读并同意&#34;).locator(&#34;div&#34;).first.click()
+    page.get_by_role(&#34;button&#34;, name=&#34;登录&#34;).click()
+    page.locator(&#34;#app_dialog_container&#34;).get_by_role(&#34;textbox&#34;).fill(str(totp(&#34;填写你的TOTP密钥&#34;, time.time())))
+    page.get_by_role(&#34;button&#34;, name=&#34;确定&#34;).click()
+    # ---------------------
+    # 获取cookie值
+    cookies = page.context.cookies()
+    for cookie in cookies:
+        print(f&#34;{cookie[&#39;name&#39;]}: {cookie[&#39;value&#39;]}&#34;)
+        if cookie[&#39;name&#39;] == &#34;TWFID&#34;:
+            TWFID = cookie[&#39;value&#39;]
+    
+    
+    url=&#34;https://webvpn.stu.edu.cn/portal/shortcut.html?twfid=&#34;&#43;TWFID&#43;&#34;&amp;url=http://bilibili-com-s.webvpn.stu.edu.cn%3A8118&#34;
+    os.system(&#39;start msedge &#34;&#39;&#43;url&#43;&#39;&#34;&#39;)
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+
+    
+"><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "My New Hugo Site",
+    
+    "url": "https:\/\/cywd123.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/cywd123.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/posts\/st6eftek36\/",
+          "name": "Playwright自动登录 stu web VPN"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "playwright自动登录STU WebVPN",
+  "description" : "\rimport re\rfrom playwright.sync_api import Playwright, sync_playwright, expect\rimport time\rimport os\rimport hmac\rimport hashlib\rdef totp(key, t, digits=6):\rstep = 30\rt = int(t \/ step)\rkey = key.encode()\rcounter = t.to_bytes(8, \u0026#39;big\u0026#39;)\rh = hmac.new(key, counter, hashlib.sha1).digest()\roffset = h[-1] \u0026amp; 0x0f\rtruncated = h[offset:offset \u002b 4]\rcode = int.from_bytes(truncated, \u0026#39;big\u0026#39;) \u0026amp; 0x7fffffff\rcode = str(code % 10 ** digits).zfill(digits)\rreturn code\r# %%\rdef run(playwright: Playwright) -\u0026gt; None:\rbrowser = playwright.chromium.launch(headless=True)\rcontext = browser.new_context()\rpage = context.new_page()\rpage.goto(\u0026#34;https:\/\/webvpn.stu.edu.cn\/portal\/#!\/login\u0026#34;)\rpage.locator(\u0026#34;#Calc input[type=\\\u0026#34;text\\\u0026#34;]\u0026#34;).fill(\u0026#34;校园网账号\u0026#34;)\rpage.locator(\u0026#34;#loginPwd\u0026#34;).click()\rpage.locator(\u0026#34;#loginPwd\u0026#34;).fill(\u0026#34;校园网密码\u0026#34;)\rpage.locator(\u0026#34;span\u0026#34;).filter(has_text=\u0026#34;我已阅读并同意\u0026#34;).locator(\u0026#34;div\u0026#34;).first.click()\rpage.get_by_role(\u0026#34;button\u0026#34;, name=\u0026#34;登录\u0026#34;).click()\rpage.locator(\u0026#34;#app_dialog_container\u0026#34;).get_by_role(\u0026#34;textbox\u0026#34;).fill(str(totp(\u0026#34;填写你的TOTP密钥\u0026#34;, time.time())))\rpage.get_by_role(\u0026#34;button\u0026#34;, name=\u0026#34;确定\u0026#34;).click()\r# ---------------------\r# 获取cookie值\rcookies = page.context.cookies()\rfor cookie in cookies:\rprint(f\u0026#34;{cookie[\u0026#39;name\u0026#39;]}: {cookie[\u0026#39;value\u0026#39;]}\u0026#34;)\rif cookie[\u0026#39;name\u0026#39;] == \u0026#34;TWFID\u0026#34;:\rTWFID = cookie[\u0026#39;value\u0026#39;]\rurl=\u0026#34;https:\/\/webvpn.stu.edu.cn\/portal\/shortcut.html?twfid=\u0026#34;\u002bTWFID\u002b\u0026#34;\u0026amp;url=http:\/\/bilibili-com-s.webvpn.stu.edu.cn%3A8118\u0026#34;\ros.system(\u0026#39;start msedge \u0026#34;\u0026#39;\u002burl\u002b\u0026#39;\u0026#34;\u0026#39;)\r# ---------------------\rcontext.close()\rbrowser.close()\rwith sync_playwright() as playwright:\rrun(playwright)\r",
+  "inLanguage" : "en",
+  "wordCount":  126 ,
+  "datePublished" : "2025-03-11T09:55:00\u002b00:00",
+  "dateModified" : "2025-12-01T09:31:17\u002b00:00",
+  "image" : "https:\/\/cywd123.github.io\/",
+  "keywords" : [ "编程, python" ],
+  "mainEntityOfPage" : "https:\/\/cywd123.github.io\/posts\/st6eftek36\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/cywd123.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/cywd123.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="playwright自动登录STU WebVPN" />
+<meta property="og:description" content="
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+import time
+import os
+
+import hmac
+import hashlib
+
+def totp(key, t, digits=6):
+    step = 30
+    t = int(t / step)
+    key = key.encode()
+    counter = t.to_bytes(8, &#39;big&#39;)
+    h = hmac.new(key, counter, hashlib.sha1).digest()
+    offset = h[-1] &amp; 0x0f
+    truncated = h[offset:offset &#43; 4]
+    code = int.from_bytes(truncated, &#39;big&#39;) &amp; 0x7fffffff
+    code = str(code % 10 ** digits).zfill(digits)
+    return code
+
+# %%
+
+
+def run(playwright: Playwright) -&gt; None:
+    browser = playwright.chromium.launch(headless=True)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto(&#34;https://webvpn.stu.edu.cn/portal/#!/login&#34;)
+    page.locator(&#34;#Calc input[type=\&#34;text\&#34;]&#34;).fill(&#34;校园网账号&#34;)
+    page.locator(&#34;#loginPwd&#34;).click()
+    page.locator(&#34;#loginPwd&#34;).fill(&#34;校园网密码&#34;)
+    page.locator(&#34;span&#34;).filter(has_text=&#34;我已阅读并同意&#34;).locator(&#34;div&#34;).first.click()
+    page.get_by_role(&#34;button&#34;, name=&#34;登录&#34;).click()
+    page.locator(&#34;#app_dialog_container&#34;).get_by_role(&#34;textbox&#34;).fill(str(totp(&#34;填写你的TOTP密钥&#34;, time.time())))
+    page.get_by_role(&#34;button&#34;, name=&#34;确定&#34;).click()
+    # ---------------------
+    # 获取cookie值
+    cookies = page.context.cookies()
+    for cookie in cookies:
+        print(f&#34;{cookie[&#39;name&#39;]}: {cookie[&#39;value&#39;]}&#34;)
+        if cookie[&#39;name&#39;] == &#34;TWFID&#34;:
+            TWFID = cookie[&#39;value&#39;]
+    
+    
+    url=&#34;https://webvpn.stu.edu.cn/portal/shortcut.html?twfid=&#34;&#43;TWFID&#43;&#34;&amp;url=http://bilibili-com-s.webvpn.stu.edu.cn%3A8118&#34;
+    os.system(&#39;start msedge &#34;&#39;&#43;url&#43;&#39;&#34;&#39;)
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+
+    
+">
+<meta property="og:url" content="https://cywd123.github.io/posts/st6eftek36/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+  <meta name="twitter:title" content="playwright自动登录STU WebVPN" />
+  <meta name="twitter:description" content="
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+import time
+import os
+
+import hmac
+import hashlib
+
+def totp(key, t, digits=6):
+    step = 30
+    t = int(t / …">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="generator" content="Hugo 0.152.2">
+  <link rel="alternate" href="https://cywd123.github.io/index.xml" type="application/rss+xml" title="My New Hugo Site"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/brands.css" integrity="sha384-+eXGm6TmVoCZR1gX03US+L++L2mJIfOvp2X0+luTuEktXaF5F+e3zn0sO0HBvOyT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/fontawesome.css" integrity="sha384-B5nyPZa7e84uCJEYHtevCdVYtQosWsbDSRtq3cy/jeSVtQW05GL8CKXO7waXsjPK" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/regular.css" integrity="sha384-V71z/A/p/DGaZAryHhiSXRQj8HdQmK2nBgL2bX23MGD+h6ZKpyxOO76f5eSXmIaj" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/solid.css" integrity="sha384-1IIShlrK5iYgvS7OAgIH3prz4RAFP7hHZ2MaLIb9l3+trFwwnw/NdCWcUHlymZDU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg.css" integrity="sha384-iBa7uugTOHXqQ2ngvDYJyKrPPQbd9n2P3EQe+o/0+HZe5TNvV+LO5X0lLLUrXLHP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg-with-js.css" integrity="sha384-STWnS5AGz6M2YxsnGAd536EqcE2y+ktGovMMuhtXLsCBtl7lujeQj2eN4eDxa57x" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-font-face.css" integrity="sha384-fH83IkgQi7kturzlxpXfNdsR8aUOcqj5HUORRVnSvJgObZkIw6aqKAaQx20IWyB/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-shims.css" integrity="sha384-cCODJHSivNBsaHei/8LC0HUD58kToSbDU+xT7Rs51BO1v/IvgT/uM0W6xMoUqKfn" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v5-font-face.css" integrity="sha384-atSdF89mIn15dv+o2LKkDM6mCh3hwh6A7mwZ6F2it/kenqZbMu+QW/ye1OG4XSWV" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://cywd123.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cywd123.github.io/css/syntax.css" /><link rel="stylesheet" href="https://cywd123.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://cywd123.github.io/">My New Hugo Site</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>playwright自动登录STU WebVPN</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <pre tabindex="0"><code>
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+import time
+import os
+
+import hmac
+import hashlib
+
+def totp(key, t, digits=6):
+    step = 30
+    t = int(t / step)
+    key = key.encode()
+    counter = t.to_bytes(8, &#39;big&#39;)
+    h = hmac.new(key, counter, hashlib.sha1).digest()
+    offset = h[-1] &amp; 0x0f
+    truncated = h[offset:offset + 4]
+    code = int.from_bytes(truncated, &#39;big&#39;) &amp; 0x7fffffff
+    code = str(code % 10 ** digits).zfill(digits)
+    return code
+
+# %%
+
+
+def run(playwright: Playwright) -&gt; None:
+    browser = playwright.chromium.launch(headless=True)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto(&#34;https://webvpn.stu.edu.cn/portal/#!/login&#34;)
+    page.locator(&#34;#Calc input[type=\&#34;text\&#34;]&#34;).fill(&#34;校园网账号&#34;)
+    page.locator(&#34;#loginPwd&#34;).click()
+    page.locator(&#34;#loginPwd&#34;).fill(&#34;校园网密码&#34;)
+    page.locator(&#34;span&#34;).filter(has_text=&#34;我已阅读并同意&#34;).locator(&#34;div&#34;).first.click()
+    page.get_by_role(&#34;button&#34;, name=&#34;登录&#34;).click()
+    page.locator(&#34;#app_dialog_container&#34;).get_by_role(&#34;textbox&#34;).fill(str(totp(&#34;填写你的TOTP密钥&#34;, time.time())))
+    page.get_by_role(&#34;button&#34;, name=&#34;确定&#34;).click()
+    # ---------------------
+    # 获取cookie值
+    cookies = page.context.cookies()
+    for cookie in cookies:
+        print(f&#34;{cookie[&#39;name&#39;]}: {cookie[&#39;value&#39;]}&#34;)
+        if cookie[&#39;name&#39;] == &#34;TWFID&#34;:
+            TWFID = cookie[&#39;value&#39;]
+    
+    
+    url=&#34;https://webvpn.stu.edu.cn/portal/shortcut.html?twfid=&#34;+TWFID+&#34;&amp;url=http://bilibili-com-s.webvpn.stu.edu.cn%3A8118&#34;
+    os.system(&#39;start msedge &#34;&#39;+url+&#39;&#34;&#39;)
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+
+    
+</code></pre>
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;
+            
+              
+              <a href="https://cywd123.github.io/tags/python/">python</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://cywd123.github.io/posts/22bskm0nwq/" data-toggle="tooltip" data-placement="top" title="ECDSA实例">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://cywd123.github.io/posts/vw5dv077fn/" data-toggle="tooltip" data-placement="top" title="snakemake流程——SMR&#43;MR&#43;MAGMA分析">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2025
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://cywd123.github.io/">My New Hugo Site</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.152.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://cywd123.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://cywd123.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

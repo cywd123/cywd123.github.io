@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>机器学习分类的本质 - </title>
+
+  <meta name="description" content="机器学习分类的本质
+引入
+机器学习中，基本的任务可以分为三类：分类、回归和聚类。
+分类和回归的区别在于，分类的输出是离散的，而回归的输出是连续的。聚类的任务是将数据集中的样本分成若干个类别，每个类别称为一个簇，簇内的样本相似度较高，而簇间的样本相似度较低。其中，分类和回归的任务是有监督学习，而聚类的任务是无监督学习。
+分类问题
+本次主要介绍分类问题，它属于监督学习的范畴。
+分类的本质是学习一个分类函数，将输入空间映射到输出空间，即：$f: \mathcal{X} \rightarrow \mathcal{Y}$，其中，$\mathcal{X}$是输入空间，$\mathcal{Y}$是输出空间。
+一般来说，输入空间是由特征向量构成的，即：$\mathcal{X} = \mathbb{R}^n$，输出空间是离散的，即：$\mathcal{Y} = {c_1, c_2, \cdots, c_k}$，其中，$c_i$是类别标签。
+特征向量是由特征构成的，就是对样本的描述，是样本的某个属性。
+这里面就可以构建给出两个特征向量：
+（5.1，3.5，1.4，0.2）、（4.9，3，1.4，0.2）
+
+
+特征的选择对分类的性能有很大的影响，特征的选择应该具有以下几个特点：
+
+
+特征应该能够很好地区分不同类别的样本。
+
+
+特征应该具有可解释性，即：特征应该能够很好地解释样本的类别。
+
+
+特征应该具有鲁棒性。（泛化能力）
+
+
+特征应该具有可扩展性，能够很好地扩展到新的样本。
+
+
+特征应该具有可计算性。
+
+
+特征应该具有低维性。
+
+
+
+
+输出空间是离散的，即：$\mathcal{Y} = {c_1, c_2, \cdots, c_k}$，其中，$c_i$是类别标签。
+在我接触的的深度学习分类中，一般将输出空间定义为独热编码（One-Hot Encoding）的形式，即：$\mathcal{Y} = {[1, 0, \cdots, 0], [0, 1, \cdots, 0], \cdots, [0, 0, \cdots, 1]}$，其中，$[1, 0, \cdots, 0]$表示类别$c_1$，$[0, 1, \cdots, 0]$表示类别$c_2$，以此类推。
+
+
+独热编码是一种常用的编码方式，它将离散的类别标签转换为离散的向量，其中，向量的维度等于类别的个数，向量的值等于类别的索引。独热编码的好处是，它能够很好地表示类别之间的关系，而且它的值是离散的，不会产生类别之间的大小关系。
+
+
+通常机器学习中输出的结果一般不是只有0和1，而是在0~1之间的小数，这个小数表示样本属于某个类别的概率，即：$P(Y=c_i|X)$，其中，$c_i$是类别标签，$X$是特征向量。
+分类的方法
+分类的方法主要分为两类：生成方法和判别方法。
+生成方法
+生成方法是通过学习联合概率分布$P(X, Y)$来进行分类的，即：$P(Y|X) = \frac{P(X, Y)}{P(X)}$，其中，$P(Y|X)$是后验概率，$P(X)$是先验概率，$P(X, Y)$是联合概率分布。
+朴素贝叶斯
+朴素贝叶斯是一种生成方法，它假设特征之间相互独立，即：$P(X|Y) = \prod_{i=1}^n P(x_i|Y)$，其中，$x_i$是特征向量的第$i$个特征。"><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "My New Hugo Site",
+    
+    "url": "https:\/\/cywd123.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/cywd123.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/posts\/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB%E7%9A%84%E6%9C%AC%E8%B4%A8\/",
+          "name": "机器学习分类的本质"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "机器学习分类的本质",
+  "description" : "机器学习分类的本质 引入 机器学习中，基本的任务可以分为三类：分类、回归和聚类。\n分类和回归的区别在于，分类的输出是离散的，而回归的输出是连续的。聚类的任务是将数据集中的样本分成若干个类别，每个类别称为一个簇，簇内的样本相似度较高，而簇间的样本相似度较低。其中，分类和回归的任务是有监督学习，而聚类的任务是无监督学习。\n分类问题 本次主要介绍分类问题，它属于监督学习的范畴。\n分类的本质是学习一个分类函数，将输入空间映射到输出空间，即：$f: \\mathcal{X} \\rightarrow \\mathcal{Y}$，其中，$\\mathcal{X}$是输入空间，$\\mathcal{Y}$是输出空间。\n一般来说，输入空间是由特征向量构成的，即：$\\mathcal{X} = \\mathbb{R}^n$，输出空间是离散的，即：$\\mathcal{Y} = {c_1, c_2, \\cdots, c_k}$，其中，$c_i$是类别标签。\n特征向量是由特征构成的，就是对样本的描述，是样本的某个属性。\n这里面就可以构建给出两个特征向量：\n（5.1，3.5，1.4，0.2）、（4.9，3，1.4，0.2）\n特征的选择对分类的性能有很大的影响，特征的选择应该具有以下几个特点：\n特征应该能够很好地区分不同类别的样本。\n特征应该具有可解释性，即：特征应该能够很好地解释样本的类别。\n特征应该具有鲁棒性。（泛化能力）\n特征应该具有可扩展性，能够很好地扩展到新的样本。\n特征应该具有可计算性。\n特征应该具有低维性。\n输出空间是离散的，即：$\\mathcal{Y} = {c_1, c_2, \\cdots, c_k}$，其中，$c_i$是类别标签。\n在我接触的的深度学习分类中，一般将输出空间定义为独热编码（One-Hot Encoding）的形式，即：$\\mathcal{Y} = {[1, 0, \\cdots, 0], [0, 1, \\cdots, 0], \\cdots, [0, 0, \\cdots, 1]}$，其中，$[1, 0, \\cdots, 0]$表示类别$c_1$，$[0, 1, \\cdots, 0]$表示类别$c_2$，以此类推。\n独热编码是一种常用的编码方式，它将离散的类别标签转换为离散的向量，其中，向量的维度等于类别的个数，向量的值等于类别的索引。独热编码的好处是，它能够很好地表示类别之间的关系，而且它的值是离散的，不会产生类别之间的大小关系。\n通常机器学习中输出的结果一般不是只有0和1，而是在0~1之间的小数，这个小数表示样本属于某个类别的概率，即：$P(Y=c_i|X)$，其中，$c_i$是类别标签，$X$是特征向量。\n分类的方法 分类的方法主要分为两类：生成方法和判别方法。\n生成方法 生成方法是通过学习联合概率分布$P(X, Y)$来进行分类的，即：$P(Y|X) = \\frac{P(X, Y)}{P(X)}$，其中，$P(Y|X)$是后验概率，$P(X)$是先验概率，$P(X, Y)$是联合概率分布。\n朴素贝叶斯 朴素贝叶斯是一种生成方法，它假设特征之间相互独立，即：$P(X|Y) = \\prod_{i=1}^n P(x_i|Y)$，其中，$x_i$是特征向量的第$i$个特征。\n",
+  "inLanguage" : "en",
+  "wordCount":  254 ,
+  "datePublished" : "2023-05-21T18:57:29\u002b00:00",
+  "dateModified" : "2025-12-01T09:31:17\u002b00:00",
+  "image" : "https:\/\/cywd123.github.io\/",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "https:\/\/cywd123.github.io\/posts\/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB%E7%9A%84%E6%9C%AC%E8%B4%A8\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/cywd123.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/cywd123.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="机器学习分类的本质" />
+<meta property="og:description" content="机器学习分类的本质
+引入
+机器学习中，基本的任务可以分为三类：分类、回归和聚类。
+分类和回归的区别在于，分类的输出是离散的，而回归的输出是连续的。聚类的任务是将数据集中的样本分成若干个类别，每个类别称为一个簇，簇内的样本相似度较高，而簇间的样本相似度较低。其中，分类和回归的任务是有监督学习，而聚类的任务是无监督学习。
+分类问题
+本次主要介绍分类问题，它属于监督学习的范畴。
+分类的本质是学习一个分类函数，将输入空间映射到输出空间，即：$f: \mathcal{X} \rightarrow \mathcal{Y}$，其中，$\mathcal{X}$是输入空间，$\mathcal{Y}$是输出空间。
+一般来说，输入空间是由特征向量构成的，即：$\mathcal{X} = \mathbb{R}^n$，输出空间是离散的，即：$\mathcal{Y} = {c_1, c_2, \cdots, c_k}$，其中，$c_i$是类别标签。
+特征向量是由特征构成的，就是对样本的描述，是样本的某个属性。
+这里面就可以构建给出两个特征向量：
+（5.1，3.5，1.4，0.2）、（4.9，3，1.4，0.2）
+
+
+特征的选择对分类的性能有很大的影响，特征的选择应该具有以下几个特点：
+
+
+特征应该能够很好地区分不同类别的样本。
+
+
+特征应该具有可解释性，即：特征应该能够很好地解释样本的类别。
+
+
+特征应该具有鲁棒性。（泛化能力）
+
+
+特征应该具有可扩展性，能够很好地扩展到新的样本。
+
+
+特征应该具有可计算性。
+
+
+特征应该具有低维性。
+
+
+
+
+输出空间是离散的，即：$\mathcal{Y} = {c_1, c_2, \cdots, c_k}$，其中，$c_i$是类别标签。
+在我接触的的深度学习分类中，一般将输出空间定义为独热编码（One-Hot Encoding）的形式，即：$\mathcal{Y} = {[1, 0, \cdots, 0], [0, 1, \cdots, 0], \cdots, [0, 0, \cdots, 1]}$，其中，$[1, 0, \cdots, 0]$表示类别$c_1$，$[0, 1, \cdots, 0]$表示类别$c_2$，以此类推。
+
+
+独热编码是一种常用的编码方式，它将离散的类别标签转换为离散的向量，其中，向量的维度等于类别的个数，向量的值等于类别的索引。独热编码的好处是，它能够很好地表示类别之间的关系，而且它的值是离散的，不会产生类别之间的大小关系。
+
+
+通常机器学习中输出的结果一般不是只有0和1，而是在0~1之间的小数，这个小数表示样本属于某个类别的概率，即：$P(Y=c_i|X)$，其中，$c_i$是类别标签，$X$是特征向量。
+分类的方法
+分类的方法主要分为两类：生成方法和判别方法。
+生成方法
+生成方法是通过学习联合概率分布$P(X, Y)$来进行分类的，即：$P(Y|X) = \frac{P(X, Y)}{P(X)}$，其中，$P(Y|X)$是后验概率，$P(X)$是先验概率，$P(X, Y)$是联合概率分布。
+朴素贝叶斯
+朴素贝叶斯是一种生成方法，它假设特征之间相互独立，即：$P(X|Y) = \prod_{i=1}^n P(x_i|Y)$，其中，$x_i$是特征向量的第$i$个特征。">
+<meta property="og:url" content="https://cywd123.github.io/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB%E7%9A%84%E6%9C%AC%E8%B4%A8/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+  <meta name="twitter:title" content="机器学习分类的本质" />
+  <meta name="twitter:description" content="机器学习分类的本质
+引入
+机器学习中，基本的任务可以分为三类：分类、回归和聚类。
+分类和回归的区别在于，分类的输出是离散的，而回归的输出是连续的。聚类的任务是将数据集中的样本分成若干个类别，每个类别称为一个簇，簇内的样本相似度较高，而簇间的样本相似度较低。其中，分类和回归的任务是有监督学习，而聚类的任务是无监督学习。
+分类问题
+本次主要介绍分类问题，它属于监督学习的范畴。
+分类的本质是学习一个分类 …">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="generator" content="Hugo 0.152.2">
+  <link rel="alternate" href="https://cywd123.github.io/index.xml" type="application/rss+xml" title="My New Hugo Site"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/brands.css" integrity="sha384-+eXGm6TmVoCZR1gX03US+L++L2mJIfOvp2X0+luTuEktXaF5F+e3zn0sO0HBvOyT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/fontawesome.css" integrity="sha384-B5nyPZa7e84uCJEYHtevCdVYtQosWsbDSRtq3cy/jeSVtQW05GL8CKXO7waXsjPK" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/regular.css" integrity="sha384-V71z/A/p/DGaZAryHhiSXRQj8HdQmK2nBgL2bX23MGD+h6ZKpyxOO76f5eSXmIaj" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/solid.css" integrity="sha384-1IIShlrK5iYgvS7OAgIH3prz4RAFP7hHZ2MaLIb9l3+trFwwnw/NdCWcUHlymZDU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg.css" integrity="sha384-iBa7uugTOHXqQ2ngvDYJyKrPPQbd9n2P3EQe+o/0+HZe5TNvV+LO5X0lLLUrXLHP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg-with-js.css" integrity="sha384-STWnS5AGz6M2YxsnGAd536EqcE2y+ktGovMMuhtXLsCBtl7lujeQj2eN4eDxa57x" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-font-face.css" integrity="sha384-fH83IkgQi7kturzlxpXfNdsR8aUOcqj5HUORRVnSvJgObZkIw6aqKAaQx20IWyB/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-shims.css" integrity="sha384-cCODJHSivNBsaHei/8LC0HUD58kToSbDU+xT7Rs51BO1v/IvgT/uM0W6xMoUqKfn" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v5-font-face.css" integrity="sha384-atSdF89mIn15dv+o2LKkDM6mCh3hwh6A7mwZ6F2it/kenqZbMu+QW/ye1OG4XSWV" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://cywd123.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cywd123.github.io/css/syntax.css" /><link rel="stylesheet" href="https://cywd123.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://cywd123.github.io/">My New Hugo Site</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>机器学习分类的本质</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h1 id="机器学习分类的本质">机器学习分类的本质</h1>
+<h2 id="引入">引入</h2>
+<p>机器学习中，基本的任务可以分为三类：分类、回归和聚类。</p>
+<p>分类和回归的区别在于，分类的输出是离散的，而回归的输出是连续的。聚类的任务是将数据集中的样本分成若干个类别，每个类别称为一个簇，簇内的样本相似度较高，而簇间的样本相似度较低。其中，分类和回归的任务是有监督学习，而聚类的任务是无监督学习。</p>
+<h2 id="分类问题">分类问题</h2>
+<p>本次主要介绍分类问题，它属于监督学习的范畴。</p>
+<p>分类的本质是学习一个分类函数，将输入空间映射到输出空间，即：$f: \mathcal{X} \rightarrow \mathcal{Y}$，其中，$\mathcal{X}$是输入空间，$\mathcal{Y}$是输出空间。</p>
+<p>一般来说，输入空间是由特征向量构成的，即：$\mathcal{X} = \mathbb{R}^n$，输出空间是离散的，即：$\mathcal{Y} = {c_1, c_2, \cdots, c_k}$，其中，$c_i$是类别标签。</p>
+<p>特征向量是由特征构成的，就是对样本的描述，是样本的某个属性。</p>
+<p>这里面就可以构建给出两个特征向量：</p>
+<p>（5.1，3.5，1.4，0.2）、（4.9，3，1.4，0.2）</p>
+<hr>
+<blockquote>
+<p>特征的选择对分类的性能有很大的影响，特征的选择应该具有以下几个特点：</p>
+<ol>
+<li>
+<p>特征应该能够很好地区分不同类别的样本。</p>
+</li>
+<li>
+<p>特征应该具有可解释性，即：特征应该能够很好地解释样本的类别。</p>
+</li>
+<li>
+<p>特征应该具有鲁棒性。（泛化能力）</p>
+</li>
+<li>
+<p>特征应该具有可扩展性，能够很好地扩展到新的样本。</p>
+</li>
+<li>
+<p>特征应该具有可计算性。</p>
+</li>
+<li>
+<p>特征应该具有低维性。</p>
+</li>
+</ol>
+</blockquote>
+<hr>
+<p>输出空间是离散的，即：$\mathcal{Y} = {c_1, c_2, \cdots, c_k}$，其中，$c_i$是类别标签。</p>
+<p>在我接触的的深度学习分类中，一般将输出空间定义为独热编码（One-Hot Encoding）的形式，即：$\mathcal{Y} = {[1, 0, \cdots, 0], [0, 1, \cdots, 0], \cdots, [0, 0, \cdots, 1]}$，其中，$[1, 0, \cdots, 0]$表示类别$c_1$，$[0, 1, \cdots, 0]$表示类别$c_2$，以此类推。</p>
+<hr>
+<blockquote>
+<p>独热编码是一种常用的编码方式，它将离散的类别标签转换为离散的向量，其中，向量的维度等于类别的个数，向量的值等于类别的索引。独热编码的好处是，它能够很好地表示类别之间的关系，而且它的值是离散的，不会产生类别之间的大小关系。</p>
+</blockquote>
+<hr>
+<p>通常机器学习中输出的结果一般不是只有0和1，而是在0~1之间的小数，这个小数表示样本属于某个类别的概率，即：$P(Y=c_i|X)$，其中，$c_i$是类别标签，$X$是特征向量。</p>
+<h2 id="分类的方法">分类的方法</h2>
+<p>分类的方法主要分为两类：生成方法和判别方法。</p>
+<h3 id="生成方法">生成方法</h3>
+<p>生成方法是通过学习联合概率分布$P(X, Y)$来进行分类的，即：$P(Y|X) = \frac{P(X, Y)}{P(X)}$，其中，$P(Y|X)$是后验概率，$P(X)$是先验概率，$P(X, Y)$是联合概率分布。</p>
+<h4 id="朴素贝叶斯">朴素贝叶斯</h4>
+<p>朴素贝叶斯是一种生成方法，它假设特征之间相互独立，即：$P(X|Y) = \prod_{i=1}^n P(x_i|Y)$，其中，$x_i$是特征向量的第$i$个特征。</p>
+<p>例子：假设有一个数据集，其中，每个样本有两个特征，分别是$x_1$和$x_2$，它们的取值都是离散的，分别是${a, b, c}$和${1, 2, 3}$，类别标签是${0, 1}$，那么，朴素贝叶斯的联合概率分布可以表示为：$P(X, Y) = P(x_1, x_2, Y) = P(x_1|Y)P(x_2|Y)P(Y)$，其中，$P(x_1|Y)$和$P(x_2|Y)$可以通过统计样本的频率来计算，$P(Y)$可以通过统计样本的频率来计算。</p>
+<p>朴素贝叶斯的优点是：它的学习和预测的效率都很高，而且它的结果具有很好的解释性。<br>
+朴素贝叶斯的缺点是：它的假设过于简单，导致它的泛化能力不够强。</p>
+<h4 id="高斯贝叶斯">高斯贝叶斯</h4>
+<p>高斯贝叶斯是一种生成方法，它假设特征的条件概率服从高斯分布，即：$P(X|Y) \sim \mathcal{N}(\mu, \sigma^2)$，其中，$\mu$是均值，$\sigma^2$是方差。然后，利用贝叶斯公式，计算后验概率，从而进行分类。</p>
+<p>例子：假设有一个数据集，其中，每个样本有两个特征，分别是$x_1$和$x_2$，它们的取值都是连续的，那么，高斯判别分析的条件概率可以表示为：$P(X|Y) = P(x_1, x_2|Y) = P(x_1|Y)P(x_2|Y)$，其中，$P(x_1|Y)$和$P(x_2|Y)$可以通过统计样本的均值和方差来计算。</p>
+<p>高斯判别分析的优点是：它的假设比较合理，而且它的泛化能力比较强。<br>
+高斯判别分析的缺点是：它的计算量比较大，而且它的结果具有一定的误差。</p>
+<h4 id="伯努利贝叶斯">伯努利贝叶斯</h4>
+<p>伯努利贝叶斯是一种生成方法，它假设特征的条件概率服从伯努利分布，即：$P(X|Y) \sim \mathcal{B}(p)$，其中，$p$是概率。然后，利用贝叶斯公式，计算后验概率，从而进行分类。</p>
+<hr>
+<h4 id="大同小异">！大同小异！！</h4>
+<p>朴素贝叶斯、高斯贝叶斯和伯努利贝叶斯都是生成方法，它们的区别在于它们对条件概率的分布的假设不同，朴素贝叶斯假设条件概率服从多项式分布，高斯贝叶斯假设条件概率服从高斯分布，伯努利贝叶斯假设条件概率服从伯努利分布。</p>
+<hr>
+<h3 id="判别方法">判别方法</h3>
+<p>判别方法是通过学习决策函数$f(X)$或者条件概率分布$P(Y|X)$来进行分类的，即：$Y = f(X)$或者$P(Y|X)$。</p>
+<h4 id="k近邻">K近邻</h4>
+<p>K近邻是一种判别方法，它的思想是：如果一个样本的近邻中大多数样本属于某个类别，那么该样本也属于该类别。K近邻的K是一个超参数，它决定了近邻的个数。K近邻的算法如下：</p>
+<blockquote>
+<ol>
+<li>计算测试样本与训练样本的距离: <code>d = sqrt((x1-x2)^2 + (y1-y2)^2)</code> (欧几里得距离，也可能使用其他距离：曼哈顿距离、切比雪夫距离等）</li>
+</ol>
+</blockquote>
+<p>曼哈顿距离: <code>d = |x1-x2| + |y1-y2|</code>，切比雪夫距离: <code>d = max(|x1-x2|, |y1-y2|)</code></p>
+<blockquote>
+<ol start="2">
+<li>
+<p>选取距离最近的K个训练样本: <code>d1, d2, ..., dk</code></p>
+</li>
+<li>
+<p>统计K个训练样本中各个类别的数量: <code>c1, c2, ..., ck</code></p>
+</li>
+<li>
+<p>选取数量最多的类别作为测试样本的类别</p>
+</li>
+</ol>
+</blockquote>
+<h4 id="决策树">决策树</h4>
+<p>决策树是一种判别方法，它的思想是：通过一系列的问题，将样本分到不同的类别中。决策树的算法如下：</p>
+<blockquote>
+<ol>
+<li>
+<p>选择一个特征，将样本分成不同的类别 : $x_i &lt; t$，则为左子树，否则为右子树</p>
+</li>
+<li>
+<p>对每个类别，重复步骤1，直到所有的样本都被正确地分类 : $x_i &lt; t$，则为左子树，否则为右子树</p>
+</li>
+<li>
+<p>反复寻找，简化决策树</p>
+</li>
+</ol>
+</blockquote>
+<p>例子：假设有一个数据集，其中，每个样本有两个特征，分别是$x_1$和$x_2$，它们的取值都是连续的，那么，决策树可以表示为：$x_1 &lt; t_1$，则为左子树，否则为右子树，其中，$t_1$可以通过决策树的算法计算得到。同理，对于左子树，可以继续选择一个特征，将样本分成不同的类别，直到所有的样本都被正确地分类。</p>
+<h4 id="随机森林">随机森林</h4>
+<p>随机森林是一种集成方法，它的思想是：通过多棵决策树，将样本分到不同的类别中。随机森林的算法如下：</p>
+<blockquote>
+<ol>
+<li>
+<p>从样本集中随机选择k个样本，作为训练样本</p>
+</li>
+<li>
+<p>从特征集中随机选择m个特征，作为训练特征</p>
+</li>
+<li>
+<p>通过决策树的算法，训练一棵决策树</p>
+</li>
+<li>
+<p>重复1-3步骤，训练多棵决策树</p>
+</li>
+<li>
+<p>对于新的样本，通过多棵决策树进行分类，选择票数最多的类别作为测试样本的类别</p>
+</li>
+</ol>
+</blockquote>
+<h4 id="支持向量机">支持向量机</h4>
+<p>支持向量机是一种判别方法，它的思想是：找到一个超平面，使得它能够将不同类别的样本分开，而且它离两个类别的样本都有一定的距离。支持向量机的算法如下：</p>
+<blockquote>
+<ol>
+<li>
+<p>选择一个核函数，将样本映射到高维空间: $x \rightarrow \phi(x)$ 核函数：线性函数、多项式函数、高斯核函数等</p>
+</li>
+<li>
+<p>在高维空间中找到一个超平面，使得它能够将不同类别的样本分开，而且它离两个类别的样本都有一定的距离: $w^T\phi(x) + b = 0$</p>
+</li>
+<li>
+<p>将超平面映射回原始空间: $w^T\phi(x) + b = 0 \rightarrow w^Tx + b = 0$</p>
+</li>
+<li>
+<p>利用超平面对新的样本进行分类: $w^Tx + b &gt; 0$，则为正类，否则为负类</p>
+</li>
+</ol>
+</blockquote>
+<p>例子：假设有一个数据集，其中，每个样本有两个特征，分别是$x_1$和$x_2$，它们的取值都是连续的，那么，支持向量机的超平面可以表示为：$w_1x_1 + w_2x_2 + b = 0$，其中，$w_1$和$w_2$可以通过支持向量机的算法计算得到，$b$可以通过统计样本的均值和方差来计算。大于0的样本属于正类，小于0的样本属于负类。</p>
+<h4 id="神经网络">神经网络</h4>
+<p>神经网络是一种判别方法，它的思想是：通过多层的神经元，将样本分到不同的类别中。神经网络的算法如下：</p>
+<blockquote>
+<ol>
+<li>
+<p>初始化神经网络的权重和偏置: <code>w</code>和<code>b</code></p>
+</li>
+<li>
+<p>通过前向传播计算每个神经元的输出: <code>z = w * x + b</code>和<code>a = sigmoid(z)</code>,其中<code>x</code>是输入，<code>a</code>是输出</p>
+</li>
+<li>
+<p>通过反向传播计算每个神经元的梯度: <code>dw</code>和<code>db</code></p>
+</li>
+<li>
+<p>通过梯度下降更新神经网络的权重和偏置: <code>w = w - lr * dw</code>和<code>b = b - lr * db</code></p>
+</li>
+<li>
+<p>重复2-4步骤，直到收敛: <code>loss = -y * log(a) - (1 - y) * log(1 - a)</code>（二元交叉熵的损失函数，BCCE）</p>
+</li>
+</ol>
+</blockquote>
+<p>例子：假设有一个数据集，其中，每个样本有两个特征，分别是$x_1$和$x_2$，它们的取值都是连续的，那么，神经网络的输出可以表示为：$a = sigmoid(w_1x_1 + w_2x_2 + b)$，其中，$w_1$和$w_2$可以通过神经网络的算法计算得到，$b$可以通过统计样本的均值和方差来计算。大于0.5的样本属于正类，小于0.5的样本属于负类。</p>
+<h4 id="判别方法的共同点">判别方法的共同点</h4>
+<p>判别方法的共同点是：它们都是通过一些参数，将样本分到不同的类别中。例如：k近邻通过选择k个最近的样本，将样本分到不同的类别中；决策树通过选择特征，将样本分到不同的类别中；随机森林通过选择特征和样本，将样本分到不同的类别中；支持向量机通过选择超平面，将样本分到不同的类别中；神经网络通过选择权重和偏置，将样本分到不同的类别中。</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://cywd123.github.io/posts/%E8%AE%BA%E6%96%87%E4%BD%A0%E5%A5%BD%E8%AE%BA%E6%96%87%E5%86%8D%E8%A7%81/" data-toggle="tooltip" data-placement="top" title="论文📃你好，论文📃再见。">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://cywd123.github.io/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A012%E7%A7%8D%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94/" data-toggle="tooltip" data-placement="top" title="机器学习12种分类模型的性能对比">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2025
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://cywd123.github.io/">My New Hugo Site</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.152.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://cywd123.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://cywd123.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

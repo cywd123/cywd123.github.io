@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>kruskal算法（克鲁斯卡尔算法） - </title>
+
+  <meta name="description" content="#include&lt;bits/stdc&#43;&#43;.h&gt;
+#define ll long long
+using namespace std;
+ll fa[5010];
+ll get(ll x) {
+	return x==fa[x]?x:fa[x]=get(fa[x]);
+}
+void mrg(ll a,ll b) {
+fa[get(a)]=get(b);
+}
+struct pl{
+	ll x,y,z;
+	bool operator&lt;(const pl &amp;a){
+	return z&lt;a.z;
+	}
+}mp[200001];
+int main() {
+ll i,j,n,m,t=0,k=0;
+cin&gt;&gt;n&gt;&gt;m;
+for(i=1;i&lt;=m;i&#43;&#43;)
+{
+	cin&gt;&gt;mp[i].x&gt;&gt;mp[i].y&gt;&gt;mp[i].z;
+}
+sort(mp&#43;1,mp&#43;1&#43;m);
+for(i=1;i&lt;=n;i&#43;&#43;)fa[i]=i;
+for(i=1;i&lt;=m&amp;&amp;t&lt;n;i&#43;&#43;){
+	if(get(mp[i].x)!=get(mp[i].y))mrg(mp[i].x,mp[i].y),t&#43;&#43;,k&#43;=mp[i].z;	
+}
+if(t==n-1)
+cout&lt;&lt;k;
+else cout&lt;&lt;&#34;orz&#34;;
+}
+"><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "My New Hugo Site",
+    
+    "url": "https:\/\/cywd123.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/cywd123.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/cywd123.github.io\/posts\/y1ekvamzmi\/",
+          "name": "Kruskal算法（克鲁斯卡尔算法）"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "kruskal算法（克鲁斯卡尔算法）",
+  "description" : "#include\u0026lt;bits\/stdc\u002b\u002b.h\u0026gt;\r#define ll long long\rusing namespace std;\rll fa[5010];\rll get(ll x) {\rreturn x==fa[x]?x:fa[x]=get(fa[x]);\r}\rvoid mrg(ll a,ll b) {\rfa[get(a)]=get(b);\r}\rstruct pl{\rll x,y,z;\rbool operator\u0026lt;(const pl \u0026amp;a){\rreturn z\u0026lt;a.z;\r}\r}mp[200001];\rint main() {\rll i,j,n,m,t=0,k=0;\rcin\u0026gt;\u0026gt;n\u0026gt;\u0026gt;m;\rfor(i=1;i\u0026lt;=m;i\u002b\u002b)\r{\rcin\u0026gt;\u0026gt;mp[i].x\u0026gt;\u0026gt;mp[i].y\u0026gt;\u0026gt;mp[i].z;\r}\rsort(mp\u002b1,mp\u002b1\u002bm);\rfor(i=1;i\u0026lt;=n;i\u002b\u002b)fa[i]=i;\rfor(i=1;i\u0026lt;=m\u0026amp;\u0026amp;t\u0026lt;n;i\u002b\u002b){\rif(get(mp[i].x)!=get(mp[i].y))mrg(mp[i].x,mp[i].y),t\u002b\u002b,k\u002b=mp[i].z;\t}\rif(t==n-1)\rcout\u0026lt;\u0026lt;k;\relse cout\u0026lt;\u0026lt;\u0026#34;orz\u0026#34;;\r} ",
+  "inLanguage" : "en",
+  "wordCount":  56 ,
+  "datePublished" : "2025-03-10T13:26:19\u002b00:00",
+  "dateModified" : "2025-12-01T09:31:17\u002b00:00",
+  "image" : "https:\/\/cywd123.github.io\/",
+  "keywords" : [ "编程, C\u002b\u002b" ],
+  "mainEntityOfPage" : "https:\/\/cywd123.github.io\/posts\/y1ekvamzmi\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/cywd123.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/cywd123.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="kruskal算法（克鲁斯卡尔算法）" />
+<meta property="og:description" content="#include&lt;bits/stdc&#43;&#43;.h&gt;
+#define ll long long
+using namespace std;
+ll fa[5010];
+ll get(ll x) {
+	return x==fa[x]?x:fa[x]=get(fa[x]);
+}
+void mrg(ll a,ll b) {
+fa[get(a)]=get(b);
+}
+struct pl{
+	ll x,y,z;
+	bool operator&lt;(const pl &amp;a){
+	return z&lt;a.z;
+	}
+}mp[200001];
+int main() {
+ll i,j,n,m,t=0,k=0;
+cin&gt;&gt;n&gt;&gt;m;
+for(i=1;i&lt;=m;i&#43;&#43;)
+{
+	cin&gt;&gt;mp[i].x&gt;&gt;mp[i].y&gt;&gt;mp[i].z;
+}
+sort(mp&#43;1,mp&#43;1&#43;m);
+for(i=1;i&lt;=n;i&#43;&#43;)fa[i]=i;
+for(i=1;i&lt;=m&amp;&amp;t&lt;n;i&#43;&#43;){
+	if(get(mp[i].x)!=get(mp[i].y))mrg(mp[i].x,mp[i].y),t&#43;&#43;,k&#43;=mp[i].z;	
+}
+if(t==n-1)
+cout&lt;&lt;k;
+else cout&lt;&lt;&#34;orz&#34;;
+}
+">
+<meta property="og:url" content="https://cywd123.github.io/posts/y1ekvamzmi/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+  <meta name="twitter:title" content="kruskal算法（克鲁斯卡尔算法）" />
+  <meta name="twitter:description" content="#include&lt;bits/stdc&#43;&#43;.h&gt;
+#define ll long long
+using namespace std;
+ll fa[5010];
+ll get(ll x) {
+	return x==fa[x]?x:fa[x]=get(fa[x]);
+}
+void mrg(ll a,ll b) {
+fa[get(a)]=get(b);
+}
+struct …">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="generator" content="Hugo 0.152.2">
+  <link rel="alternate" href="https://cywd123.github.io/index.xml" type="application/rss+xml" title="My New Hugo Site"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/brands.css" integrity="sha384-+eXGm6TmVoCZR1gX03US+L++L2mJIfOvp2X0+luTuEktXaF5F+e3zn0sO0HBvOyT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/fontawesome.css" integrity="sha384-B5nyPZa7e84uCJEYHtevCdVYtQosWsbDSRtq3cy/jeSVtQW05GL8CKXO7waXsjPK" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/regular.css" integrity="sha384-V71z/A/p/DGaZAryHhiSXRQj8HdQmK2nBgL2bX23MGD+h6ZKpyxOO76f5eSXmIaj" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/solid.css" integrity="sha384-1IIShlrK5iYgvS7OAgIH3prz4RAFP7hHZ2MaLIb9l3+trFwwnw/NdCWcUHlymZDU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg.css" integrity="sha384-iBa7uugTOHXqQ2ngvDYJyKrPPQbd9n2P3EQe+o/0+HZe5TNvV+LO5X0lLLUrXLHP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg-with-js.css" integrity="sha384-STWnS5AGz6M2YxsnGAd536EqcE2y+ktGovMMuhtXLsCBtl7lujeQj2eN4eDxa57x" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-font-face.css" integrity="sha384-fH83IkgQi7kturzlxpXfNdsR8aUOcqj5HUORRVnSvJgObZkIw6aqKAaQx20IWyB/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-shims.css" integrity="sha384-cCODJHSivNBsaHei/8LC0HUD58kToSbDU+xT7Rs51BO1v/IvgT/uM0W6xMoUqKfn" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v5-font-face.css" integrity="sha384-atSdF89mIn15dv+o2LKkDM6mCh3hwh6A7mwZ6F2it/kenqZbMu+QW/ye1OG4XSWV" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://cywd123.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cywd123.github.io/css/syntax.css" /><link rel="stylesheet" href="https://cywd123.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://cywd123.github.io/">My New Hugo Site</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>kruskal算法（克鲁斯卡尔算法）</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <pre tabindex="0"><code>#include&lt;bits/stdc++.h&gt;
+#define ll long long
+using namespace std;
+ll fa[5010];
+ll get(ll x) {
+	return x==fa[x]?x:fa[x]=get(fa[x]);
+}
+void mrg(ll a,ll b) {
+fa[get(a)]=get(b);
+}
+struct pl{
+	ll x,y,z;
+	bool operator&lt;(const pl &amp;a){
+	return z&lt;a.z;
+	}
+}mp[200001];
+int main() {
+ll i,j,n,m,t=0,k=0;
+cin&gt;&gt;n&gt;&gt;m;
+for(i=1;i&lt;=m;i++)
+{
+	cin&gt;&gt;mp[i].x&gt;&gt;mp[i].y&gt;&gt;mp[i].z;
+}
+sort(mp+1,mp+1+m);
+for(i=1;i&lt;=n;i++)fa[i]=i;
+for(i=1;i&lt;=m&amp;&amp;t&lt;n;i++){
+	if(get(mp[i].x)!=get(mp[i].y))mrg(mp[i].x,mp[i].y),t++,k+=mp[i].z;	
+}
+if(t==n-1)
+cout&lt;&lt;k;
+else cout&lt;&lt;&#34;orz&#34;;
+}
+</code></pre>
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;
+            
+              
+              <a href="https://cywd123.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://cywd123.github.io/posts/wwlgapb2j1/" data-toggle="tooltip" data-placement="top" title="带lazy标记的zkw线段树">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://cywd123.github.io/posts/hl1binzfbh/" data-toggle="tooltip" data-placement="top" title="树状数组">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2025
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://cywd123.github.io/">My New Hugo Site</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.152.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://cywd123.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://cywd123.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
