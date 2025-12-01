@@ -184,6 +184,21 @@ MNIST 数据集来自美国国家标准与技术研究所, National Institute of
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="https://cywd123.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cywd123.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cywd123.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -195,7 +210,7 @@ MNIST 数据集来自美国国家标准与技术研究所, National Institute of
     <h1 class="post-title entry-hint-parent">
       【深度学习】手写数字图像识别分类（MNIST数据集）
     </h1>
-    <div class="post-meta"><span title='2023-04-01 20:09:50 +0000 UTC'>April 1, 2023</span>
+    <div class="post-meta"><span title='2023-04-01 20:09:50 +0000 UTC'>April 1, 2023</span>&nbsp;·&nbsp;<span>1 min</span>
 
 </div>
   </header> 
@@ -302,6 +317,53 @@ Test set labels: t10k-labels-idx1-ubyte.gz (5KB, 解压后 10 KB, 包含 10,000 
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 
