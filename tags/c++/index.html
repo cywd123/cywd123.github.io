@@ -138,7 +138,7 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>#include&lt;bits/stdc&#43;&#43;.h&gt;using namespace std;int f[2000010][24],n;int get(int x,int y){int k=log(y-x&#43;1)/log(2);return max(f[x][k],f[y-(1&lt;&lt;k)&#43;1][k]);}int main(){int i,j,m,t,k;scanf(&#34;%d %d&#34;,&amp;n,&amp;m);for(i=1;i&lt;=n;i&#43;&#43;)scanf(&#34;%d&#34;,&amp;f[i][0]);int x=log(n)/log(2)&#43;1;for(int j=1;j&lt;x;j&#43;&#43;)for(int i=1;i&lt;=n-(1&lt;&lt;j)&#43;1;i&#43;&#43;)f[i][j]=max(f[i][j-1],f[i&#43;(1&lt;&lt;(j-1))][j-1]);while(m--){int a,b;scanf(&#34;%d %d&#34;,&amp;a,&amp;b);printf(&#34;%d\n&#34;,get(a,b));}} </p>
+    <p> #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; int f[2000010][24],n; int get(int x,int y){ int k=log(y-x&#43;1)/log(2); return max(f[x][k],f[y-(1&lt;&lt;k)&#43;1][k]); } int main(){ int i,j,m,t,k; scanf(&#34;%d %d&#34;,&amp;n,&amp;m); for(i=1;i&lt;=n;i&#43;&#43;) scanf(&#34;%d&#34;,&amp;f[i][0]); int x=log(n)/log(2)&#43;1; for(int j=1;j&lt;x;j&#43;&#43;) for(int i=1;i&lt;=n-(1&lt;&lt;j)&#43;1;i&#43;&#43;) f[i][j]=max(f[i][j-1],f[i&#43;(1&lt;&lt;(j-1))][j-1]); while(m--){ int a,b; scanf(&#34;%d %d&#34;,&amp;a,&amp;b); printf(&#34;%d\n&#34;,get(a,b)); } } </p>
   </div>
   <footer class="entry-footer"><span title='2025-03-10 13:28:40 +0000 UTC'>March 10, 2025</span></footer>
   <a class="entry-link" aria-label="post link to ST表" href="https://cywd123.github.io/posts/6jfataceqh/"></a>

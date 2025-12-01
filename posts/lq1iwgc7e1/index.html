@@ -82,12 +82,12 @@ pause
 </script><meta property="og:url" content="https://cywd123.github.io/posts/lq1iwgc7e1/">
   <meta property="og:site_name" content="Juiceright">
   <meta property="og:title" content="cmd 利用curl实现全网卡登录STU校园网">
-  <meta property="og:description" content="@echo offfor /f &#34;tokens=*&#34; %%i in (&#39;powershell -Command &#34;Get-NetIPAddress | Where-Object {$_.AddressFamily -eq &#39;IPv4&#39; -and $_.IPAddress -ne &#39;127.0.0.1&#39;} | Select-Object -ExpandProperty IPAddress&#34;&#39;) do (echo 发现有效IP: %%icurl --data &#34;opr=pwdLogin&amp;userName=账号&amp;pwd=密码&amp;rememberPwd=1&#34; http://1.1.1.2/ac_portal/login.php --interface %%i)pause ">
+  <meta property="og:description" content=" @echo off for /f &#34;tokens=*&#34; %%i in ( &#39;powershell -Command &#34;Get-NetIPAddress | Where-Object {$_.AddressFamily -eq &#39;IPv4&#39; -and $_.IPAddress -ne &#39;127.0.0.1&#39;} | Select-Object -ExpandProperty IPAddress&#34;&#39; ) do ( echo 发现有效IP: %%i curl --data &#34;opr=pwdLogin&amp;userName=账号&amp;pwd=密码&amp;rememberPwd=1&#34; http://1.1.1.2/ac_portal/login.php --interface %%i ) pause ">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-03-17T12:38:48+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-01T14:48:43+00:00">
     <meta property="article:tag" content="小脚本">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cmd 利用curl实现全网卡登录STU校园网">
@@ -129,15 +129,15 @@ pause
   "@type": "BlogPosting",
   "headline": "cmd 利用curl实现全网卡登录STU校园网",
   "name": "cmd 利用curl实现全网卡登录STU校园网",
-  "description": "\r@echo off\rfor /f \u0026#34;tokens=*\u0026#34; %%i in (\r\u0026#39;powershell -Command \u0026#34;Get-NetIPAddress | Where-Object {$_.AddressFamily -eq \u0026#39;IPv4\u0026#39; -and $_.IPAddress -ne \u0026#39;127.0.0.1\u0026#39;} | Select-Object -ExpandProperty IPAddress\u0026#34;\u0026#39;\r) do (\recho 发现有效IP: %%i\rcurl --data \u0026#34;opr=pwdLogin\u0026amp;userName=账号\u0026amp;pwd=密码\u0026amp;rememberPwd=1\u0026#34; http://1.1.1.2/ac_portal/login.php --interface %%i\r)\rpause ",
+  "description": " @echo off for /f \u0026#34;tokens=*\u0026#34; %%i in ( \u0026#39;powershell -Command \u0026#34;Get-NetIPAddress | Where-Object {$_.AddressFamily -eq \u0026#39;IPv4\u0026#39; -and $_.IPAddress -ne \u0026#39;127.0.0.1\u0026#39;} | Select-Object -ExpandProperty IPAddress\u0026#34;\u0026#39; ) do ( echo 发现有效IP: %%i curl --data \u0026#34;opr=pwdLogin\u0026amp;userName=账号\u0026amp;pwd=密码\u0026amp;rememberPwd=1\u0026#34; http://1.1.1.2/ac_portal/login.php --interface %%i ) pause ",
   "keywords": [
     "小脚本"
   ],
-  "articleBody": "\r@echo off\rfor /f \"tokens=*\" %%i in (\r'powershell -Command \"Get-NetIPAddress | Where-Object {$_.AddressFamily -eq 'IPv4' -and $_.IPAddress -ne '127.0.0.1'} | Select-Object -ExpandProperty IPAddress\"'\r) do (\recho 发现有效IP: %%i\rcurl --data \"opr=pwdLogin\u0026userName=账号\u0026pwd=密码\u0026rememberPwd=1\" http://1.1.1.2/ac_portal/login.php --interface %%i\r)\rpause ",
+  "articleBody": " @echo off for /f \"tokens=*\" %%i in ( 'powershell -Command \"Get-NetIPAddress | Where-Object {$_.AddressFamily -eq 'IPv4' -and $_.IPAddress -ne '127.0.0.1'} | Select-Object -ExpandProperty IPAddress\"' ) do ( echo 发现有效IP: %%i curl --data \"opr=pwdLogin\u0026userName=账号\u0026pwd=密码\u0026rememberPwd=1\" http://1.1.1.2/ac_portal/login.php --interface %%i ) pause ",
   "wordCount" : "38",
   "inLanguage": "en",
   "datePublished": "2025-03-17T12:38:48Z",
-  "dateModified": "2025-12-01T09:31:17.67Z",
+  "dateModified": "2025-12-01T14:48:43.786Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/posts/lq1iwgc7e1/"

@@ -131,6 +131,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">TinyWebDB的简单思考
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>部分核心代码：
+$tag = urldecode($_POST[&#39;tag&#39;]); //获得POST参数，URL解码 if (strpos($_SERVER[&#34;REQUEST_URI&#34;], &#39;storeavalue&#39;)) //判断HTTP请求头 { //储存数据 $sql = &#34;SELECT * FROM tinywebdb WHERE tag=&#39;&#34;.$tag.&#34;&#39;&#34;; //SQL $result = $conn-&gt;query($sql); if ($result-&gt;num_rows &gt; 0) { $sql = &#34;UPDATE tinywebdb SET value = &#39;&#34;.$_POST[&#39;value&#39;].&#34;&#39; where tag=&#39;&#34;.$tag.&#34;&#39;&#34;; } else { $sql = &#34;INSERT INTO tinywebdb &#34;.&#34;(tag,value) &#34;.&#34;VALUES (&#39;&#34;.$tag.&#34;&#39;,&#39;&#34;.$_POST[&#39;value&#39;].&#34;&#39;)&#34;; } $retval = mysqli_query($conn, $sql); //传递SQL命令 } elseif(strpos($_SERVER[&#34;REQUEST_URI&#34;], &#39;getvalue&#39;)) { //查询数据 $sql = &#34;SELECT * FROM tinywebdb WHERE tag=&#39;&#34;.$tag.&#34;&#39;&#34;; //SQL $result = $conn-&gt;query($sql); if ($result-&gt;num_rows &gt; 0) { while ($row = $result-&gt;fetch_assoc()) { $results = array(&#34;VALUE&#34;, $tag, urldecode($row[&#34;value&#34;])); // $result_in_JSON = json_encode($results); // JSON编码 echo $result_in_JSON; // } } else { $results = array(&#34;VALUE&#34;, $tag, &#34;&#34;); $result_in_JSON = json_encode($results); echo $result_in_JSON; } }else{ ?&gt; 其实主要还是查看了文献，用PHP模拟官方使用API接口格式。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-12-21 22:10:55 +0000 UTC'>December 21, 2022</span></footer>
+  <a class="entry-link" aria-label="post link to TinyWebDB的简单思考" href="https://cywd123.github.io/posts/tinywebdb%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%9D%E8%80%83/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">有事没事种种树
     </h2>
   </header>
@@ -246,41 +260,12 @@
   <footer class="entry-footer"><span title='2019-01-25 19:09:48 +0000 UTC'>January 25, 2019</span></footer>
   <a class="entry-link" aria-label="post link to 关于" href="https://cywd123.github.io/posts/about/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hello Gridea
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>👏 欢迎使用 Gridea ！
-✍️ Gridea 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意… …
-Github
-Gridea 主页
-示例网站
-特性👇 📝 你可以使用最酷的 Markdown 语法，进行快速创作
-🌉 你可以给文章配上精美的封面图和在文章任意位置插入图片
-🏷️ 你可以对文章进行标签分组
-📋 你可以自定义菜单，甚至可以创建外部链接菜单
-💻 你可以在 Windows，MacOS 或 Linux 设备上使用此客户端
-🌎 你可以使用 𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌 或 Coding Pages 向世界展示，未来将支持更多平台
-💬 你可以进行简单的配置，接入 Gitalk 或 DisqusJS 评论系统
-🇬🇧 你可以使用中文简体或英语
-🌁 你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力
-🖥 你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步
-🌱 当然 Gridea 还很年轻，有很多不足，但请相信，它会不停向前 🏃
-未来，它一定会成为你离不开的伙伴
-尽情发挥你的才华吧！
-😘 Enjoy~
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-12-12 00:00:00 +0000 UTC'>December 12, 2018</span></footer>
-  <a class="entry-link" aria-label="post link to Hello Gridea" href="https://cywd123.github.io/posts/hello-gridea/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://cywd123.github.io/page/6/">
       «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://cywd123.github.io/page/8/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>

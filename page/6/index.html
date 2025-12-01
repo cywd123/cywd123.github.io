@@ -131,6 +131,18 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">【爬虫】豆瓣Top250爬取
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>豆瓣Top250爬取 这里是简单的代码 这里是不断修改UA的过程，每次请求都会随机生成一个UA，这样就可以绕过豆瓣的反爬虫机制了 这里是爬虫的结果 结果被豆瓣网站检测到了，不过我们的爬虫已经圆满的完成了任务，我们可以看到豆瓣网站的反爬虫机制是通过检测请求头中的User-Agent来判断是否是爬虫，所以我们可以通过修改请求头中的User-Agent来绕过反爬虫机制。 </p>
+  </div>
+  <footer class="entry-footer"><span title='2023-03-26 23:44:33 +0000 UTC'>March 26, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to 【爬虫】豆瓣Top250爬取" href="https://cywd123.github.io/posts/%E7%88%AC%E8%99%AB%E8%B1%86%E7%93%A3top250%E7%88%AC%E5%8F%96/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">买书学习喽
     </h2>
   </header>
@@ -247,20 +259,6 @@ FG.py 作用：爬虫的逻辑结构 import scrapy from FG1.items import Fg1Item
   </div>
   <footer class="entry-footer"><span title='2023-03-04 06:51:57 +0000 UTC'>March 4, 2023</span></footer>
   <a class="entry-link" aria-label="post link to 可爱医学楼" href="https://cywd123.github.io/posts/%E5%8F%AF%E7%88%B1%E5%8C%BB%E5%AD%A6%E6%A5%BC/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">TinyWebDB的简单思考
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>部分核心代码：
-$tag = urldecode($_POST[&#39;tag&#39;]); //获得POST参数，URL解码 if (strpos($_SERVER[&#34;REQUEST_URI&#34;], &#39;storeavalue&#39;)) //判断HTTP请求头 { //储存数据 $sql = &#34;SELECT * FROM tinywebdb WHERE tag=&#39;&#34;.$tag.&#34;&#39;&#34;; //SQL $result = $conn-&gt;query($sql); if ($result-&gt;num_rows &gt; 0) { $sql = &#34;UPDATE tinywebdb SET value = &#39;&#34;.$_POST[&#39;value&#39;].&#34;&#39; where tag=&#39;&#34;.$tag.&#34;&#39;&#34;; } else { $sql = &#34;INSERT INTO tinywebdb &#34;.&#34;(tag,value) &#34;.&#34;VALUES (&#39;&#34;.$tag.&#34;&#39;,&#39;&#34;.$_POST[&#39;value&#39;].&#34;&#39;)&#34;; } $retval = mysqli_query($conn, $sql); //传递SQL命令 } elseif(strpos($_SERVER[&#34;REQUEST_URI&#34;], &#39;getvalue&#39;)) { //查询数据 $sql = &#34;SELECT * FROM tinywebdb WHERE tag=&#39;&#34;.$tag.&#34;&#39;&#34;; //SQL $result = $conn-&gt;query($sql); if ($result-&gt;num_rows &gt; 0) { while ($row = $result-&gt;fetch_assoc()) { $results = array(&#34;VALUE&#34;, $tag, urldecode($row[&#34;value&#34;])); // $result_in_JSON = json_encode($results); // JSON编码 echo $result_in_JSON; // } } else { $results = array(&#34;VALUE&#34;, $tag, &#34;&#34;); $result_in_JSON = json_encode($results); echo $result_in_JSON; } }else{ ?&gt; 其实主要还是查看了文献，用PHP模拟官方使用API接口格式。
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-12-21 22:10:55 +0000 UTC'>December 21, 2022</span></footer>
-  <a class="entry-link" aria-label="post link to TinyWebDB的简单思考" href="https://cywd123.github.io/posts/tinywebdb%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%9D%E8%80%83/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

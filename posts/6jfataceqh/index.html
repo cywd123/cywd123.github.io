@@ -99,12 +99,12 @@ int main(){
 </script><meta property="og:url" content="https://cywd123.github.io/posts/6jfataceqh/">
   <meta property="og:site_name" content="Juiceright">
   <meta property="og:title" content="ST表">
-  <meta property="og:description" content="#include&lt;bits/stdc&#43;&#43;.h&gt;using namespace std;int f[2000010][24],n;int get(int x,int y){int k=log(y-x&#43;1)/log(2);return max(f[x][k],f[y-(1&lt;&lt;k)&#43;1][k]);}int main(){int i,j,m,t,k;scanf(&#34;%d %d&#34;,&amp;n,&amp;m);for(i=1;i&lt;=n;i&#43;&#43;)scanf(&#34;%d&#34;,&amp;f[i][0]);int x=log(n)/log(2)&#43;1;for(int j=1;j&lt;x;j&#43;&#43;)for(int i=1;i&lt;=n-(1&lt;&lt;j)&#43;1;i&#43;&#43;)f[i][j]=max(f[i][j-1],f[i&#43;(1&lt;&lt;(j-1))][j-1]);while(m--){int a,b;scanf(&#34;%d %d&#34;,&amp;a,&amp;b);printf(&#34;%d\n&#34;,get(a,b));}} ">
+  <meta property="og:description" content=" #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; int f[2000010][24],n; int get(int x,int y){ int k=log(y-x&#43;1)/log(2); return max(f[x][k],f[y-(1&lt;&lt;k)&#43;1][k]); } int main(){ int i,j,m,t,k; scanf(&#34;%d %d&#34;,&amp;n,&amp;m); for(i=1;i&lt;=n;i&#43;&#43;) scanf(&#34;%d&#34;,&amp;f[i][0]); int x=log(n)/log(2)&#43;1; for(int j=1;j&lt;x;j&#43;&#43;) for(int i=1;i&lt;=n-(1&lt;&lt;j)&#43;1;i&#43;&#43;) f[i][j]=max(f[i][j-1],f[i&#43;(1&lt;&lt;(j-1))][j-1]); while(m--){ int a,b; scanf(&#34;%d %d&#34;,&amp;a,&amp;b); printf(&#34;%d\n&#34;,get(a,b)); } } ">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-03-10T13:28:40+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-01T14:48:44+00:00">
     <meta property="article:tag" content="编程">
     <meta property="article:tag" content="C&#43;&#43;">
 <meta name="twitter:card" content="summary">
@@ -164,15 +164,15 @@ int main(){
   "@type": "BlogPosting",
   "headline": "ST表",
   "name": "ST表",
-  "description": "\r#include\u0026lt;bits/stdc++.h\u0026gt;\rusing namespace std;\rint f[2000010][24],n;\rint get(int x,int y){\rint k=log(y-x+1)/log(2);\rreturn max(f[x][k],f[y-(1\u0026lt;\u0026lt;k)+1][k]);\r}\rint main(){\rint i,j,m,t,k;\rscanf(\u0026#34;%d %d\u0026#34;,\u0026amp;n,\u0026amp;m);\rfor(i=1;i\u0026lt;=n;i++)\rscanf(\u0026#34;%d\u0026#34;,\u0026amp;f[i][0]);\rint x=log(n)/log(2)+1;\rfor(int j=1;j\u0026lt;x;j++)\rfor(int i=1;i\u0026lt;=n-(1\u0026lt;\u0026lt;j)+1;i++)\rf[i][j]=max(f[i][j-1],f[i+(1\u0026lt;\u0026lt;(j-1))][j-1]);\rwhile(m--){\rint a,b;\rscanf(\u0026#34;%d %d\u0026#34;,\u0026amp;a,\u0026amp;b);\rprintf(\u0026#34;%d\\n\u0026#34;,get(a,b));\r}\r} ",
+  "description": " #include\u0026lt;bits/stdc++.h\u0026gt; using namespace std; int f[2000010][24],n; int get(int x,int y){ int k=log(y-x+1)/log(2); return max(f[x][k],f[y-(1\u0026lt;\u0026lt;k)+1][k]); } int main(){ int i,j,m,t,k; scanf(\u0026#34;%d %d\u0026#34;,\u0026amp;n,\u0026amp;m); for(i=1;i\u0026lt;=n;i++) scanf(\u0026#34;%d\u0026#34;,\u0026amp;f[i][0]); int x=log(n)/log(2)+1; for(int j=1;j\u0026lt;x;j++) for(int i=1;i\u0026lt;=n-(1\u0026lt;\u0026lt;j)+1;i++) f[i][j]=max(f[i][j-1],f[i+(1\u0026lt;\u0026lt;(j-1))][j-1]); while(m--){ int a,b; scanf(\u0026#34;%d %d\u0026#34;,\u0026amp;a,\u0026amp;b); printf(\u0026#34;%d\\n\u0026#34;,get(a,b)); } } ",
   "keywords": [
     "编程", "C++"
   ],
-  "articleBody": "\r#include\rusing namespace std;\rint f[2000010][24],n;\rint get(int x,int y){\rint k=log(y-x+1)/log(2);\rreturn max(f[x][k],f[y-(1\u003c",
+  "articleBody": " #include using namespace std; int f[2000010][24],n; int get(int x,int y){ int k=log(y-x+1)/log(2); return max(f[x][k],f[y-(1\u003c",
   "wordCount" : "38",
   "inLanguage": "en",
   "datePublished": "2025-03-10T13:28:40Z",
-  "dateModified": "2025-12-01T09:31:17.641Z",
+  "dateModified": "2025-12-01T14:48:44.648Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/posts/6jfataceqh/"
