@@ -6,13 +6,13 @@
     <description>Recent content in 编程 on Juiceright</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Dec 2025 14:48:49 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Dec 2025 15:10:48 +0000</lastBuildDate>
     <atom:link href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ppt word快速转换PDF小脚本</title>
-      <link>https://cywd123.github.io/posts/vhulvqwmjm/</link>
+      <link>https://cywd123.github.io/old/posts/vhulvqwmjm/</link>
       <pubDate>Mon, 01 Sep 2025 00:11:31 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/vhulvqwmjm/</guid>
+      <guid>https://cywd123.github.io/old/posts/vhulvqwmjm/</guid>
       <description>&lt;h2 id=&#34;ppt-word快速转换pdf小脚本&#34;&gt;ppt word快速转换PDF小脚本&lt;/h2&gt;
 &lt;p&gt;这个vbs小脚本可以快速将同一目录下的ppt、pptx、doc、docx文件转换成PDF，即点即用，非常方便。&lt;/p&gt;
 &lt;h3 id=&#34;office----ppt-word快速转换pdf-officevbs-&#34;&gt;Office   （ ppt word快速转换PDF-Office.vbs ）&lt;/h3&gt;
@@ -191,9 +191,9 @@ MsgBox &amp;#34;PPT和Word文件已成功转换为PDF格式！&amp;#34;
     </item>
     <item>
       <title>【分子对接】1. 自动从pubchem下载小分子 脚本</title>
-      <link>https://cywd123.github.io/posts/qin3ksdr8z/</link>
+      <link>https://cywd123.github.io/old/posts/qin3ksdr8z/</link>
       <pubDate>Wed, 26 Mar 2025 20:25:40 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/qin3ksdr8z/</guid>
+      <guid>https://cywd123.github.io/old/posts/qin3ksdr8z/</guid>
       <description>&lt;p&gt;本代码用于从pubchem下载小分子(阿司匹林)，并且自动转换成pymol的pdb格式&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import pubchempy as pcp
 from pymol import cmd
@@ -237,9 +237,9 @@ if __name__ == &amp;#34;__main__&amp;#34;:
     </item>
     <item>
       <title>问卷星自动填写脚本</title>
-      <link>https://cywd123.github.io/posts/trgcxiotbs/</link>
+      <link>https://cywd123.github.io/old/posts/trgcxiotbs/</link>
       <pubDate>Sun, 23 Mar 2025 18:17:36 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/trgcxiotbs/</guid>
+      <guid>https://cywd123.github.io/old/posts/trgcxiotbs/</guid>
       <description>&lt;p&gt;2025年3月23日测试批量填写80份正常。&lt;/p&gt;
 &lt;p&gt;需要模拟鼠标操作防止被识别机器人&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import re
@@ -334,9 +334,9 @@ if __name__ == &amp;#34;__main__&amp;#34;:
     </item>
     <item>
       <title>EndNote/Zotero批量添加PubMed文献脚本</title>
-      <link>https://cywd123.github.io/posts/7uduxw77v6/</link>
+      <link>https://cywd123.github.io/old/posts/7uduxw77v6/</link>
       <pubDate>Fri, 14 Mar 2025 21:10:48 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/7uduxw77v6/</guid>
+      <guid>https://cywd123.github.io/old/posts/7uduxw77v6/</guid>
       <description>&lt;p&gt;代理使用8089端口，适配clash&lt;br&gt;
 使用：同目录下创建paper.txt，一行一个填写一个PMID&lt;br&gt;
 生成一个citation.nbib格式的文件&lt;/p&gt;
@@ -401,9 +401,9 @@ f.close()
     </item>
     <item>
       <title>使用Hyper-V配置网卡多个虚拟网卡</title>
-      <link>https://cywd123.github.io/posts/kbg4hlog6b/</link>
+      <link>https://cywd123.github.io/old/posts/kbg4hlog6b/</link>
       <pubDate>Fri, 14 Mar 2025 20:55:35 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/kbg4hlog6b/</guid>
+      <guid>https://cywd123.github.io/old/posts/kbg4hlog6b/</guid>
       <description>&lt;h2 id=&#34;配置-hyper-v&#34;&gt;配置 Hyper-V&lt;/h2&gt;
 &lt;p&gt;首先需要启用 Hyper-V，在 &lt;strong&gt;管理员 Powershell&lt;/strong&gt;输入以下命令：&lt;/p&gt;
 &lt;p&gt;然后重启电脑。&lt;/p&gt;
@@ -430,9 +430,9 @@ Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name &amp;#34;Ethernet
     </item>
     <item>
       <title>python 利用curl将全部网卡适配器登录STU校园网</title>
-      <link>https://cywd123.github.io/posts/byprsldhih/</link>
+      <link>https://cywd123.github.io/old/posts/byprsldhih/</link>
       <pubDate>Fri, 14 Mar 2025 20:49:01 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/byprsldhih/</guid>
+      <guid>https://cywd123.github.io/old/posts/byprsldhih/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import netifaces
 import os
 # 获取所有网络接口
@@ -452,9 +452,9 @@ for iface in interfaces:
     </item>
     <item>
       <title>snakemake流程——SMR&#43;MR&#43;MAGMA分析</title>
-      <link>https://cywd123.github.io/posts/vw5dv077fn/</link>
+      <link>https://cywd123.github.io/old/posts/vw5dv077fn/</link>
       <pubDate>Fri, 14 Mar 2025 20:46:52 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/vw5dv077fn/</guid>
+      <guid>https://cywd123.github.io/old/posts/vw5dv077fn/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 # 定义染色体列表，包含 1 到 22 号染色体
 chromosomes = list(range(1, 23))
@@ -522,9 +522,9 @@ rule run_MR:  #OK
     </item>
     <item>
       <title>playwright自动登录STU WebVPN</title>
-      <link>https://cywd123.github.io/posts/st6eftek36/</link>
+      <link>https://cywd123.github.io/old/posts/st6eftek36/</link>
       <pubDate>Tue, 11 Mar 2025 09:55:00 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/st6eftek36/</guid>
+      <guid>https://cywd123.github.io/old/posts/st6eftek36/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 import re
 from playwright.sync_api import Playwright, sync_playwright, expect
@@ -585,9 +585,9 @@ with sync_playwright() as playwright:
     </item>
     <item>
       <title>ECDSA实例</title>
-      <link>https://cywd123.github.io/posts/22bskm0nwq/</link>
+      <link>https://cywd123.github.io/old/posts/22bskm0nwq/</link>
       <pubDate>Tue, 11 Mar 2025 01:05:02 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/22bskm0nwq/</guid>
+      <guid>https://cywd123.github.io/old/posts/22bskm0nwq/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 import os
 import ecdsa
@@ -626,9 +626,9 @@ print(verify_signature(public_key, message, signature))   #验证签名
     </item>
     <item>
       <title>汕头大学SSO 单点登录接入实例</title>
-      <link>https://cywd123.github.io/posts/40qvh8raw6/</link>
+      <link>https://cywd123.github.io/old/posts/40qvh8raw6/</link>
       <pubDate>Tue, 11 Mar 2025 01:00:18 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/40qvh8raw6/</guid>
+      <guid>https://cywd123.github.io/old/posts/40qvh8raw6/</guid>
       <description>&lt;p&gt;Single Sign On System&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import os
 url=&amp;#34;https://sso.stu.edu.cn/login?service=http://localhost:8080&amp;#34;
@@ -703,9 +703,9 @@ else:
     </item>
     <item>
       <title>STU校园网自动登录脚本</title>
-      <link>https://cywd123.github.io/posts/htt13gbuie/</link>
+      <link>https://cywd123.github.io/old/posts/htt13gbuie/</link>
       <pubDate>Tue, 11 Mar 2025 00:52:49 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/htt13gbuie/</guid>
+      <guid>https://cywd123.github.io/old/posts/htt13gbuie/</guid>
       <description>&lt;p&gt;cmd, ???处分别改称用户名和校园网密码&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 @ECHO OFF
@@ -731,9 +731,9 @@ endlocal
     </item>
     <item>
       <title>vbs脚本 快速将ppt word文档转换成pdf</title>
-      <link>https://cywd123.github.io/posts/92gfku-5zk/</link>
+      <link>https://cywd123.github.io/old/posts/92gfku-5zk/</link>
       <pubDate>Tue, 11 Mar 2025 00:48:44 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/92gfku-5zk/</guid>
+      <guid>https://cywd123.github.io/old/posts/92gfku-5zk/</guid>
       <description>&lt;p&gt;保存为vbs脚本，可以将同目录下的ppt、word转成PDF，非常方便&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;On Error Resume Next
     Const wdExportFormatPDF = 17
@@ -766,9 +766,9 @@ End If
     </item>
     <item>
       <title>雨课堂习题监控</title>
-      <link>https://cywd123.github.io/posts/pbdbfbga9g/</link>
+      <link>https://cywd123.github.io/old/posts/pbdbfbga9g/</link>
       <pubDate>Tue, 11 Mar 2025 00:41:06 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/pbdbfbga9g/</guid>
+      <guid>https://cywd123.github.io/old/posts/pbdbfbga9g/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;原理：雨课堂每次切换PPT时url也会跟着改变。在检测到ppt切换后，获取ppt的图片，并且进行OCR检测，如果出现‘单选’、‘多选’、‘判断’、‘填空’、‘投票’等词汇，就认定该ppt是习题，就会发出警告提醒。
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用前需要配置state.json保存登录记录。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import asyncio
@@ -835,9 +835,9 @@ if __name__ == &amp;#34;__main__&amp;#34;:
     </item>
     <item>
       <title>zkw线段树</title>
-      <link>https://cywd123.github.io/posts/uljgqekoo3/</link>
+      <link>https://cywd123.github.io/old/posts/uljgqekoo3/</link>
       <pubDate>Mon, 10 Mar 2025 13:28:55 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/uljgqekoo3/</guid>
+      <guid>https://cywd123.github.io/old/posts/uljgqekoo3/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 #include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
@@ -888,9 +888,9 @@ while(q--){
     </item>
     <item>
       <title>ST表</title>
-      <link>https://cywd123.github.io/posts/6jfataceqh/</link>
+      <link>https://cywd123.github.io/old/posts/6jfataceqh/</link>
       <pubDate>Mon, 10 Mar 2025 13:28:40 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/6jfataceqh/</guid>
+      <guid>https://cywd123.github.io/old/posts/6jfataceqh/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 #include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
@@ -921,9 +921,9 @@ int main(){
     </item>
     <item>
       <title>SPFA算法</title>
-      <link>https://cywd123.github.io/posts/ldovg2gc2p/</link>
+      <link>https://cywd123.github.io/old/posts/ldovg2gc2p/</link>
       <pubDate>Mon, 10 Mar 2025 13:28:27 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/ldovg2gc2p/</guid>
+      <guid>https://cywd123.github.io/old/posts/ldovg2gc2p/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
 const long long   N=100010,M=200011;
@@ -979,9 +979,9 @@ cout&amp;lt;&amp;lt;d[i]&amp;lt;&amp;lt;&amp;#34; &amp;#34;;
     </item>
     <item>
       <title>Prim算法</title>
-      <link>https://cywd123.github.io/posts/f481dm04tj/</link>
+      <link>https://cywd123.github.io/old/posts/f481dm04tj/</link>
       <pubDate>Mon, 10 Mar 2025 13:28:15 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/f481dm04tj/</guid>
+      <guid>https://cywd123.github.io/old/posts/f481dm04tj/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 #include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
@@ -1035,9 +1035,9 @@ int main() {
     </item>
     <item>
       <title>Prim堆优化版</title>
-      <link>https://cywd123.github.io/posts/ibw-bmba9u/</link>
+      <link>https://cywd123.github.io/old/posts/ibw-bmba9u/</link>
       <pubDate>Mon, 10 Mar 2025 13:27:52 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/ibw-bmba9u/</guid>
+      <guid>https://cywd123.github.io/old/posts/ibw-bmba9u/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
 priority_queue&amp;lt;pair&amp;lt;long long,long long&amp;gt; &amp;gt;q;
@@ -1097,9 +1097,9 @@ work();
     </item>
     <item>
       <title>LCA算法</title>
-      <link>https://cywd123.github.io/posts/5ipfk_eghq/</link>
+      <link>https://cywd123.github.io/old/posts/5ipfk_eghq/</link>
       <pubDate>Mon, 10 Mar 2025 13:27:39 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/5ipfk_eghq/</guid>
+      <guid>https://cywd123.github.io/old/posts/5ipfk_eghq/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;// luogu-judger-enable-o2
 #include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
@@ -1162,9 +1162,9 @@ int main(){
     </item>
     <item>
       <title>匈牙利算法</title>
-      <link>https://cywd123.github.io/posts/rnbllzkklq/</link>
+      <link>https://cywd123.github.io/old/posts/rnbllzkklq/</link>
       <pubDate>Mon, 10 Mar 2025 13:27:28 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/rnbllzkklq/</guid>
+      <guid>https://cywd123.github.io/old/posts/rnbllzkklq/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
 bool ver[1001][1001],v[1001];
@@ -1204,9 +1204,9 @@ init();
     </item>
     <item>
       <title>线段树</title>
-      <link>https://cywd123.github.io/posts/cse8xfl8mp/</link>
+      <link>https://cywd123.github.io/old/posts/cse8xfl8mp/</link>
       <pubDate>Mon, 10 Mar 2025 13:26:55 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/cse8xfl8mp/</guid>
+      <guid>https://cywd123.github.io/old/posts/cse8xfl8mp/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
 struct pl{
@@ -1274,9 +1274,9 @@ while(m--){
     </item>
     <item>
       <title>树状数组</title>
-      <link>https://cywd123.github.io/posts/hl1binzfbh/</link>
+      <link>https://cywd123.github.io/old/posts/hl1binzfbh/</link>
       <pubDate>Mon, 10 Mar 2025 13:26:42 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/hl1binzfbh/</guid>
+      <guid>https://cywd123.github.io/old/posts/hl1binzfbh/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 #include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
@@ -1324,9 +1324,9 @@ int main(){
     </item>
     <item>
       <title>kruskal算法（克鲁斯卡尔算法）</title>
-      <link>https://cywd123.github.io/posts/y1ekvamzmi/</link>
+      <link>https://cywd123.github.io/old/posts/y1ekvamzmi/</link>
       <pubDate>Mon, 10 Mar 2025 13:26:19 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/y1ekvamzmi/</guid>
+      <guid>https://cywd123.github.io/old/posts/y1ekvamzmi/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
 #define ll long long
 using namespace std;
@@ -1363,9 +1363,9 @@ else cout&amp;lt;&amp;lt;&amp;#34;orz&amp;#34;;
     </item>
     <item>
       <title>带lazy标记的zkw线段树</title>
-      <link>https://cywd123.github.io/posts/wwlgapb2j1/</link>
+      <link>https://cywd123.github.io/old/posts/wwlgapb2j1/</link>
       <pubDate>Mon, 10 Mar 2025 13:25:58 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/wwlgapb2j1/</guid>
+      <guid>https://cywd123.github.io/old/posts/wwlgapb2j1/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 #include&amp;lt;bits/stdc++.h&amp;gt;
 using namespace std;
@@ -1424,9 +1424,9 @@ while(q--){
     </item>
     <item>
       <title>排序时间复杂度</title>
-      <link>https://cywd123.github.io/posts/3ilwt_ogfy/</link>
+      <link>https://cywd123.github.io/old/posts/3ilwt_ogfy/</link>
       <pubDate>Mon, 10 Mar 2025 13:21:35 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/3ilwt_ogfy/</guid>
+      <guid>https://cywd123.github.io/old/posts/3ilwt_ogfy/</guid>
       <description>&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -1517,9 +1517,9 @@ while(q--){
     </item>
     <item>
       <title>【深度学习】手写数字图像识别分类（MNIST数据集）</title>
-      <link>https://cywd123.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E5%88%86%E7%B1%BBmnist%E6%95%B0%E6%8D%AE%E9%9B%86/</link>
+      <link>https://cywd123.github.io/old/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E5%88%86%E7%B1%BBmnist%E6%95%B0%E6%8D%AE%E9%9B%86/</link>
       <pubDate>Sat, 01 Apr 2023 20:09:50 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E5%88%86%E7%B1%BBmnist%E6%95%B0%E6%8D%AE%E9%9B%86/</guid>
+      <guid>https://cywd123.github.io/old/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E5%88%86%E7%B1%BBmnist%E6%95%B0%E6%8D%AE%E9%9B%86/</guid>
       <description>&lt;h1 id=&#34;卷积神经网络&#34;&gt;卷积神经网络&lt;/h1&gt;
 &lt;h2 id=&#34;mnist介绍&#34;&gt;MNIST介绍&lt;/h2&gt;
 &lt;p&gt;MNIST 数据集可在 &lt;a href=&#34;http://yann.lecun.com/exdb/mnist/&#34;&gt;http://yann.lecun.com/exdb/mnist/&lt;/a&gt; 获取, 它包含了四个部分:&lt;/p&gt;
@@ -1531,9 +1531,9 @@ Test set labels: t10k-labels-idx1-ubyte.gz (5KB, 解压后 10 KB, 包含 10,000 
     </item>
     <item>
       <title>【机器学习】四层人工神经网络拟合二元二次函数</title>
-      <link>https://cywd123.github.io/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/</link>
+      <link>https://cywd123.github.io/old/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/</link>
       <pubDate>Wed, 29 Mar 2023 17:54:00 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/</guid>
+      <guid>https://cywd123.github.io/old/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/</guid>
       <description>&lt;h1 id=&#34;四层人工神经网络拟合二元二次函数&#34;&gt;四层人工神经网络拟合二元二次函数&lt;/h1&gt;
 &lt;p&gt;如果想了解人工神经网络，请认真阅读每个字，字字珠玑。😂&lt;/p&gt;
 &lt;p&gt;核心代码:&lt;/p&gt;
@@ -1568,7 +1568,7 @@ Test set labels: t10k-labels-idx1-ubyte.gz (5KB, 解压后 10 KB, 包含 10,000 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;、、、、、、、、、、&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们这个模型拟合的函数是：f(x,x2)=x^2+x2&lt;/p&gt;
 &lt;h4 id=&#34;最最重要的核心调用框架&#34;&gt;最最重要的核心调用框架&lt;/h4&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/1741976905763.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/1741976905763.jpg&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;神经网络解释&#34;&gt;神经网络解释&lt;/h2&gt;
 &lt;p&gt;这是一个四层人工神经网络，拟合二元二次函数。&lt;/p&gt;
@@ -1583,14 +1583,14 @@ Test set labels: t10k-labels-idx1-ubyte.gz (5KB, 解压后 10 KB, 包含 10,000 
 学习率：1e-7 
 损失函数：MSELoss(即均方误差，也就是绝对误差的平方)
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;结构图&#34;&gt;结构图&lt;/h4&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/1741976913419.jpg&#34;&gt;&lt;br&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9B%9B%E5%B1%82%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%8B%9F%E5%90%88%E4%BA%8C%E5%85%83%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0/1741976913419.jpg&#34;&gt;&lt;br&gt;
 (一目了然这个属于是=。=）&lt;/p&gt;</description>
     </item>
     <item>
       <title>【机器学习】可拟合任意线性函数的小玩意儿</title>
-      <link>https://cywd123.github.io/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/</link>
+      <link>https://cywd123.github.io/old/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/</link>
       <pubDate>Mon, 27 Mar 2023 22:27:23 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/</guid>
+      <guid>https://cywd123.github.io/old/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/</guid>
       <description>&lt;h1 id=&#34;机器学习可拟合任意线性函数的小玩意儿&#34;&gt;【机器学习】可拟合任意线性函数的小玩意儿&lt;/h1&gt;
 &lt;h3 id=&#34;先上完整代码&#34;&gt;先上完整代码&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import torch as t
@@ -1639,25 +1639,25 @@ while(1):
     </item>
     <item>
       <title>【爬虫】豆瓣Top250爬取</title>
-      <link>https://cywd123.github.io/posts/%E7%88%AC%E8%99%AB%E8%B1%86%E7%93%A3top250%E7%88%AC%E5%8F%96/</link>
+      <link>https://cywd123.github.io/old/posts/%E7%88%AC%E8%99%AB%E8%B1%86%E7%93%A3top250%E7%88%AC%E5%8F%96/</link>
       <pubDate>Sun, 26 Mar 2023 23:44:33 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/%E7%88%AC%E8%99%AB%E8%B1%86%E7%93%A3top250%E7%88%AC%E5%8F%96/</guid>
+      <guid>https://cywd123.github.io/old/posts/%E7%88%AC%E8%99%AB%E8%B1%86%E7%93%A3top250%E7%88%AC%E5%8F%96/</guid>
       <description>&lt;h1 id=&#34;豆瓣top250爬取&#34;&gt;豆瓣Top250爬取&lt;/h1&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/1741976760243.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/%E3%80%90%E7%88%AC%E8%99%AB%E3%80%91%E8%B1%86%E7%93%A3Top250%E7%88%AC%E5%8F%96/1741976760243.jpg&#34;&gt;&lt;/p&gt;
 &lt;h5 id=&#34;这里是简单的代码&#34;&gt;这里是简单的代码&lt;/h5&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/1741976763554.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/%E3%80%90%E7%88%AC%E8%99%AB%E3%80%91%E8%B1%86%E7%93%A3Top250%E7%88%AC%E5%8F%96/1741976763554.jpg&#34;&gt;&lt;/p&gt;
 &lt;h5 id=&#34;这里是不断修改ua的过程每次请求都会随机生成一个ua这样就可以绕过豆瓣的反爬虫机制了&#34;&gt;这里是不断修改UA的过程，每次请求都会随机生成一个UA，这样就可以绕过豆瓣的反爬虫机制了&lt;/h5&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/1741976779793.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/%E3%80%90%E7%88%AC%E8%99%AB%E3%80%91%E8%B1%86%E7%93%A3Top250%E7%88%AC%E5%8F%96/1741976779793.jpg&#34;&gt;&lt;/p&gt;
 &lt;h5 id=&#34;这里是爬虫的结果&#34;&gt;这里是爬虫的结果&lt;/h5&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/1741976793865.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/%E3%80%90%E7%88%AC%E8%99%AB%E3%80%91%E8%B1%86%E7%93%A3Top250%E7%88%AC%E5%8F%96/1741976793865.jpg&#34;&gt;&lt;/p&gt;
 &lt;h5 id=&#34;结果被豆瓣网站检测到了不过我们的爬虫已经圆满的完成了任务我们可以看到豆瓣网站的反爬虫机制是通过检测请求头中的user-agent来判断是否是爬虫所以我们可以通过修改请求头中的user-agent来绕过反爬虫机制&#34;&gt;结果被豆瓣网站检测到了，不过我们的爬虫已经圆满的完成了任务，我们可以看到豆瓣网站的反爬虫机制是通过检测请求头中的User-Agent来判断是否是爬虫，所以我们可以通过修改请求头中的User-Agent来绕过反爬虫机制。&lt;/h5&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/1741976799043.jpg&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cywd123.github.io/images/%E3%80%90%E7%88%AC%E8%99%AB%E3%80%91%E8%B1%86%E7%93%A3Top250%E7%88%AC%E5%8F%96/1741976799043.jpg&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>【爬虫】FitGirl-Repack的Scrapy爬虫代码</title>
-      <link>https://cywd123.github.io/posts/fitgirl-repack%E6%B8%B8%E6%88%8F%E7%BD%91%E7%AB%99scrapy%E7%88%AC%E8%99%AB%E4%BB%A3%E7%A0%81/</link>
+      <link>https://cywd123.github.io/old/posts/fitgirl-repack%E6%B8%B8%E6%88%8F%E7%BD%91%E7%AB%99scrapy%E7%88%AC%E8%99%AB%E4%BB%A3%E7%A0%81/</link>
       <pubDate>Wed, 15 Mar 2023 15:53:25 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/fitgirl-repack%E6%B8%B8%E6%88%8F%E7%BD%91%E7%AB%99scrapy%E7%88%AC%E8%99%AB%E4%BB%A3%E7%A0%81/</guid>
+      <guid>https://cywd123.github.io/old/posts/fitgirl-repack%E6%B8%B8%E6%88%8F%E7%BD%91%E7%AB%99scrapy%E7%88%AC%E8%99%AB%E4%BB%A3%E7%A0%81/</guid>
       <description>&lt;h2 id=&#34;今天花了一点时间写了一个fitgirl-repacks游戏网站的自动爬虫脚本&#34;&gt;今天花了一点时间，写了一个&lt;a href=&#34;https://fitgirl-repacks.site/&#34; title=&#34;FitGirl Repacks&#34;&gt;FitGirl Repacks&lt;/a&gt;游戏网站的自动爬虫脚本&lt;/h2&gt;
 &lt;p&gt;用的是scrapy的爬虫框架&lt;/p&gt;
 &lt;h4 id=&#34;itemspy-作用确定需要爬取的内容&#34;&gt;items.py 作用：确定需要爬取的内容&lt;/h4&gt;
@@ -1694,9 +1694,9 @@ class FgSpider(scrapy.Spider):
     </item>
     <item>
       <title>TinyWebDB的简单思考</title>
-      <link>https://cywd123.github.io/posts/tinywebdb%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%9D%E8%80%83/</link>
+      <link>https://cywd123.github.io/old/posts/tinywebdb%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%9D%E8%80%83/</link>
       <pubDate>Wed, 21 Dec 2022 22:10:55 +0000</pubDate>
-      <guid>https://cywd123.github.io/posts/tinywebdb%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%9D%E8%80%83/</guid>
+      <guid>https://cywd123.github.io/old/posts/tinywebdb%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%9D%E8%80%83/</guid>
       <description>&lt;p&gt;部分核心代码：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
 	$tag = urldecode($_POST[&amp;#39;tag&amp;#39;]);            //获得POST参数，URL解码
