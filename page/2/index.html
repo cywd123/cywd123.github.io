@@ -147,6 +147,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">ppt word快速转换PDF小脚本
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ppt word快速转换PDF小脚本 这个vbs小脚本可以快速将同一目录下的ppt、pptx、doc、docx文件转换成PDF，即点即用，非常方便。
+Office （ ppt word快速转换PDF-Office.vbs ） On Error Resume Next MsgBox &#34;Start converting PPT and Word files into PDF format. Please ensure Office or WPS is installed. Please wait...&#34;, vbInformation, &#34;Conversion Start&#34; Const wdExportFormatPDF = 17 Dim oWord, ppt, fso, isOffice, isWPS &#39; 初始化变量 Set fso = WScript.CreateObject(&#34;Scripting.Filesystemobject&#34;) isOffice = False isWPS = False Set oWord = WScript.CreateObject(&#34;KWPS.Application&#34;) Set ppt = CreateObject(&#34;KWPP.application&#34;) If IsObject(oWord) And IsObject(ppt) Then isOffice = True Else If IsObject(oWord) Then oWord.Quit If IsObject(ppt) Then ppt.Quit Set oWord = Nothing Set ppt = Nothing Set oWord = WScript.CreateObject(&#34;Word.Application&#34;) Set ppt = CreateObject(&#34;PowerPoint.application&#34;) If IsObject(oWord) And IsObject(ppt) Then isWPS = True Else &#39; 两种办公软件都未安装 If IsObject(oWord) Then oWord.Quit If IsObject(ppt) Then ppt.Quit Set oWord = Nothing Set ppt = Nothing Set fso = Nothing MsgBox &#34;Failed to find Office or WPS. Please install one of them first.&#34;, vbCritical, &#34;Error&#34; WScript.Quit End If End If &#39; 开始处理文件夹 ProcessFolder fso.GetFolder(&#34;.&#34;) &#39; 清理对象 If IsObject(oWord) Then oWord.Quit Set oWord = Nothing End If If IsObject(ppt) Then ppt.Quit Set ppt = Nothing End If Set fso = Nothing MsgBox &#34;PPT and Word files have been successfully converted into PDF format!&#34;, vbInformation, &#34;Conversion Complete&#34; Sub ProcessFolder(folder) Dim ff, subFolder, pdfPath For Each ff In folder.Files &#39; 处理Word文件 (.doc, .docx) 且不是临时文件 If (LCase(Right(ff.Name, 4)) = &#34;.doc&#34; Or LCase(Right(ff.Name, 5)) = &#34;.docx&#34;) And Left(ff.Name, 1) &lt;&gt; &#34;~&#34; Then pdfPath = Left(ff.Path, InStrRev(ff.Path, &#34;.&#34;)) &amp; &#34;pdf&#34; Set oDoc = oWord.Documents.Open(ff.Path) oDoc.ExportAsFixedFormat pdfPath, wdExportFormatPDF oDoc.Close Set oDoc = Nothing End If &#39; 处理PowerPoint文件 (.ppt, .pptx) 且不是临时文件 If (LCase(Right(ff.Name, 4)) = &#34;.ppt&#34; Or LCase(Right(ff.Name, 5)) = &#34;.pptx&#34;) And Left(ff.Name, 1) &lt;&gt; &#34;~&#34; Then pdfPath = Left(ff.Path, InStrRev(ff.Path, &#34;.&#34;)) &amp; &#34;pdf&#34; Set pptfile = ppt.Presentations.Open(ff.Path, False, False, False) pptfile.SaveAs pdfPath, 32, False pptfile.Close Set pptfile = Nothing End If Next &#39; 递归处理子文件夹 For Each subFolder In folder.SubFolders ProcessFolder subFolder Next End Sub WPS ( ppt word快速转换PDF-WPS.vbs ) On Error Resume Next MsgBox &#34;开始转换PPT和Word文件为PDF格式，请稍候...&#34; Const wdExportFormatPDF = 17 Set oWord = WScript.CreateObject(&#34;KWPS.Application&#34;) Set ppt = CreateObject(&#34;KWPP.application&#34;) Set fso = WScript.CreateObject(&#34;Scripting.Filesystemobject&#34;) Set fds=fso.GetFolder(&#34;.&#34;) Set ffs=fds.Files For Each ff In ffs If (LCase(Right(ff.Name,4))=&#34;.doc&#34; Or LCase(Right(ff.Name,4))=&#34;docx&#34; ) And Left(ff.Name,1)&lt;&gt;&#34;~&#34; Then Set oDoc=oWord.Documents.Open(ff.Path) oDoc.ExportAsFixedFormat Left(ff.Path,InStrRev(ff.Path,&#34;.&#34;))&amp;&#34;pdf&#34;,wdExportFormatPDF oDoc.Close End If If (LCase(Right(ff.Name,4))=&#34;.ppt&#34; Or LCase(Right(ff.Name,4))=&#34;pptx&#34; ) And Left(ff.Name,1)&lt;&gt;&#34;~&#34; Then Set pptfile = ppt.Presentations.Open(ff.Path,false,false,false) pptfile.Saveas Left(ff.Path,InStrRev(ff.Path,&#34;.&#34;))&amp;&#34;pdf&#34;,32,false pptfile.Close End If Next odoc.Close oword.Quit pptfile.Close ppt.Quit Set oDoc=Nothing Set oWord =Nothing Set pptfile = Nothing Set ppt = Nothing MsgBox &#34;PPT和Word文件已成功转换为PDF格式！&#34; 合并 （ppt word快速转换PDF-合并.vbs） On Error Resume Next MsgBox &#34;开始转换PPT和Word文件为PDF格式，请稍候...&#34; Const wdExportFormatPDF = 17 Dim oWord, ppt, isWPS, isOffice &#39; 尝试创建WPS对象 Set oWord = WScript.CreateObject(&#34;KWPS.Application&#34;) Set ppt = CreateObject(&#34;KWPP.Application&#34;) &#39; 检测是否是WPS环境 If Not oWord Is Nothing And Not ppt Is Nothing Then isWPS = True Else &#39; 尝试创建Office对象 Set oWord = WScript.CreateObject(&#34;Word.Application&#34;) Set ppt = CreateObject(&#34;PowerPoint.Application&#34;) If Not oWord Is Nothing And Not ppt Is Nothing Then isOffice = True Else MsgBox &#34;未检测到WPS或Office，请确保已安装其中一款办公软件！&#34; WScript.Quit End If End If Set fso = WScript.CreateObject(&#34;Scripting.FileSystemObject&#34;) Set fds = fso.GetFolder(&#34;.&#34;) Set ffs = fds.Files For Each ff In ffs &#39; 处理Word文件 If (LCase(Right(ff.Name, 4)) = &#34;.doc&#34; Or LCase(Right(ff.Name, 4)) = &#34;docx&#34;) And Left(ff.Name, 1) &lt;&gt; &#34;~&#34; Then Set oDoc = oWord.Documents.Open(ff.Path) oDoc.ExportAsFixedFormat Left(ff.Path, InStrRev(ff.Path, &#34;.&#34;)) &amp; &#34;pdf&#34;, wdExportFormatPDF oDoc.Close Set oDoc = Nothing End If &#39; 处理PPT文件 If (LCase(Right(ff.Name, 4)) = &#34;.ppt&#34; Or LCase(Right(ff.Name, 4)) = &#34;pptx&#34;) And Left(ff.Name, 1) &lt;&gt; &#34;~&#34; Then Set pptfile = ppt.Presentations.Open(ff.Path, False, False, False) pptfile.SaveAs Left(ff.Path, InStrRev(ff.Path, &#34;.&#34;)) &amp; &#34;pdf&#34;, 32, False pptfile.Close Set pptfile = Nothing End If Next &#39; 清理对象 If Not oWord Is Nothing Then oWord.Quit Set oWord = Nothing End If If Not ppt Is Nothing Then ppt.Quit Set ppt = Nothing End If MsgBox &#34;PPT和Word文件已成功转换为PDF格式！&#34; </p>
+  </div>
+  <footer class="entry-footer"><span title='2025-09-01 00:11:31 +0000 UTC'>September 1, 2025</span>&nbsp;·&nbsp;<span>3 min</span></footer>
+  <a class="entry-link" aria-label="post link to ppt word快速转换PDF小脚本" href="https://cywd123.github.io/old/posts/vhulvqwmjm/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">考科目三（偶遇车祸版）
     </h2>
   </header>
@@ -261,21 +274,6 @@ import re from playwright.async_api import Playwright, async_playwright #from pl
   </div>
   <footer class="entry-footer"><span title='2025-03-17 12:38:48 +0000 UTC'>March 17, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
   <a class="entry-link" aria-label="post link to cmd 利用curl实现全网卡登录STU校园网" href="https://cywd123.github.io/old/posts/lq1iwgc7e1/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">EndNote/Zotero批量添加PubMed文献脚本
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>代理使用8089端口，适配clash
-使用：同目录下创建paper.txt，一行一个填写一个PMID
-生成一个citation.nbib格式的文件
-# %% ###预处理，先把文章全部复制到一个paper.txt文本中 ###先获取所有PMID: 后面的数字 import re import pandas as pd import numpy as np proxies = {&#34;http&#34;: &#34;http://127.0.0.1:8089&#34;} pm=pd.read_csv(&#39;paper.txt&#39;,header=None) # to list pm=pm[0].tolist() # %% import requests from concurrent.futures import ThreadPoolExecutor def fetch_pmid(pmid): max_retries = 300 # 设置最大重试次数 for attempt in range(max_retries): url = &#39;https://api.ncbi.nlm.nih.gov/lit/ctxp/v1/pubmed/?format=medline&amp;id={}&#39;.format(pmid) print(url) print(&#34;-------requests start--------------&#34;) res = requests.get(url,proxies=proxies) print(&#34;-------requests end--------------&#34;) print(res) if res.status_code == 200: res.close() return res.text &#43; &#34;\n&#34; else: print(f&#34;Request failed, retrying... (attempt {attempt &#43; 1}/{max_retries})&#34;) print(f&#34;Failed to fetch PMID {pmid} after {max_retries} attempts.&#34;) return &#34;&#34; cita = [] # 设置线程数，这里设置为4，你可以根据需要调整 num_threads = 32 with ThreadPoolExecutor(max_workers=num_threads) as executor: # 使用多线程并行处理每个pmid results = list(executor.map(fetch_pmid, pm)) cita.extend(results) # 替换处理 # %% cita = [y.replace(&#34;\r&#34;, &#34;&#34;) for y in cita] cita = [y &#43; &#34;\n&#34; for y in cita] f=open(&#34;citation.nbib&#34;,&#34;w&#34;,encoding=&#39;utf-8&#39;) f.writelines(cita) f.close() </p>
-  </div>
-  <footer class="entry-footer"><span title='2025-03-14 21:10:48 +0000 UTC'>March 14, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to EndNote/Zotero批量添加PubMed文献脚本" href="https://cywd123.github.io/old/posts/7uduxw77v6/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
