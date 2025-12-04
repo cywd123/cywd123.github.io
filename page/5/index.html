@@ -147,125 +147,180 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">雨课堂习题监控
+    <h2 class="entry-hint-parent">线段树
     </h2>
   </header>
   <div class="entry-content">
-    <p>原理：雨课堂每次切换PPT时url也会跟着改变。在检测到ppt切换后，获取ppt的图片，并且进行OCR检测，如果出现‘单选’、‘多选’、‘判断’、‘填空’、‘投票’等词汇，就认定该ppt是习题，就会发出警告提醒。 使用前需要配置state.json保存登录记录。
-import asyncio from playwright.async_api import async_playwright import requests import threading import winsound from plyer import notification import easyocr url=&#34;&#34; # 初始化 EasyOCR reader = easyocr.Reader([&#39;ch_sim&#39;, &#39;en&#39;]) async def notice_ti(page): # 尝试查找图片元素 elementimg = await page.query_selector_all(&#39;//*[@id=&#34;app&#34;]/section/section[1]/section[2]/section/section/section/section[1]/section/div/section/section/img&#39;) if len(elementimg) == 0: elementimg = await page.query_selector_all(&#39;//*[@id=&#34;app&#34;]/section/section[1]/section[2]/section/section/section/section[1]/section/section/section/section/img&#39;) # 发送新页面通知 notification.notify(title=&#39;新的一页&#39;, message=&#39;新的一页&#39;, app_icon=None, timeout=0.5) if elementimg: # 获取图片地址 img_url = await elementimg[0].get_attribute(&#39;src&#39;) # 直接下载图片 tmp = requests.get(img_url) with open(&#39;tmp.png&#39;, &#39;wb&#39;) as f: f.write(tmp.content) # 使用 EasyOCR 识别图片文字 result = reader.readtext(&#39;tmp.png&#39;) # 如果 result 中含有‘单选’、‘多选’、‘判断’、‘填空’、‘投票’、‘问答’、‘作业’、‘讨论’、‘实验’、‘课件’、‘课程’、‘提交’等关键词，就发送通知 keywords = [&#39;单选&#39;, &#39;多选&#39;, &#39;判断&#39;, &#39;填空&#39;, &#39;投票&#39;, &#39;问答&#39;, &#39;作业&#39;, &#39;讨论&#39;, &#39;实验&#39;, &#39;提交&#39;] #keywords = [&#39;电解&#39;] if any(x in str(result) for x in keywords): print(img_url) threading.Thread(target=lambda: winsound.Beep(440, 3000)).start() notification.notify(title=&#39;有题！&#39;, message=&#39;有题！&#39;, app_icon=None, timeout=0.5) # ai(result) # clear_page() async def main(): async with async_playwright() as p: # 配置浏览器选项 browser = await p.chromium.launch(headless=True) context = await browser.new_context(storage_state=&#39;state.json&#39;) page = await context.new_page() # 打开指定页面 await page.goto(url) current_url = page.url while True: # 等待 URL 变化 await page.wait_for_url(lambda url: url != current_url, timeout=10000000) current_url = page.url await notice_ti(page) #await print(&#34;已到达新页面&#34;) if __name__ == &#34;__main__&#34;: url=input(&#34;请输入网址：&#34;) asyncio.run(main()) </p>
+    <p>#include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; struct pl{ long long l,r,v,add,tim; #define l(x) tree[x].l #define r(x) tree[x].r #define v(x) tree[x].v #define add(x) tree[x].add }tree[4*100000]; long long a[100001]; void build(long long p,long long l,long long r){ l(p)=l;r(p)=r; if(l==r){ v(p)=a[l];return; } long long mid=(l&#43;r)&gt;&gt;1; build(p&lt;&lt;1,l,mid); build((p&lt;&lt;1)&#43;1,mid&#43;1,r); v(p)=v(p*2)&#43;v(p*2&#43;1); } void spread(long long p){ if(add(p)==0)return; v(p*2)&#43;=add(p)*(r(p*2)-l(p*2)&#43;1); v(p*2&#43;1)&#43;=add(p)*(r(p*2&#43;1)-l(p*2&#43;1)&#43;1); add(p*2)&#43;=add(p); add(p*2&#43;1)&#43;=add(p); add(p)=0; } void chg(long long p,long long l,long long r,long long d){ if(l&lt;=l(p)&amp;&amp;r&gt;=r(p)){ v(p)&#43;=d*(r(p)-l(p)&#43;1); add(p)&#43;=d; return; } spread(p); long long mid=(l(p)&#43;r(p))&gt;&gt;1; if(l&lt;=mid)chg(p*2,l,r,d); if(r&gt;mid)chg(p*2&#43;1,l,r,d); v(p)=v(p*2)&#43;v(p*2&#43;1); } long long ask(long long p,long long l,long long r){ if(l&lt;=l(p)&amp;&amp;r&gt;=r(p))return v(p); spread(p); long long mid=(l(p)&#43;r(p))&gt;&gt;1; long long ans=0; if(l&lt;=mid)ans&#43;=ask(p*2,l,r); if(r&gt;mid)ans&#43;=ask(p*2&#43;1,l,r); return ans; } int main(){ long long i,j,n,m,t,k; cin&gt;&gt;n&gt;&gt;m; for(i=1;i&lt;=n;i&#43;&#43;)cin&gt;&gt;a[i]; build(1,1,n); while(m--){ long long op,l,r,k; cin&gt;&gt;op&gt;&gt;l&gt;&gt;r; if(op==1){ cin&gt;&gt;k; chg(1,l,r,k); }else cout&lt;&lt;ask(1,l,r)&lt;&lt;endl;	} } </p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-11 00:41:06 +0000 UTC'>March 11, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to 雨课堂习题监控" href="https://cywd123.github.io/old/posts/pbdbfbga9g/"></a>
+  <footer class="entry-footer"><span title='2025-03-10 13:26:55 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 线段树" href="https://cywd123.github.io/old/posts/cse8xfl8mp/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">第二篇SCI！！！
+    <h2 class="entry-hint-parent">树状数组
     </h2>
   </header>
   <div class="entry-content">
-    <p>这是鼠鼠我本科的第二篇SCI，第一位共同一作！！
-</p>
+    <p> #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; long long c[500001]; long long i,j,n,m,t,k; long long lb(long long x) {return x&amp;(-x); } long long get(long long x) { long long ans=0; for(;x;x-=lb(x)) ans&#43;=c[x]; return ans; } void add(long long x,long long y){ for(long long i=x;i&lt;=n;i&#43;=lb(i)) c[i]&#43;=y; } int main(){ cin&gt;&gt;n&gt;&gt;m; for(i=1;i&lt;=n;i&#43;&#43;) {scanf(&#34;%lld&#34;,&amp;t); add(i,t); } while(m--){ cin&gt;&gt;t; if(t==1){ cin&gt;&gt;j&gt;&gt;k; add(j,k); } else { cin&gt;&gt;j&gt;&gt;k; cout&lt;&lt;get(k)-get(j-1)&lt;&lt;endl; } } } </p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-11 00:31:00 +0000 UTC'>March 11, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to 第二篇SCI！！！" href="https://cywd123.github.io/old/posts/nuwhdrsyql/"></a>
+  <footer class="entry-footer"><span title='2025-03-10 13:26:42 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 树状数组" href="https://cywd123.github.io/old/posts/hl1binzfbh/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">壁纸图片
+    <h2 class="entry-hint-parent">kruskal算法（克鲁斯卡尔算法）
     </h2>
   </header>
   <div class="entry-content">
-    <p>
-</p>
+    <p>#include&lt;bits/stdc&#43;&#43;.h&gt; #define ll long long using namespace std; ll fa[5010]; ll get(ll x) { return x==fa[x]?x:fa[x]=get(fa[x]); } void mrg(ll a,ll b) { fa[get(a)]=get(b); } struct pl{ ll x,y,z; bool operator&lt;(const pl &amp;a){ return z&lt;a.z; } }mp[200001]; int main() { ll i,j,n,m,t=0,k=0; cin&gt;&gt;n&gt;&gt;m; for(i=1;i&lt;=m;i&#43;&#43;) { cin&gt;&gt;mp[i].x&gt;&gt;mp[i].y&gt;&gt;mp[i].z; } sort(mp&#43;1,mp&#43;1&#43;m); for(i=1;i&lt;=n;i&#43;&#43;)fa[i]=i; for(i=1;i&lt;=m&amp;&amp;t&lt;n;i&#43;&#43;){ if(get(mp[i].x)!=get(mp[i].y))mrg(mp[i].x,mp[i].y),t&#43;&#43;,k&#43;=mp[i].z;	} if(t==n-1) cout&lt;&lt;k; else cout&lt;&lt;&#34;orz&#34;; } </p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 13:38:44 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>0 min</span></footer>
-  <a class="entry-link" aria-label="post link to 壁纸图片" href="https://cywd123.github.io/old/posts/6hna3dlrjh/"></a>
+  <footer class="entry-footer"><span title='2025-03-10 13:26:19 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to kruskal算法（克鲁斯卡尔算法）" href="https://cywd123.github.io/old/posts/y1ekvamzmi/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">zkw线段树
+    <h2 class="entry-hint-parent">带lazy标记的zkw线段树
     </h2>
   </header>
   <div class="entry-content">
-    <p> #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; int d[500000*4],n,m=1; inline void build(int n){ while(m&lt;=n)m&lt;&lt;=1; for(int i=m&#43;1;i&lt;=m&#43;n;i&#43;&#43;) cin&gt;&gt;d[i]; for(int i=m-1;i;--i) d[i]=d[i&lt;&lt;1]&#43;d[i&lt;&lt;1|1]; } void chg(int x,int v){ d[x=m&#43;x]&#43;=v; while(x) d[x&gt;&gt;=1]=d[x&lt;&lt;1]&#43;d[x&lt;&lt;1|1]; } int add(int x,int v){ for(int i=x&#43;m;i;i&gt;&gt;=1)d[i]&#43;=v; } int ask(int l,int r){ int ans=0; for(l=m&#43;l-1,r=m&#43;r&#43;1 ; l^r^1 ; l&gt;&gt;=1,r&gt;&gt;=1){ if(~l&amp;1)ans&#43;=d[l^1]; if(r&amp;1)ans&#43;=d[r^1]; } return ans; } void debug(){ for(int i=m&#43;1;i&lt;=m&#43;n;i&#43;&#43;)cout&lt;&lt;d[i]&lt;&lt;&#34; &#34;; cout&lt;&lt;m&lt;&lt;endl; } int main(){ int q; cin&gt;&gt;n&gt;&gt;q; build(n); while(q--){ int op,a,b; cin&gt;&gt;op&gt;&gt;a&gt;&gt;b; if(op==1)add(a,b); else cout&lt;&lt;ask(a,b)&lt;&lt;endl; } } </p>
+    <p> #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; long long d[500000&lt;&lt;2],laz[500000&lt;&lt;2],n,m=1;; void build(){ while(m&lt;=n)m&lt;&lt;=1; for(long long i=m&#43;1;i&lt;=m&#43;n;i&#43;&#43;)cin&gt;&gt;d[i]; for(long long i=m-1;i&gt;=1;i--)d[i]=d[i&lt;&lt;1]&#43;d[i&lt;&lt;1|1]; } long long get(long long x,long long y){ long long ans=0,lc=0,rc=0,cnt=1;//cnt=1 for(x&#43;=m-1,y&#43;=m&#43;1; x^y^1; x&gt;&gt;=1,y&gt;&gt;=1,cnt&lt;&lt;=1){ if(laz[x])ans&#43;=laz[x]*lc; if(laz[y])ans&#43;=laz[y]*rc; if(~x&amp;1)ans&#43;=d[x^1],lc&#43;=cnt; if(y&amp;1)ans&#43;=d[y^1],rc&#43;=cnt; } for(;x;x&gt;&gt;=1,y&gt;&gt;=1)ans&#43;=laz[x]*lc,ans&#43;=laz[y]*rc; return ans; } void add(long long x,long long y,long long v){ long long ans=0,lc=0,rc=0,cnt=1;//cnt=1 for(x&#43;=m-1,y&#43;=m&#43;1; x^y^1; x&gt;&gt;=1,y&gt;&gt;=1,cnt&lt;&lt;=1){ d[x]&#43;=v*lc;d[y]&#43;=v*rc; if(~x&amp;1) laz[x^1]&#43;=v,d[x^1]&#43;=v*cnt,lc&#43;=cnt; if(y&amp;1) laz[y^1]&#43;=v,d[y^1]&#43;=v*cnt,rc&#43;=cnt;	} for(;x;x&gt;&gt;=1,y&gt;&gt;=1)d[x]&#43;=v*lc,d[y]&#43;=v*rc; } int main(){ long long q; cin&gt;&gt;n&gt;&gt;q; build(); while(q--){ long long a,b,op,c; cin&gt;&gt;op&gt;&gt;a&gt;&gt;b; if(op==1){ cin&gt;&gt;c; add(a,b,c); }else{ cout&lt;&lt;get(a,b)&lt;&lt;endl; } } } </p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 13:28:55 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to zkw线段树" href="https://cywd123.github.io/old/posts/uljgqekoo3/"></a>
+  <footer class="entry-footer"><span title='2025-03-10 13:25:58 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 带lazy标记的zkw线段树" href="https://cywd123.github.io/old/posts/wwlgapb2j1/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">ST表
+    <h2 class="entry-hint-parent">排序时间复杂度
     </h2>
   </header>
   <div class="entry-content">
-    <p> #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; int f[2000010][24],n; int get(int x,int y){ int k=log(y-x&#43;1)/log(2); return max(f[x][k],f[y-(1&lt;&lt;k)&#43;1][k]); } int main(){ int i,j,m,t,k; scanf(&#34;%d %d&#34;,&amp;n,&amp;m); for(i=1;i&lt;=n;i&#43;&#43;) scanf(&#34;%d&#34;,&amp;f[i][0]); int x=log(n)/log(2)&#43;1; for(int j=1;j&lt;x;j&#43;&#43;) for(int i=1;i&lt;=n-(1&lt;&lt;j)&#43;1;i&#43;&#43;) f[i][j]=max(f[i][j-1],f[i&#43;(1&lt;&lt;(j-1))][j-1]); while(m--){ int a,b; scanf(&#34;%d %d&#34;,&amp;a,&amp;b); printf(&#34;%d\n&#34;,get(a,b)); } } </p>
+    <p> 排序方法 时间复杂度（平均） 时间复杂度（最坏) 时间复杂度（最好) 空间复杂度 稳定性 复杂性 直接插入排序 O(n2) O(n2) O(n) O(1) 稳定 简单 希尔排序 O(nlog2n) O(n2) O(n) O(1) 不稳定 较复杂 直接选择排序 O(n2) O(n2) O(n2) O(1) 不稳定 简单 堆排序 O(nlog2n) O(nlog2n) O(nlog2n) O(1) 不稳定 较复杂 冒泡排序 O(n2) O(n2) O(n) O(1) 稳定 简单 快速排序 O(nlog2n) O(n2) O(nlog2n) O(nlog2n) 不稳定 较复杂 归并排序 O(nlog2n) O(nlog2n) O(nlog2n) O(n) 稳定 较复杂 基数排序 O(d(n&#43;r)) O(d(n&#43;r)) O(d(n&#43;r)) O(n&#43;r) 稳定 较复杂 </p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 13:28:40 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to ST表" href="https://cywd123.github.io/old/posts/6jfataceqh/"></a>
+  <footer class="entry-footer"><span title='2025-03-10 13:21:35 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 排序时间复杂度" href="https://cywd123.github.io/old/posts/3ilwt_ogfy/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">SPFA算法
+    <h2 class="entry-hint-parent">Realising the full potential of MR-PHeWAS in cancer
     </h2>
   </header>
   <div class="entry-content">
-    <p>#include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; const long long N=100010,M=200011; long long head[N],ver[M],edge[M],Next[M],d[N]; long long n,m,tot=0; queue&lt;long long &gt;q; bool v[N]; void add(long long x,long long y,long long z){ ver[&#43;&#43;tot]=y;edge[tot]=z;Next[tot]=head[x]; head[x]=tot; } int main(){ long long i,j,n,m,a,b,c,s; scanf(&#34;%lld %lld %lld&#34;,&amp;n,&amp;m,&amp;s); while(m--){ scanf(&#34;%lld %lld %lld&#34;,&amp;a,&amp;b,&amp;c); add(a,b,c); //	add(b,a,c); } memset(d,0x3f,sizeof(d)); memset(v,0,sizeof(v)); d[s]=0; v[s]=1; q.push(1); while(q.size()) { long long x=q.front(); q.pop(); v[x]=0; for(long long i=head[x];i;i=Next[i]) {long long y=ver[i],z=edge[i]; if(d[y]&gt;d[x]&#43;z){ d[y]=d[x]&#43;z; if(!v[y]) { q.push(y); v[y]=1; } } } } for(i=1;i&lt;=n;i&#43;&#43;) cout&lt;&lt;d[i]&lt;&lt;&#34; &#34;; } </p>
+    <p>笔记Realising the full potential of MR-PHeWAS in cancer. ️ 出版年份: 2021\ 出版期刊: British journal of cancer\ 影响因子: 8.8\ JCR分区: 1\ DOI:10.1038/s41416-020-01165-0
+文章作者: Bowden Jack
+摘要: MR-PHeWAS is a powerful new design for discovering causal mechanisms between a disease and its many candidate risk factors in a hypothesis-free manner. This technique has great potential in the field of cancer research, provided that both powerful and principled statistical approaches are used. 结论: “This technique, termed ‘MR-PheWAS’ (MR-phenomewide association study), is used to prioritise further epidemiological studies and has also been used to prioritise potential drug targets in the pharmaceutical arena.4” (Bowden, 2021, p. 1)
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 13:28:27 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to SPFA算法" href="https://cywd123.github.io/old/posts/ldovg2gc2p/"></a>
+  <footer class="entry-footer"><span title='2024-01-20 11:28:52 +0000 UTC'>January 20, 2024</span>&nbsp;·&nbsp;<span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to Realising the full potential of MR-PHeWAS in cancer" href="https://cywd123.github.io/old/posts/%E7%AC%94%E8%AE%B0realising-the-full-potential-of-mr-phewas-in-cancer/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Prim算法
+    <h2 class="entry-hint-parent">GO和KEGG分析
     </h2>
   </header>
   <div class="entry-content">
-    <p> #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; typedef int ll; ll d[5010],mp[5010][5010]; bool v[5010]; ll i,j,n,m,t,k; int main() { cin&gt;&gt;n&gt;&gt;m; memset(mp,0x3f,sizeof(mp)); memset(d,0x3f,sizeof(d)); memset(v,0,sizeof(v)); ll a,b,c; for(i=1; i&lt;=m; i&#43;&#43;) { cin&gt;&gt;a&gt;&gt;b&gt;&gt;c; mp[a][b]=min(mp[a][b],c); mp[b][a]=mp[a][b]; } d[1]=0; for(i=1; i&lt;n; i&#43;&#43;) { ll x=0; for(j=1; j&lt;=n; j&#43;&#43;) if(!v[j]&amp;&amp;(x==0||d[j]&lt;d[x]))x=j; v[x]=1; for(j=1; j&lt;=n; j&#43;&#43;) if(!v[j])d[j]=min(d[j],mp[x][j]); } ll ans=0; for(i=2; i&lt;=n; i&#43;&#43;) ans&#43;=d[i]; if(ans&gt;99999999)cout&lt;&lt;&#34;orz&#34;; else cout&lt;&lt;ans; } </p>
+    <p>GO和KEGG分析 功能富集分析对于解释转录组学数据至关重要。转录组鉴定了差异表达基因后，通常会进行GO或KEGG富集分析，识别这些差异基因的功能或参与调控的通路，来说明关键基因表达上调/或下调后可能会导致哪功能或通路被激活/或抑制，进而与表型进行联系。
+(其实就是用DEG结果的进行的分析)
+为什么要做GO和KEGG分析 经过差异表达分析，我们得到了在对照组与实验组中差异表达的基因，说明改变的条件对这些基因的表达产生了影响，但是这样还不够，我们希望进一步知道具体是对哪些生物学功能/通路产生了影响，于是需要进行GO分析。
+GO、KEGG结果解读 富集分析，看完这篇就够
+别搜啦！关于富集分析你想知道的这里都有！
+使用R包clusterProfiler进行GO/KEGG富集分析（有参/无参）
+输入数据格式 一个表格，分别是Gene_Symbol和logFC，如下图所示：
+主要结果图 library(&#34;clusterProfiler&#34;) library(&#34;enrichplot&#34;) library(&#34;ggplot2&#34;) library(&#34;org.Hs.eg.db&#34;) library(&#34;GOplot&#34;) #转换ID rt=read.table(&#34;input.txt&#34;,sep=&#34;\t&#34;,check.names=F,header=T) genes=as.vector(rt[,1]) entrezIDs &lt;- mget(genes, org.Hs.egSYMBOL2EG, ifnotfound=NA) #找出基因对应的id entrezIDs &lt;- as.character(entrezIDs) out=cbind(rt,entrezID=entrezIDs) write.table(out,file=&#34;GO-id.txt&#34;,sep=&#34;\t&#34;,quote=F,row.names=F) #输出结果 ####GO分析#### rt=read.table(&#34;GO-id.txt&#34;,sep=&#34;\t&#34;,header=T,check.names=F) rt=rt[is.na(rt[,&#34;entrezID&#34;])==F,] gene=rt$entrezID #GO富集分析 kk &lt;- enrichGO(gene = gene,OrgDb = org.Hs.eg.db, pvalueCutoff =0.05, qvalueCutoff = 0.05,ont=&#34;all&#34;,readable =T) write.table(kk,file=&#34;GO.txt&#34;,sep=&#34;\t&#34;,quote=F,row.names = F) # #可视化 ##条形图 pdf(file=&#34;GO-barplot.pdf&#34;,width = 10,height = 15) barplot(kk, drop = TRUE, showCategory =10,label_format=100,split=&#34;ONTOLOGY&#34;) &#43; facet_grid(ONTOLOGY~., scale=&#39;free&#39;) dev.off() ##气泡图 pdf(file=&#34;GO-bubble.pdf&#34;,width = 10,height = 15) dotplot(kk,showCategory = 10,label_format=100,split=&#34;ONTOLOGY&#34;) &#43; facet_grid(ONTOLOGY~., scale=&#39;free&#39;) dev.off() ##圈图 ego&lt;-read.table(&#34;GO.txt&#34;,sep=&#34;\t&#34;,check.names=F,header=T) go=data.frame(Category =&#34;ALL&#34;,ID = ego$ID,Term = ego$Description, Genes = gsub(&#34;/&#34;, &#34;, &#34;, ego$geneID), adj_pval = ego$pvalue) id.fc=rt genelist &lt;- data.frame(ID = id.fc$gene, logFC = id.fc$logFC) row.names(genelist)=genelist[,1] circ &lt;- circle_dat(go, genelist) termNum = 5 #限定term数目 geneNum = nrow(genelist) #限定基因数目可以改为数字 chord &lt;- chord_dat(circ, genelist[1:geneNum,], go$Term[1:termNum]) pdf(file=&#34;GO_circ.pdf&#34;,width = 12,height = 11) GOChord(chord, space = 0.001, #基因之间的间距 gene.order = &#39;logFC&#39;, #按照logFC值对基因排序 gene.space = 0.25, #基因名跟圆圈的相对距离 gene.size = 5, #基因名字体大小 border.size = 0.1, #线条粗细 process.label = 9) #term字体大小 dev.off() ####KEGG#### rt=read.table(&#34;input.txt&#34;,sep=&#34;\t&#34;,check.names=F,header=T) #读取文件 genes=as.vector(rt[,1]) entrezIDs &lt;- mget(genes, org.Hs.egSYMBOL2EG, ifnotfound=NA) #找出基因对应的id entrezIDs &lt;- as.character(entrezIDs) out=cbind(rt,entrezID=entrezIDs) write.table(out,file=&#34;KEGG-id.txt&#34;,sep=&#34;\t&#34;,quote=F,row.names=F) #输出结果 rt=read.table(&#34;KEGG-id.txt&#34;,sep=&#34;\t&#34;,header=T,check.names=F) rt=rt[is.na(rt[,&#34;entrezID&#34;])==F,] gene=rt$entrezID #kegg分析 kk &lt;- enrichKEGG(gene = gene,keyType = &#34;kegg&#34;,organism = &#34;hsa&#34;, pvalueCutoff =0.05, qvalueCutoff =0.05, pAdjustMethod = &#34;fdr&#34;) write.table(kk,file=&#34;KEGG.txt&#34;,sep=&#34;\t&#34;,quote=F,row.names = F) #可视化 ##条形图 pdf(file=&#34;KEGG-barplot.pdf&#34;,width = 10,height = 13) barplot(kk, drop = TRUE, showCategory = 15,label_format=100) dev.off() ##气泡图 pdf(file=&#34;KEGG-bubble.pdf&#34;,width = 10,height = 13) dotplot(kk, showCategory = 15,label_format=100) dev.off() #圈图 ego&lt;-read.table(&#34;KEGG.txt&#34;,sep=&#34;\t&#34;,check.names=F,header=T) go=data.frame(Category =&#34;ALL&#34;,ID = ego$ID,Term = ego$Description, Genes = gsub(&#34;/&#34;, &#34;, &#34;, ego$geneID), adj_pval = ego$p.adjust) id.fc=rt genelist &lt;- data.frame(ID = id.fc$entrezID, logFC = id.fc$logFC) row.names(genelist)=genelist[,1] row.names(rt)=rt[,3] circ &lt;- circle_dat(go, genelist) termNum = 5 #限定term数目 geneNum = nrow(genelist) #限定基因数目可以改为数字 chord &lt;- chord_dat(circ, genelist[1:geneNum,], go$Term[1:termNum]) sameSample=intersect(row.names(chord), row.names(rt)) rt=rt[sameSample,,drop=F] geneIDs=rt$gene row.names(chord)=geneIDs pdf(file=&#34;KEGG_circ.pdf&#34;,width = 12,height = 11) GOChord(chord, space = 0.001, #基因之间的间距 gene.order = &#39;logFC&#39;, #按照logFC值对基因排序 gene.space = 0.25, #基因名跟圆圈的相对距离 gene.size = 5, #基因名字体大小 border.size = 0.1, #线条粗细 process.label = 9) #term字体大小 dev.off() </p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 13:28:15 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to Prim算法" href="https://cywd123.github.io/old/posts/f481dm04tj/"></a>
+  <footer class="entry-footer"><span title='2023-08-06 18:39:29 +0000 UTC'>August 6, 2023</span>&nbsp;·&nbsp;<span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to GO和KEGG分析" href="https://cywd123.github.io/old/posts/go%E5%92%8Ckegg%E5%88%86%E6%9E%90/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Prim堆优化版
+    <h2 class="entry-hint-parent">孟德尔随机化笔记（四）——药物靶点MR分析
     </h2>
   </header>
   <div class="entry-content">
-    <p>#include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; priority_queue&lt;pair&lt;long long,long long&gt; &gt;q; vector&lt;long long&gt;ver[5010],edge[5010]; bool v[5010]; long long d[5010]; long long n,m; void add(long long x,long long y,long long z){ ver[x].push_back(y);edge[x].push_back(z); } void init(){ cin&gt;&gt;n&gt;&gt;m; for(long long i=1;i&lt;=m;i&#43;&#43;){ long long a,b,c; cin&gt;&gt;a&gt;&gt;b&gt;&gt;c; add(a,b,c);add(b,a,c); } } void work(){ memset(d,0x3f,sizeof(d)); memset(v,0,sizeof(v)); long long ans=0; d[1]=0; q.push(make_pair(0,1)); int cnt=0; while(q.size()){ long long x=q.top().second; q.pop(); if(v[x])continue; v[x]=1; cnt&#43;&#43;; for(int i=ver[x].size()-1;i&gt;=0;i--){ int y=ver[x][i],z=edge[x][i]; if(!v[y] &amp;&amp;(z&lt;d[y])){ d[y]=z; q.push(make_pair(-d[y],y)); } } } for(int i=2;i&lt;=n;i&#43;&#43;)ans&#43;=d[i]; if(cnt==n)cout&lt;&lt;ans; else cout&lt;&lt;&#34;orz&#34;; } int main(){ init(); work(); } </p>
+    <p>用于药物开发与效应预测的药物孟德尔随机化（Drug-MR）,基于靶蛋白的下游产物（biomarker），以靶蛋白编码基因附近的对biomarker有显著效应的SNP（pQTL或者eQTL）作为工具变量，以biomarker浓度作为暴露，以疾病作为结局，进行孟德尔随机化，以验证蛋白靶对于所研究疾病的影响。
+参考资料
+资料建议剔除连锁不平衡： R^2 = 0.60
+下面是分别用easyMR和MendelR包进行的分析代码
+library(easyMR) dat=get_drug_target_data( id = &#34;ieu-b-110&#34;,　#暴露GWAS ID gene_name=&#34;HMGCR&#34;, #药靶蛋白编码基因 kb=100, #基因附近的SNP范围 clump_kb = 100, #clump的范围 clump_local = FALSE, r2=0.3, #clump的r2阈值 pval=0.05, MAF = 0.01, #次等位基因频率 阈值 build = &#34;GRch38&#34;, chr = NULL, pos_start = NULL, pos_end = NULL ) drug_MR( target_gene_data=dat, outcome_id =&#34;finn-b-I9_AF&#34;, #疾病GWAS ID outcome_name=&#34;atrial fibrillation&#34;, inhibitor = FALSE, after_trans_inhibitor = FALSE, pval = 0.05, action = 2, out_type = &#34;binary&#34;, save_path=&#34;e:&#34; ) library(MendelR) mr_common( id_exposure = &#34;ieu-b-110&#34;, #暴露GWAS ID id_outcome = &#34;finn-b-I9_AF&#34;, #疾病GWAS ID p1 = 0.05, p2 = 0.05, write_csv = TRUE, write_ppt = FALSE, method_list = c(&#34;mr_ivw&#34;, &#34;mr_egger_regression&#34;, &#34;mr_weighted_median&#34;, &#34;mr_weighted_mode&#34;), rm_snps = NULL, r2 = 0.3, #clump的r2阈值 kb = 100, #clump的范围 build_version = &#34;hg19&#34;, gene = &#34;HMGCR&#34;, #药靶蛋白编码基因 chr = NULL, pos_start = NULL, pos_end = NULL, eaf_threshold = NULL, run_presso = T, gene_win = 100, #基因附近的SNP范围 NbDistribution = 3000, find_proxy = T, local_clump = F, r2_cal_mode = 1, steiger = T, #是否进行Steiger方向性检验 auto_ivw = T, pop = &#34;EUR&#34;, no_clump = F, out_dir = NULL, exposure_samplesize = NULL, outcome_samplesize = NULL ) </p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 13:27:52 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to Prim堆优化版" href="https://cywd123.github.io/old/posts/ibw-bmba9u/"></a>
+  <footer class="entry-footer"><span title='2023-08-05 05:13:50 +0000 UTC'>August 5, 2023</span>&nbsp;·&nbsp;<span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 孟德尔随机化笔记（四）——药物靶点MR分析" href="https://cywd123.github.io/old/posts/%E5%AD%9F%E5%BE%B7%E5%B0%94%E9%9A%8F%E6%9C%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">LCA算法
+    <h2 class="entry-hint-parent">机器学习12种分类模型的性能对比
     </h2>
   </header>
   <div class="entry-content">
-    <p>// luogu-judger-enable-o2 #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; int ver[2*500000],nex[2*500000],head[2*500000],d[2*500000],p[2*500000][23],tot; void add(int x,int y){ ver[&#43;&#43;tot]=y;nex[tot]=head[x];head[x]=tot; } int read(){ int x=0; char ch; while(ch&lt;&#39;0&#39;||ch&gt;&#39;9&#39;)ch=getchar(); while(ch&gt;&#39;0&#39;&amp;&amp;ch&lt;&#39;9&#39;){ x=x*10&#43;ch-&#39;0&#39;; ch=getchar(); } return x; } void dfs(int x,int fa){ d[x]=d[fa]&#43;1; p[x][0]=fa; for(int i=1;(1&lt;&lt;i)&lt;=d[x];i&#43;&#43;) p[x][i]=p[p[x][i-1]][i-1]; for(int i=head[x];i;i=nex[i]){ if(ver[i]!=fa) dfs(ver[i],x);	} } int lca(int a,int b){ if(d[a]&gt;d[b])swap(a,b); for(int i=20;i&gt;=0;i--) if(d[a]&lt;=d[b]-(1&lt;&lt;i)) b=p[b][i]; if(a==b) return a; for(int i=20;i&gt;=0;i--) if(p[a][i]==p[b][i])continue; else a=p[a][i],b=p[b][i]; return p[a][0]; } int main(){ int i,j,n,m,t,k,s; scanf(&#34;%d %d %d&#34;,&amp;n,&amp;m,&amp;s); for(int i=1;i&lt;n;i&#43;&#43;) { int a,b; scanf(&#34;%d %d&#34;,&amp;a,&amp;b); add(a,b); add(b,a); } dfs(s,0); for(i=1;i&lt;=m;i&#43;&#43;) { int a,b; scanf(&#34;%d %d&#34;,&amp;a,&amp;b); cout&lt;&lt;lca(a,b)&lt;&lt;endl; } } </p>
+    <p>接上回，我们已经知道了机器学习分类的本质，那么接下来就是要介绍机器学习中的分类模型的各种性能了。
+简介 我们将采用12种分类模型，分别是：GaussianNB、MultinomialNB、KNNeighbors、SVC、DecisionTree、RandomForest、GradientBoosting、LGBM、XGB、CatBoost、AdaBoost、MLP，用这些模型对数据集进行训练，然后对测试集进行预测，最后将预测结果与真实结果进行对比，得到各个模型的性能。
+数据集 我们采用以下代码生成随机分类数据：
+x,y = make_classification(n_samples=100000,n_features=3,n_classes=4,n_informative=3,n_redundant=0,random_state=50,n_clusters_per_class=1) x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.1) 这里能够生成100000个样本，每个样本有3个特征，4个类别，3个特征是有效特征，0个冗余特征，随机种子为50，每个类别有1个簇。然后我们将数据集分为训练集和测试集，测试集占10%.
+由于每个样本都是一个3维向量，所以我们将数据取前2维数据将数据集可视化，如下图所示：
+评估函数 我们采用准确率(Accuracy)、精确率(Precision)、召回率(Recall)、F1值(F1-score)、R2值(R2-score)，这5个指标来评估模型的性能。
+准确率(Accuracy) 准确率是指分类正确的样本数占总样本数的比例，即：
+$Accuracy = \frac{TP&#43;TN}{TP&#43;TN&#43;FP&#43;FN}$
+其中，TP是真正例，TN是真负例，FP是假正例，FN是假负例。
+精确率(Precision) 精确率是指分类正确的正例数占分类为正例的样本数的比例，即：
+$$ Precision = \frac{TP}{TP&#43;FP} $$ 其中，TP是真正例，FP是假正例。
+召回率(Recall) 召回率是指分类正确的正例数占真正例的比例，即：
+$Recall = \frac{TP}{TP&#43;FN}$
+其中，TP是真正例，FN是假负例。
+F1值(F1-score) F1值是精确率和召回率的调和平均数，即：
+$$ F1 = \frac{2*Precision*Recall}{Precision&#43;Recall} $$ F1值越接近1，表明模型的性能越好。
+R2值(R2-score) R2值是指预测值与真实值的相关系数，即：
+$$ R2 = 1-\frac{\sum_{i=1}^{n}(y_i-\hat{y_i})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2} $$ 其中，$y_i$是真实值，$\hat{y_i}$是预测值，$\bar{y}$是真实值的均值。
+R2值越接近1，表明模型的性能越好。
+各模型表现 1. GaussianNB 其中GaussianNB的参数priors为None，var_smoothing为1e-09，表明我们没有对先验概率进行设置，而且我们对方差进行了平滑处理。
+2. MultinomialNB 其中MultinomialNB的参数alpha为1.0，fit_prior为True，class_prior为None，表明我们对先验概率进行了设置，而且我们对先验概率进行了平滑处理。
+3. KNNeighbors 其中KNNeighbors的参数n_neighbors为30，表明我们对最近邻的个数为30。
+4. SVC 5. DecisionTree 6. RandomForest ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 13:27:39 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to LCA算法" href="https://cywd123.github.io/old/posts/5ipfk_eghq/"></a>
+  <footer class="entry-footer"><span title='2023-06-19 22:42:48 +0000 UTC'>June 19, 2023</span>&nbsp;·&nbsp;<span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 机器学习12种分类模型的性能对比" href="https://cywd123.github.io/old/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A012%E7%A7%8D%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">匈牙利算法
+    <h2 class="entry-hint-parent">机器学习分类的本质
     </h2>
   </header>
   <div class="entry-content">
-    <p>#include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; bool ver[1001][1001],v[1001]; int d[1001],n,m,e; bool dfs(int x){ for(int i=1;i&lt;=m;i&#43;&#43;){ if(ver[x][i]&amp;&amp;!v[i]){ v[i]=1; if(!d[i]||dfs(d[i])){ d[i]=x;return 1; } } } return 0; } void init(){ cin&gt;&gt;n&gt;&gt;m&gt;&gt;e; for(int i=1;i&lt;=e;i&#43;&#43;){ int a,b; cin&gt;&gt;a&gt;&gt;b; if(b&gt;m||a&gt;n)continue; ver[a][b]=1; } int ans=0; for(int i=1;i&lt;=n;i&#43;&#43;){memset(v,0,sizeof(v)); ans&#43;=dfs(i); } cout&lt;&lt;ans; } int main(){ init(); } </p>
+    <p>机器学习分类的本质 引入 机器学习中，基本的任务可以分为三类：分类、回归和聚类。
+分类和回归的区别在于，分类的输出是离散的，而回归的输出是连续的。聚类的任务是将数据集中的样本分成若干个类别，每个类别称为一个簇，簇内的样本相似度较高，而簇间的样本相似度较低。其中，分类和回归的任务是有监督学习，而聚类的任务是无监督学习。
+分类问题 本次主要介绍分类问题，它属于监督学习的范畴。
+分类的本质是学习一个分类函数，将输入空间映射到输出空间，即：$f: \mathcal{X} \rightarrow \mathcal{Y}$，其中，$\mathcal{X}$是输入空间，$\mathcal{Y}$是输出空间。
+一般来说，输入空间是由特征向量构成的，即：$\mathcal{X} = \mathbb{R}^n$，输出空间是离散的，即：$\mathcal{Y} = {c_1, c_2, \cdots, c_k}$，其中，$c_i$是类别标签。
+特征向量是由特征构成的，就是对样本的描述，是样本的某个属性。
+这里面就可以构建给出两个特征向量：
+（5.1，3.5，1.4，0.2）、（4.9，3，1.4，0.2）
+特征的选择对分类的性能有很大的影响，特征的选择应该具有以下几个特点：
+特征应该能够很好地区分不同类别的样本。
+特征应该具有可解释性，即：特征应该能够很好地解释样本的类别。
+特征应该具有鲁棒性。（泛化能力）
+特征应该具有可扩展性，能够很好地扩展到新的样本。
+特征应该具有可计算性。
+特征应该具有低维性。
+输出空间是离散的，即：$\mathcal{Y} = {c_1, c_2, \cdots, c_k}$，其中，$c_i$是类别标签。
+在我接触的的深度学习分类中，一般将输出空间定义为独热编码（One-Hot Encoding）的形式，即：$\mathcal{Y} = {[1, 0, \cdots, 0], [0, 1, \cdots, 0], \cdots, [0, 0, \cdots, 1]}$，其中，$[1, 0, \cdots, 0]$表示类别$c_1$，$[0, 1, \cdots, 0]$表示类别$c_2$，以此类推。
+独热编码是一种常用的编码方式，它将离散的类别标签转换为离散的向量，其中，向量的维度等于类别的个数，向量的值等于类别的索引。独热编码的好处是，它能够很好地表示类别之间的关系，而且它的值是离散的，不会产生类别之间的大小关系。
+通常机器学习中输出的结果一般不是只有0和1，而是在0~1之间的小数，这个小数表示样本属于某个类别的概率，即：$P(Y=c_i|X)$，其中，$c_i$是类别标签，$X$是特征向量。
+分类的方法 分类的方法主要分为两类：生成方法和判别方法。
+生成方法 生成方法是通过学习联合概率分布$P(X, Y)$来进行分类的，即：$P(Y|X) = \frac{P(X, Y)}{P(X)}$，其中，$P(Y|X)$是后验概率，$P(X)$是先验概率，$P(X, Y)$是联合概率分布。
+朴素贝叶斯 朴素贝叶斯是一种生成方法，它假设特征之间相互独立，即：$P(X|Y) = \prod_{i=1}^n P(x_i|Y)$，其中，$x_i$是特征向量的第$i$个特征。
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 13:27:28 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to 匈牙利算法" href="https://cywd123.github.io/old/posts/rnbllzkklq/"></a>
+  <footer class="entry-footer"><span title='2023-05-21 18:57:29 +0000 UTC'>May 21, 2023</span>&nbsp;·&nbsp;<span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 机器学习分类的本质" href="https://cywd123.github.io/old/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB%E7%9A%84%E6%9C%AC%E8%B4%A8/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
