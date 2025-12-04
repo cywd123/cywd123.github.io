@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>雨课堂习题监控 | Juiceright</title>
-<meta name="keywords" content="编程, 小脚本, python">
+<meta name="keywords" content="编程, 小脚本, python, old">
 <meta name="description" content="原理：雨课堂每次切换PPT时url也会跟着改变。在检测到ppt切换后，获取ppt的图片，并且进行OCR检测，如果出现‘单选’、‘多选’、‘判断’、‘填空’、‘投票’等词汇，就认定该ppt是习题，就会发出警告提醒。
 使用前需要配置state.json保存登录记录。
 import asyncio
@@ -141,10 +141,11 @@ import asyncio from playwright.async_api import async_playwright import requests
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-11T00:41:06+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="编程">
     <meta property="article:tag" content="小脚本">
     <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="雨课堂习题监控">
 <meta name="twitter:description" content="原理：雨课堂每次切换PPT时url也会跟着改变。在检测到ppt切换后，获取ppt的图片，并且进行OCR检测，如果出现‘单选’、‘多选’、‘判断’、‘填空’、‘投票’等词汇，就认定该ppt是习题，就会发出警告提醒。
@@ -240,13 +241,13 @@ if __name__ == &#34;__main__&#34;:
   "name": "雨课堂习题监控",
   "description": "原理：雨课堂每次切换PPT时url也会跟着改变。在检测到ppt切换后，获取ppt的图片，并且进行OCR检测，如果出现‘单选’、‘多选’、‘判断’、‘填空’、‘投票’等词汇，就认定该ppt是习题，就会发出警告提醒。 使用前需要配置state.json保存登录记录。\nimport asyncio from playwright.async_api import async_playwright import requests import threading import winsound from plyer import notification import easyocr url=\u0026#34;\u0026#34; # 初始化 EasyOCR reader = easyocr.Reader([\u0026#39;ch_sim\u0026#39;, \u0026#39;en\u0026#39;]) async def notice_ti(page): # 尝试查找图片元素 elementimg = await page.query_selector_all(\u0026#39;//*[@id=\u0026#34;app\u0026#34;]/section/section[1]/section[2]/section/section/section/section[1]/section/div/section/section/img\u0026#39;) if len(elementimg) == 0: elementimg = await page.query_selector_all(\u0026#39;//*[@id=\u0026#34;app\u0026#34;]/section/section[1]/section[2]/section/section/section/section[1]/section/section/section/section/img\u0026#39;) # 发送新页面通知 notification.notify(title=\u0026#39;新的一页\u0026#39;, message=\u0026#39;新的一页\u0026#39;, app_icon=None, timeout=0.5) if elementimg: # 获取图片地址 img_url = await elementimg[0].get_attribute(\u0026#39;src\u0026#39;) # 直接下载图片 tmp = requests.get(img_url) with open(\u0026#39;tmp.png\u0026#39;, \u0026#39;wb\u0026#39;) as f: f.write(tmp.content) # 使用 EasyOCR 识别图片文字 result = reader.readtext(\u0026#39;tmp.png\u0026#39;) # 如果 result 中含有‘单选’、‘多选’、‘判断’、‘填空’、‘投票’、‘问答’、‘作业’、‘讨论’、‘实验’、‘课件’、‘课程’、‘提交’等关键词，就发送通知 keywords = [\u0026#39;单选\u0026#39;, \u0026#39;多选\u0026#39;, \u0026#39;判断\u0026#39;, \u0026#39;填空\u0026#39;, \u0026#39;投票\u0026#39;, \u0026#39;问答\u0026#39;, \u0026#39;作业\u0026#39;, \u0026#39;讨论\u0026#39;, \u0026#39;实验\u0026#39;, \u0026#39;提交\u0026#39;] #keywords = [\u0026#39;电解\u0026#39;] if any(x in str(result) for x in keywords): print(img_url) threading.Thread(target=lambda: winsound.Beep(440, 3000)).start() notification.notify(title=\u0026#39;有题！\u0026#39;, message=\u0026#39;有题！\u0026#39;, app_icon=None, timeout=0.5) # ai(result) # clear_page() async def main(): async with async_playwright() as p: # 配置浏览器选项 browser = await p.chromium.launch(headless=True) context = await browser.new_context(storage_state=\u0026#39;state.json\u0026#39;) page = await context.new_page() # 打开指定页面 await page.goto(url) current_url = page.url while True: # 等待 URL 变化 await page.wait_for_url(lambda url: url != current_url, timeout=10000000) current_url = page.url await notice_ti(page) #await print(\u0026#34;已到达新页面\u0026#34;) if __name__ == \u0026#34;__main__\u0026#34;: url=input(\u0026#34;请输入网址：\u0026#34;) asyncio.run(main()) ",
   "keywords": [
-    "编程", "小脚本", "python"
+    "编程", "小脚本", "python", "old"
   ],
   "articleBody": "原理：雨课堂每次切换PPT时url也会跟着改变。在检测到ppt切换后，获取ppt的图片，并且进行OCR检测，如果出现‘单选’、‘多选’、‘判断’、‘填空’、‘投票’等词汇，就认定该ppt是习题，就会发出警告提醒。 使用前需要配置state.json保存登录记录。\nimport asyncio from playwright.async_api import async_playwright import requests import threading import winsound from plyer import notification import easyocr url=\"\" # 初始化 EasyOCR reader = easyocr.Reader(['ch_sim', 'en']) async def notice_ti(page): # 尝试查找图片元素 elementimg = await page.query_selector_all('//*[@id=\"app\"]/section/section[1]/section[2]/section/section/section/section[1]/section/div/section/section/img') if len(elementimg) == 0: elementimg = await page.query_selector_all('//*[@id=\"app\"]/section/section[1]/section[2]/section/section/section/section[1]/section/section/section/section/img') # 发送新页面通知 notification.notify(title='新的一页', message='新的一页', app_icon=None, timeout=0.5) if elementimg: # 获取图片地址 img_url = await elementimg[0].get_attribute('src') # 直接下载图片 tmp = requests.get(img_url) with open('tmp.png', 'wb') as f: f.write(tmp.content) # 使用 EasyOCR 识别图片文字 result = reader.readtext('tmp.png') # 如果 result 中含有‘单选’、‘多选’、‘判断’、‘填空’、‘投票’、‘问答’、‘作业’、‘讨论’、‘实验’、‘课件’、‘课程’、‘提交’等关键词，就发送通知 keywords = ['单选', '多选', '判断', '填空', '投票', '问答', '作业', '讨论', '实验', '提交'] #keywords = ['电解'] if any(x in str(result) for x in keywords): print(img_url) threading.Thread(target=lambda: winsound.Beep(440, 3000)).start() notification.notify(title='有题！', message='有题！', app_icon=None, timeout=0.5) # ai(result) # clear_page() async def main(): async with async_playwright() as p: # 配置浏览器选项 browser = await p.chromium.launch(headless=True) context = await browser.new_context(storage_state='state.json') page = await context.new_page() # 打开指定页面 await page.goto(url) current_url = page.url while True: # 等待 URL 变化 await page.wait_for_url(lambda url: url != current_url, timeout=10000000) current_url = page.url await notice_ti(page) #await print(\"已到达新页面\") if __name__ == \"__main__\": url=input(\"请输入网址：\") asyncio.run(main()) ",
   "wordCount" : "171",
   "inLanguage": "en",
   "datePublished": "2025-03-11T00:41:06Z",
-  "dateModified": "2025-12-01T09:31:17.656Z",
+  "dateModified": "2025-12-04T10:18:33.097Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/pbdbfbga9g/"
@@ -392,6 +393,7 @@ if __name__ == &#34;__main__&#34;:
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
       <li><a href="https://cywd123.github.io/tags/%E5%B0%8F%E8%84%9A%E6%9C%AC/">小脚本</a></li>
       <li><a href="https://cywd123.github.io/tags/python/">Python</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

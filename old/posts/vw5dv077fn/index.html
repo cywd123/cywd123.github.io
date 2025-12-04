@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>snakemake流程——SMR&#43;MR&#43;MAGMA分析 | Juiceright</title>
-<meta name="keywords" content="编程, 生信">
+<meta name="keywords" content="编程, 生信, old">
 <meta name="description" content="
 # 定义染色体列表，包含 1 到 22 号染色体
 chromosomes = list(range(1, 23))
@@ -141,9 +141,10 @@ rule run_MR:  #OK
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-14T20:46:52+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="编程">
     <meta property="article:tag" content="生信">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="snakemake流程——SMR&#43;MR&#43;MAGMA分析">
 <meta name="twitter:description" content="
@@ -240,13 +241,13 @@ rule run_MR:  #OK
   "name": "snakemake流程——SMR\u002bMR\u002bMAGMA分析",
   "description": " # 定义染色体列表，包含 1 到 22 号染色体 chromosomes = list(range(1, 23)) # 获取组学暴露数据文件的名称 (MRname,) = glob_wildcards(\u0026#34;../dataset/组学暴露数据/{file}.rds\u0026#34;) # 获取 SMR 数据文件的名称 GTExname = glob_wildcards(\u0026#34;../dataset/SMR/{file}.besd\u0026#34;).file # 获取 GWAS 数据文件的名称 GWASfilename = glob_wildcards(\u0026#34;../../SMR/input/{file}\u0026#34;).file # 定义 all 规则，用于指定整个流程的最终输出文件 rule all: input: expand(\u0026#34;result/GTEx的{GTEx}之{file}.smr\u0026#34;, GTEx=GTExname, file=GWASfilename), #expand(\u0026#34;result/MR的{file}之{MR}.csv\u0026#34;, MR=MRname, file=GWASfilename), expand(\u0026#34;result/{file}.gsa.out.txt\u0026#34;,file=GWASfilename), #expand(\u0026#34;result/Gene_disease_association/{file}.fusion_twas.txt\u0026#34;,file=GWASfilename), #TWAS 若全部49个组织非常慢10小时 # 定义 trans 规则，用于将输入文件转换为输出文件 rule trans: #OK input: # 输入文件路径 \u0026#34;../../SMR/input/{file}\u0026#34; output: # 输出文件路径 \u0026#34;tmp/{file}.ma\u0026#34;, \u0026#34;tmp/{file}.sumstats.gz\u0026#34;, \u0026#34;tmp/{file}.mendelR.txt\u0026#34; # 规则执行时使用的线程数 threads: 6 shell: # 调用 R 脚本进行文件转换 \u0026#34;r -f tools/trans.R --args {wildcards.file}\u0026#34; rule run_GTEx: #OK input: \u0026#34;tmp/{file}.ma\u0026#34;, output: \u0026#34;result/GTEx的{GTEx}之{file}.smr\u0026#34; threads: 5 shell: \u0026#34;tools\\\\smr.exe --gwas-summary {input} --out result/GTEx的{wildcards.GTEx}之{wildcards.file} --bfile ../dataset/EUR --beqtl-summary ../dataset/SMR/{wildcards.GTEx} --maf 0.01 --thread-num 18 --diff-freq-prop 1.000000\u0026#34; rule run_MAGMA: #OK input: \u0026#34;tmp/{file}.ma\u0026#34;, output: \u0026#34;result/{file}.gsa.out.txt\u0026#34;, shell: \u0026#34;r -f tools/run_MAGMA.R --args {wildcards.file}\u0026#34; rule run_MR: #OK input: \u0026#34;tmp/{file}.ma\u0026#34;, output: \u0026#34;result/MR的{file}之{MR}.csv\u0026#34;, threads: 2 shell: \u0026#34;r -f tools/run_MR.R --args {wildcards.file} {wildcards.MR}\u0026#34; ",
   "keywords": [
-    "编程", "生信"
+    "编程", "生信", "old"
   ],
   "articleBody": " # 定义染色体列表，包含 1 到 22 号染色体 chromosomes = list(range(1, 23)) # 获取组学暴露数据文件的名称 (MRname,) = glob_wildcards(\"../dataset/组学暴露数据/{file}.rds\") # 获取 SMR 数据文件的名称 GTExname = glob_wildcards(\"../dataset/SMR/{file}.besd\").file # 获取 GWAS 数据文件的名称 GWASfilename = glob_wildcards(\"../../SMR/input/{file}\").file # 定义 all 规则，用于指定整个流程的最终输出文件 rule all: input: expand(\"result/GTEx的{GTEx}之{file}.smr\", GTEx=GTExname, file=GWASfilename), #expand(\"result/MR的{file}之{MR}.csv\", MR=MRname, file=GWASfilename), expand(\"result/{file}.gsa.out.txt\",file=GWASfilename), #expand(\"result/Gene_disease_association/{file}.fusion_twas.txt\",file=GWASfilename), #TWAS 若全部49个组织非常慢10小时 # 定义 trans 规则，用于将输入文件转换为输出文件 rule trans: #OK input: # 输入文件路径 \"../../SMR/input/{file}\" output: # 输出文件路径 \"tmp/{file}.ma\", \"tmp/{file}.sumstats.gz\", \"tmp/{file}.mendelR.txt\" # 规则执行时使用的线程数 threads: 6 shell: # 调用 R 脚本进行文件转换 \"r -f tools/trans.R --args {wildcards.file}\" rule run_GTEx: #OK input: \"tmp/{file}.ma\", output: \"result/GTEx的{GTEx}之{file}.smr\" threads: 5 shell: \"tools\\\\smr.exe --gwas-summary {input} --out result/GTEx的{wildcards.GTEx}之{wildcards.file} --bfile ../dataset/EUR --beqtl-summary ../dataset/SMR/{wildcards.GTEx} --maf 0.01 --thread-num 18 --diff-freq-prop 1.000000\" rule run_MAGMA: #OK input: \"tmp/{file}.ma\", output: \"result/{file}.gsa.out.txt\", shell: \"r -f tools/run_MAGMA.R --args {wildcards.file}\" rule run_MR: #OK input: \"tmp/{file}.ma\", output: \"result/MR的{file}之{MR}.csv\", threads: 2 shell: \"r -f tools/run_MR.R --args {wildcards.file} {wildcards.MR}\" ",
   "wordCount" : "131",
   "inLanguage": "en",
   "datePublished": "2025-03-14T20:46:52Z",
-  "dateModified": "2025-12-01T09:31:17.661Z",
+  "dateModified": "2025-12-04T10:18:33.114Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/vw5dv077fn/"
@@ -392,6 +393,7 @@ rule run_MR:  #OK
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
       <li><a href="https://cywd123.github.io/tags/%E7%94%9F%E4%BF%A1/">生信</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

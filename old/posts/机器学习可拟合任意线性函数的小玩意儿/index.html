@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>【机器学习】可拟合任意线性函数的小玩意儿 | Juiceright</title>
-<meta name="keywords" content="编程, 机器学习">
+<meta name="keywords" content="编程, 机器学习, old">
 <meta name="description" content="【机器学习】可拟合任意线性函数的小玩意儿
 先上完整代码
 import torch as t
@@ -122,9 +122,10 @@ while(1):
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2023-03-27T22:27:23+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="编程">
     <meta property="article:tag" content="机器学习">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器学习】可拟合任意线性函数的小玩意儿">
 <meta name="twitter:description" content="【机器学习】可拟合任意线性函数的小玩意儿
@@ -202,13 +203,13 @@ while(1):
   "name": "【机器学习】可拟合任意线性函数的小玩意儿",
   "description": "【机器学习】可拟合任意线性函数的小玩意儿 先上完整代码 import torch as t import torch.nn as nn import torch.optim as optim def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c): for epoch in range(1, n_epochs + 1): t_p = model(t_u) #计算当前模型的预测值 loss = loss_fn(t_p, t_c) #计算损失函数 optimizer.zero_grad() loss.backward() #回溯累计损失 optimizer.step() if epoch % 50 == 0: print(\u0026#39;Epoch %d, Loss %f\u0026#39; % (epoch, float(loss))) return model epoches=30000 #迭代次数 一般次数适中，为防止过度拟合不建议迭代次数过多 num=50000 #随机生成的样本数 一般越多越好，看运行配置 learning_rate=1e-4 #学习率（数值越大学得越快（但不一定准确），数值越小拟合越好（时间较长））建议取 1e-2 、1e-3、1e-4、1e-5 x = t.randn(num, 1) def f(x): return 30 * x + 10 #待拟合的式子为 y=30*x +10 可自行修改if you like。 y = f(x)+ t.randn(num, 1)*10 # 后面的 t.randn(num, 1)*10 是偏离值，降低训练的精确性（给你的模型更多的挑战） linear_model = nn.Linear(1, 1) optimizer = optim.SGD(linear_model.parameters(), lr=learning_rate) training_loop(n_epochs=epoches,optimizer=optimizer,model=linear_model,loss_fn=nn.MSELoss(),t_u=x,t_c=y) print(\u0026#39;\\n\u0026#39;) #print(linear_model.weight) #print(linear_model.bias) while(1): x=float(input(\u0026#39;请输入想预测的x值：\u0026#39;)) tmp=float(linear_model(t.tensor([x]))[0]) print(\u0026#34;拟合值:\u0026#34;,tmp) print(\u0026#34;真实值:\u0026#34;,f(x)) print(\u0026#34;相对误差:\u0026#34;,1-tmp/f(x)) print(\u0026#39;\\n\u0026#39;) 这个程序可以分为两个部分(生成训练数据、机器学习模型)，其中生成训练数据部分可有可无(因为在实际应用中，一般数据为人工导入，不是系统随机生成)。\n",
   "keywords": [
-    "编程", "机器学习"
+    "编程", "机器学习", "old"
   ],
   "articleBody": "【机器学习】可拟合任意线性函数的小玩意儿 先上完整代码 import torch as t import torch.nn as nn import torch.optim as optim def training_loop(n_epochs, optimizer, model,loss_fn, t_u, t_c): for epoch in range(1, n_epochs + 1): t_p = model(t_u) #计算当前模型的预测值 loss = loss_fn(t_p, t_c) #计算损失函数 optimizer.zero_grad() loss.backward() #回溯累计损失 optimizer.step() if epoch % 50 == 0: print('Epoch %d, Loss %f' % (epoch, float(loss))) return model epoches=30000 #迭代次数 一般次数适中，为防止过度拟合不建议迭代次数过多 num=50000 #随机生成的样本数 一般越多越好，看运行配置 learning_rate=1e-4 #学习率（数值越大学得越快（但不一定准确），数值越小拟合越好（时间较长））建议取 1e-2 、1e-3、1e-4、1e-5 x = t.randn(num, 1) def f(x): return 30 * x + 10 #待拟合的式子为 y=30*x +10 可自行修改if you like。 y = f(x)+ t.randn(num, 1)*10 # 后面的 t.randn(num, 1)*10 是偏离值，降低训练的精确性（给你的模型更多的挑战） linear_model = nn.Linear(1, 1) optimizer = optim.SGD(linear_model.parameters(), lr=learning_rate) training_loop(n_epochs=epoches,optimizer=optimizer,model=linear_model,loss_fn=nn.MSELoss(),t_u=x,t_c=y) print('\\n') #print(linear_model.weight) #print(linear_model.bias) while(1): x=float(input('请输入想预测的x值：')) tmp=float(linear_model(t.tensor([x]))[0]) print(\"拟合值:\",tmp) print(\"真实值:\",f(x)) print(\"相对误差:\",1-tmp/f(x)) print('\\n') 这个程序可以分为两个部分(生成训练数据、机器学习模型)，其中生成训练数据部分可有可无(因为在实际应用中，一般数据为人工导入，不是系统随机生成)。\n不得不说，PyTorch真香。 下面来简单地介绍一下这个模型：\n它基于PyTorch深度学习框架，实现了简单的机器学习，主体采用梯度下降法，内部调用PyTorch的SGD计算梯度函数\n基本功能是根据已有的训练数据，拟合出X与Y的线性对应关系\n我们用这个模型拟合 Y=30 * X + 10 这个函数 这是代码的主要配置界面，想玩的在这里配置参数\n目前随机生成50000个不太准确的训练数据(准确值+一个随机数)，进行30000轮迭代。\n（普通电脑能够在3秒内完成所有训练的超小规模训练=。=）\n可以看到，随着迭代次数的增加，LOSS(拟合偏离值)在不断减小。说明训练效果不错\n可以看到预测值与真实值非常接近，相对误差在0.3%以内。\n（这个应该比较精确了，如果需要，可以加大训练数据，加深迭代次数进行更加精确的训练）\n这个只是简单的机器学习模型，甚至都没有建立人工神经网络。。。 不过要怎么说呢，学起来！！！\n反思 缺点： 或许，这个模型实用性为零。因为它只能拟合线性函数，无法拟合其它函数。\n（说实话与其用这个模型，还不如用R语言分析，再不济也能用Excel计算 线性回归方程 。这样效率会高很多很多。。。。\n前景： 在这个模型的基础上可以编写能拟合非线性函数的模型。 如果输入的参数很多，例如Y=f(x1,x2,x3…),那么回归方程不太适用的时候，这类模型依旧能拟合出Y与各个参数的关系。 不需要关注目标函数的构成：在更加深层次的机器学习模型中，我们并不关注目标函数的构成（即不需要预先知道Y与X是否符合特定的关系，如Y=aX+b，Y=aX^b+c等构成式），这样能够大大减轻拟合一个函数的负担。 ",
   "wordCount" : "142",
   "inLanguage": "en",
   "datePublished": "2023-03-27T22:27:23Z",
-  "dateModified": "2025-12-01T09:31:17.673Z",
+  "dateModified": "2025-12-04T10:18:33.129Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8F%AF%E6%8B%9F%E5%90%88%E4%BB%BB%E6%84%8F%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/"
@@ -362,6 +363,7 @@ while(1):
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
       <li><a href="https://cywd123.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

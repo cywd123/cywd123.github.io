@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>简易python传文件收发端(带注释) | Juiceright</title>
-<meta name="keywords" content="">
+<meta name="keywords" content="old">
 <meta name="description" content="简易python传文件收发端
 发送端.py
 # 导入模块
@@ -153,7 +153,8 @@ while True:
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2023-03-20T23:45:23+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简易python传文件收发端(带注释)">
 <meta name="twitter:description" content="简易python传文件收发端
@@ -262,13 +263,13 @@ while True:
   "name": "简易python传文件收发端(带注释)",
   "description": "简易python传文件收发端 发送端.py # 导入模块 import socket # 创建tcp服务端socket tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # 绑定端口 tcp_server_socket.bind((\u0026#34;\u0026#34;, 114)) # 设置监听，把服务端socket由主动套接字改成被动套接字，只能接收客户端的连接请求 tcp_server_socket.listen(128) while True: # 接收客户端信息 client_socket, client_ip = tcp_server_socket.accept() print(\u0026#34;客户端：\u0026#34;, client_ip, \u0026#34;连接\u0026#34;) # 接收下载信息 try: file_name_data = client_socket.recv(65500) # 解码下载信息 file_name = file_name_data.decode() except : print(\u0026#34;客户端已断开连接\u0026#34;) continue try: # 数据传输 with open(\u0026#34;/\u0026#34; + file_name, \u0026#34;rb\u0026#34;) as file: while True: # 读取文件数据 file_data = file.read(65500) # 数据长度不为0表示还有数据没有写入 if file_data: client_socket.send(file_data) # 数据为0表示传输完成 else: print(file_name, \u0026#34;传输成功\u0026#34;) break except Exception as e: print(\u0026#34;客户端已断开连接\u0026#34;) # 关闭客户端连接 client_socket.close() 发送端.py # 导入模块 import socket,time # 创建套接字 # 绑定端口 # tcp_client_socket.bind((\u0026#34;\u0026#34;, 8080)) while True: # 连接IP地址和端口 tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) tcp_client_socket.connect((input(\u0026#34;请输入IP：\\n\u0026#34;), 114)) file_name = input(\u0026#34;请输入要下载的文件：\\n\u0026#34;) time_start=time.time() # 文件名编码 tcp_client_socket.send(file_name.encode()) try: # 文件传输 with open(file_name, \u0026#34;wb\u0026#34;) as file: while True: # 接收数据 file_data = tcp_client_socket.recv(65500) # 数据长度不为0写入文件 if file_data: file.write(file_data) # 数据长度为0表示下载完成 else: break # 下载出现异常时捕获异常 except Exception as e: print(\u0026#34;下载异常\u0026#34;, e) # 无异常则下载成功 else: print(file_name, \u0026#34;下载成功\u0026#34;) time_end=time.time() print(\u0026#39;总计\u0026#39;,time_end-time_start,\u0026#39;秒\u0026#39;) # 关闭客户端 tcp_client_socket.close() ",
   "keywords": [
-    
+    "old"
   ],
   "articleBody": "简易python传文件收发端 发送端.py # 导入模块 import socket # 创建tcp服务端socket tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # 绑定端口 tcp_server_socket.bind((\"\", 114)) # 设置监听，把服务端socket由主动套接字改成被动套接字，只能接收客户端的连接请求 tcp_server_socket.listen(128) while True: # 接收客户端信息 client_socket, client_ip = tcp_server_socket.accept() print(\"客户端：\", client_ip, \"连接\") # 接收下载信息 try: file_name_data = client_socket.recv(65500) # 解码下载信息 file_name = file_name_data.decode() except : print(\"客户端已断开连接\") continue try: # 数据传输 with open(\"/\" + file_name, \"rb\") as file: while True: # 读取文件数据 file_data = file.read(65500) # 数据长度不为0表示还有数据没有写入 if file_data: client_socket.send(file_data) # 数据为0表示传输完成 else: print(file_name, \"传输成功\") break except Exception as e: print(\"客户端已断开连接\") # 关闭客户端连接 client_socket.close() 发送端.py # 导入模块 import socket,time # 创建套接字 # 绑定端口 # tcp_client_socket.bind((\"\", 8080)) while True: # 连接IP地址和端口 tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) tcp_client_socket.connect((input(\"请输入IP：\\n\"), 114)) file_name = input(\"请输入要下载的文件：\\n\") time_start=time.time() # 文件名编码 tcp_client_socket.send(file_name.encode()) try: # 文件传输 with open(file_name, \"wb\") as file: while True: # 接收数据 file_data = tcp_client_socket.recv(65500) # 数据长度不为0写入文件 if file_data: file.write(file_data) # 数据长度为0表示下载完成 else: break # 下载出现异常时捕获异常 except Exception as e: print(\"下载异常\", e) # 无异常则下载成功 else: print(file_name, \"下载成功\") time_end=time.time() print('总计',time_end-time_start,'秒') # 关闭客户端 tcp_client_socket.close() ",
   "wordCount" : "152",
   "inLanguage": "en",
   "datePublished": "2023-03-20T23:45:23Z",
-  "dateModified": "2025-12-01T09:31:17.687Z",
+  "dateModified": "2025-12-04T10:18:33.156Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/%E7%AE%80%E6%98%93python%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B6%E5%8F%91%E7%AB%AF/"
@@ -424,6 +425,7 @@ while True:
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

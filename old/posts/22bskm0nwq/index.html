@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>ECDSA实例 | Juiceright</title>
-<meta name="keywords" content="python, 小脚本, 编程">
+<meta name="keywords" content="python, 小脚本, 编程, old">
 <meta name="description" content="
 import os
 import ecdsa
@@ -112,10 +112,11 @@ print(verify_signature(public_key, message, signature))   #验证签名
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-11T01:05:02+00:00">
-    <meta property="article:modified_time" content="2025-12-01T11:39:38+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="Python">
     <meta property="article:tag" content="小脚本">
     <meta property="article:tag" content="编程">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ECDSA实例">
 <meta name="twitter:description" content="
@@ -183,13 +184,13 @@ print(verify_signature(public_key, message, signature))   #验证签名
   "name": "ECDSA实例",
   "description": " import os import ecdsa # 生成私钥和公钥 def generate_keys(): # 使用secp256k1曲线生成密钥对 sk = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1) vk = sk.get_verifying_key() return sk, vk # 对消息进行签名 def sign_message(private_key, message): return private_key.sign(message) # 验证签名 def verify_signature(public_key, message, signature): return public_key.verify(signature, message) # %% private_key, public_key = generate_keys() # 简单消息 message = b\u0026#34;Hello, ECDSA!\u0026#34; # 签名消息 signature = sign_message(private_key, message) print(f\u0026#34;Signature: {signature.hex()}\u0026#34;) # %% sig=\u0026#39;adee313bebf78c1bd4a9719e0ad9aa871ff8195788ad2d7510f35e1ef0ce00a6cbfea518e4ea1716a729c7313a52da8b0c57ff0e0f97251ea604beef3890f699\u0026#39; message = b\u0026#34;Hello, ECDSA!\u0026#34; signature = bytes.fromhex(sig) print(verify_signature(public_key, message, signature)) #验证签名 ",
   "keywords": [
-    "python", "小脚本", "编程"
+    "python", "小脚本", "编程", "old"
   ],
   "articleBody": " import os import ecdsa # 生成私钥和公钥 def generate_keys(): # 使用secp256k1曲线生成密钥对 sk = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1) vk = sk.get_verifying_key() return sk, vk # 对消息进行签名 def sign_message(private_key, message): return private_key.sign(message) # 验证签名 def verify_signature(public_key, message, signature): return public_key.verify(signature, message) # %% private_key, public_key = generate_keys() # 简单消息 message = b\"Hello, ECDSA!\" # 签名消息 signature = sign_message(private_key, message) print(f\"Signature: {signature.hex()}\") # %% sig='adee313bebf78c1bd4a9719e0ad9aa871ff8195788ad2d7510f35e1ef0ce00a6cbfea518e4ea1716a729c7313a52da8b0c57ff0e0f97251ea604beef3890f699' message = b\"Hello, ECDSA!\" signature = bytes.fromhex(sig) print(verify_signature(public_key, message, signature)) #验证签名 ",
   "wordCount" : "69",
   "inLanguage": "en",
   "datePublished": "2025-03-11T01:05:02Z",
-  "dateModified": "2025-12-01T11:39:38.993Z",
+  "dateModified": "2025-12-04T10:18:33.04Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/22bskm0nwq/"
@@ -307,6 +308,7 @@ print(verify_signature(public_key, message, signature))   #验证签名
       <li><a href="https://cywd123.github.io/tags/python/">Python</a></li>
       <li><a href="https://cywd123.github.io/tags/%E5%B0%8F%E8%84%9A%E6%9C%AC/">小脚本</a></li>
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

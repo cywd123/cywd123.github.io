@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>playwright自动登录STU WebVPN | Juiceright</title>
-<meta name="keywords" content="编程, python">
+<meta name="keywords" content="编程, python, old">
 <meta name="description" content="
 import re
 from playwright.sync_api import Playwright, sync_playwright, expect
@@ -134,9 +134,10 @@ with sync_playwright() as playwright:
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-11T09:55:00+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="编程">
     <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="playwright自动登录STU WebVPN">
 <meta name="twitter:description" content="
@@ -226,13 +227,13 @@ with sync_playwright() as playwright:
   "name": "playwright自动登录STU WebVPN",
   "description": " import re from playwright.sync_api import Playwright, sync_playwright, expect import time import os import hmac import hashlib def totp(key, t, digits=6): step = 30 t = int(t / step) key = key.encode() counter = t.to_bytes(8, \u0026#39;big\u0026#39;) h = hmac.new(key, counter, hashlib.sha1).digest() offset = h[-1] \u0026amp; 0x0f truncated = h[offset:offset + 4] code = int.from_bytes(truncated, \u0026#39;big\u0026#39;) \u0026amp; 0x7fffffff code = str(code % 10 ** digits).zfill(digits) return code # %% def run(playwright: Playwright) -\u0026gt; None: browser = playwright.chromium.launch(headless=True) context = browser.new_context() page = context.new_page() page.goto(\u0026#34;https://webvpn.stu.edu.cn/portal/#!/login\u0026#34;) page.locator(\u0026#34;#Calc input[type=\\\u0026#34;text\\\u0026#34;]\u0026#34;).fill(\u0026#34;校园网账号\u0026#34;) page.locator(\u0026#34;#loginPwd\u0026#34;).click() page.locator(\u0026#34;#loginPwd\u0026#34;).fill(\u0026#34;校园网密码\u0026#34;) page.locator(\u0026#34;span\u0026#34;).filter(has_text=\u0026#34;我已阅读并同意\u0026#34;).locator(\u0026#34;div\u0026#34;).first.click() page.get_by_role(\u0026#34;button\u0026#34;, name=\u0026#34;登录\u0026#34;).click() page.locator(\u0026#34;#app_dialog_container\u0026#34;).get_by_role(\u0026#34;textbox\u0026#34;).fill(str(totp(\u0026#34;填写你的TOTP密钥\u0026#34;, time.time()))) page.get_by_role(\u0026#34;button\u0026#34;, name=\u0026#34;确定\u0026#34;).click() # --------------------- # 获取cookie值 cookies = page.context.cookies() for cookie in cookies: print(f\u0026#34;{cookie[\u0026#39;name\u0026#39;]}: {cookie[\u0026#39;value\u0026#39;]}\u0026#34;) if cookie[\u0026#39;name\u0026#39;] == \u0026#34;TWFID\u0026#34;: TWFID = cookie[\u0026#39;value\u0026#39;] url=\u0026#34;https://webvpn.stu.edu.cn/portal/shortcut.html?twfid=\u0026#34;+TWFID+\u0026#34;\u0026amp;url=http://bilibili-com-s.webvpn.stu.edu.cn%3A8118\u0026#34; os.system(\u0026#39;start msedge \u0026#34;\u0026#39;+url+\u0026#39;\u0026#34;\u0026#39;) # --------------------- context.close() browser.close() with sync_playwright() as playwright: run(playwright) ",
   "keywords": [
-    "编程", "python"
+    "编程", "python", "old"
   ],
   "articleBody": " import re from playwright.sync_api import Playwright, sync_playwright, expect import time import os import hmac import hashlib def totp(key, t, digits=6): step = 30 t = int(t / step) key = key.encode() counter = t.to_bytes(8, 'big') h = hmac.new(key, counter, hashlib.sha1).digest() offset = h[-1] \u0026 0x0f truncated = h[offset:offset + 4] code = int.from_bytes(truncated, 'big') \u0026 0x7fffffff code = str(code % 10 ** digits).zfill(digits) return code # %% def run(playwright: Playwright) -\u003e None: browser = playwright.chromium.launch(headless=True) context = browser.new_context() page = context.new_page() page.goto(\"https://webvpn.stu.edu.cn/portal/#!/login\") page.locator(\"#Calc input[type=\\\"text\\\"]\").fill(\"校园网账号\") page.locator(\"#loginPwd\").click() page.locator(\"#loginPwd\").fill(\"校园网密码\") page.locator(\"span\").filter(has_text=\"我已阅读并同意\").locator(\"div\").first.click() page.get_by_role(\"button\", name=\"登录\").click() page.locator(\"#app_dialog_container\").get_by_role(\"textbox\").fill(str(totp(\"填写你的TOTP密钥\", time.time()))) page.get_by_role(\"button\", name=\"确定\").click() # --------------------- # 获取cookie值 cookies = page.context.cookies() for cookie in cookies: print(f\"{cookie['name']}: {cookie['value']}\") if cookie['name'] == \"TWFID\": TWFID = cookie['value'] url=\"https://webvpn.stu.edu.cn/portal/shortcut.html?twfid=\"+TWFID+\"\u0026url=http://bilibili-com-s.webvpn.stu.edu.cn%3A8118\" os.system('start msedge \"'+url+'\"') # --------------------- context.close() browser.close() with sync_playwright() as playwright: run(playwright) ",
   "wordCount" : "126",
   "inLanguage": "en",
   "datePublished": "2025-03-11T09:55:00Z",
-  "dateModified": "2025-12-01T09:31:17.672Z",
+  "dateModified": "2025-12-04T10:18:33.104Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/st6eftek36/"
@@ -371,6 +372,7 @@ with sync_playwright() as playwright:
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
       <li><a href="https://cywd123.github.io/tags/python/">Python</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

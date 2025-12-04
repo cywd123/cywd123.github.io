@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>cmd 利用curl实现全网卡登录STU校园网 | Juiceright</title>
-<meta name="keywords" content="小脚本">
+<meta name="keywords" content="小脚本, old">
 <meta name="description" content="
 @echo off
 for /f &#34;tokens=*&#34; %%i in (
@@ -87,8 +87,9 @@ pause
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-17T12:38:48+00:00">
-    <meta property="article:modified_time" content="2025-12-01T14:48:43+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="小脚本">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cmd 利用curl实现全网卡登录STU校园网">
 <meta name="twitter:description" content="
@@ -131,13 +132,13 @@ pause
   "name": "cmd 利用curl实现全网卡登录STU校园网",
   "description": " @echo off for /f \u0026#34;tokens=*\u0026#34; %%i in ( \u0026#39;powershell -Command \u0026#34;Get-NetIPAddress | Where-Object {$_.AddressFamily -eq \u0026#39;IPv4\u0026#39; -and $_.IPAddress -ne \u0026#39;127.0.0.1\u0026#39;} | Select-Object -ExpandProperty IPAddress\u0026#34;\u0026#39; ) do ( echo 发现有效IP: %%i curl --data \u0026#34;opr=pwdLogin\u0026amp;userName=账号\u0026amp;pwd=密码\u0026amp;rememberPwd=1\u0026#34; http://1.1.1.2/ac_portal/login.php --interface %%i ) pause ",
   "keywords": [
-    "小脚本"
+    "小脚本", "old"
   ],
   "articleBody": " @echo off for /f \"tokens=*\" %%i in ( 'powershell -Command \"Get-NetIPAddress | Where-Object {$_.AddressFamily -eq 'IPv4' -and $_.IPAddress -ne '127.0.0.1'} | Select-Object -ExpandProperty IPAddress\"' ) do ( echo 发现有效IP: %%i curl --data \"opr=pwdLogin\u0026userName=账号\u0026pwd=密码\u0026rememberPwd=1\" http://1.1.1.2/ac_portal/login.php --interface %%i ) pause ",
   "wordCount" : "38",
   "inLanguage": "en",
   "datePublished": "2025-03-17T12:38:48Z",
-  "dateModified": "2025-12-01T14:48:43.786Z",
+  "dateModified": "2025-12-04T10:18:33.097Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/lq1iwgc7e1/"
@@ -228,6 +229,7 @@ pause
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E5%B0%8F%E8%84%9A%E6%9C%AC/">小脚本</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

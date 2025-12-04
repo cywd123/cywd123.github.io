@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>带lazy标记的zkw线段树 | Juiceright</title>
-<meta name="keywords" content="编程, C&#43;&#43;">
+<meta name="keywords" content="编程, C&#43;&#43;, old">
 <meta name="description" content="
 #include&lt;bits/stdc&#43;&#43;.h&gt;
 using namespace std;
@@ -132,9 +132,10 @@ while(q--){
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-10T13:25:58+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="编程">
     <meta property="article:tag" content="C&#43;&#43;">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="带lazy标记的zkw线段树">
 <meta name="twitter:description" content="
@@ -222,13 +223,13 @@ while(q--){
   "name": "带lazy标记的zkw线段树",
   "description": " #include\u0026lt;bits/stdc++.h\u0026gt; using namespace std; long long d[500000\u0026lt;\u0026lt;2],laz[500000\u0026lt;\u0026lt;2],n,m=1;; void build(){ while(m\u0026lt;=n)m\u0026lt;\u0026lt;=1; for(long long i=m+1;i\u0026lt;=m+n;i++)cin\u0026gt;\u0026gt;d[i]; for(long long i=m-1;i\u0026gt;=1;i--)d[i]=d[i\u0026lt;\u0026lt;1]+d[i\u0026lt;\u0026lt;1|1]; } long long get(long long x,long long y){ long long ans=0,lc=0,rc=0,cnt=1;//cnt=1 for(x+=m-1,y+=m+1; x^y^1; x\u0026gt;\u0026gt;=1,y\u0026gt;\u0026gt;=1,cnt\u0026lt;\u0026lt;=1){ if(laz[x])ans+=laz[x]*lc; if(laz[y])ans+=laz[y]*rc; if(~x\u0026amp;1)ans+=d[x^1],lc+=cnt; if(y\u0026amp;1)ans+=d[y^1],rc+=cnt; } for(;x;x\u0026gt;\u0026gt;=1,y\u0026gt;\u0026gt;=1)ans+=laz[x]*lc,ans+=laz[y]*rc; return ans; } void add(long long x,long long y,long long v){ long long ans=0,lc=0,rc=0,cnt=1;//cnt=1 for(x+=m-1,y+=m+1; x^y^1; x\u0026gt;\u0026gt;=1,y\u0026gt;\u0026gt;=1,cnt\u0026lt;\u0026lt;=1){ d[x]+=v*lc;d[y]+=v*rc; if(~x\u0026amp;1) laz[x^1]+=v,d[x^1]+=v*cnt,lc+=cnt; if(y\u0026amp;1) laz[y^1]+=v,d[y^1]+=v*cnt,rc+=cnt;\t} for(;x;x\u0026gt;\u0026gt;=1,y\u0026gt;\u0026gt;=1)d[x]+=v*lc,d[y]+=v*rc; } int main(){ long long q; cin\u0026gt;\u0026gt;n\u0026gt;\u0026gt;q; build(); while(q--){ long long a,b,op,c; cin\u0026gt;\u0026gt;op\u0026gt;\u0026gt;a\u0026gt;\u0026gt;b; if(op==1){ cin\u0026gt;\u0026gt;c; add(a,b,c); }else{ cout\u0026lt;\u0026lt;get(a,b)\u0026lt;\u0026lt;endl; } } } ",
   "keywords": [
-    "编程", "C++"
+    "编程", "C++", "old"
   ],
   "articleBody": " #include using namespace std; long long d[500000\u003c\u003c2],laz[500000\u003c\u003c2],n,m=1;; void build(){ while(m\u003c=n)m\u003c\u003c=1; for(long long i=m+1;i\u003c=m+n;i++)cin\u003e\u003ed[i]; for(long long i=m-1;i\u003e=1;i--)d[i]=d[i\u003c\u003c1]+d[i\u003c\u003c1|1]; } long long get(long long x,long long y){ long long ans=0,lc=0,rc=0,cnt=1;//cnt=1 for(x+=m-1,y+=m+1; x^y^1; x\u003e\u003e=1,y\u003e\u003e=1,cnt\u003c\u003c=1){ if(laz[x])ans+=laz[x]*lc; if(laz[y])ans+=laz[y]*rc; if(~x\u00261)ans+=d[x^1],lc+=cnt; if(y\u00261)ans+=d[y^1],rc+=cnt; } for(;x;x\u003e\u003e=1,y\u003e\u003e=1)ans+=laz[x]*lc,ans+=laz[y]*rc; return ans; } void add(long long x,long long y,long long v){ long long ans=0,lc=0,rc=0,cnt=1;//cnt=1 for(x+=m-1,y+=m+1; x^y^1; x\u003e\u003e=1,y\u003e\u003e=1,cnt\u003c\u003c=1){ d[x]+=v*lc;d[y]+=v*rc; if(~x\u00261) laz[x^1]+=v,d[x^1]+=v*cnt,lc+=cnt; if(y\u00261) laz[y^1]+=v,d[y^1]+=v*cnt,rc+=cnt;\t} for(;x;x\u003e\u003e=1,y\u003e\u003e=1)d[x]+=v*lc,d[y]+=v*rc; } int main(){ long long q; cin\u003e\u003en\u003e\u003eq; build(); while(q--){ long long a,b,op,c; cin\u003e\u003eop\u003e\u003ea\u003e\u003eb; if(op==1){ cin\u003e\u003ec; add(a,b,c); }else{ cout\u003c",
   "wordCount" : "81",
   "inLanguage": "en",
   "datePublished": "2025-03-10T13:25:58Z",
-  "dateModified": "2025-12-01T09:31:17.672Z",
+  "dateModified": "2025-12-04T10:18:33.127Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/wwlgapb2j1/"
@@ -365,6 +366,7 @@ while(q--){
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
       <li><a href="https://cywd123.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

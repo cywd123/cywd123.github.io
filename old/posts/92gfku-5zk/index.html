@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>vbs脚本 快速将ppt word文档转换成pdf | Juiceright</title>
-<meta name="keywords" content="编程, 小脚本">
+<meta name="keywords" content="编程, 小脚本, old">
 <meta name="description" content="保存为vbs脚本，可以将同目录下的ppt、word转成PDF，非常方便
 On Error Resume Next
     Const wdExportFormatPDF = 17
@@ -107,9 +107,10 @@ On Error Resume Next Const wdExportFormatPDF = 17 Set oWord = WScript.CreateObje
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-11T00:48:44+00:00">
-    <meta property="article:modified_time" content="2025-12-01T10:14:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="编程">
     <meta property="article:tag" content="小脚本">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vbs脚本 快速将ppt word文档转换成pdf">
 <meta name="twitter:description" content="保存为vbs脚本，可以将同目录下的ppt、word转成PDF，非常方便
@@ -171,13 +172,13 @@ End If
   "name": "vbs脚本 快速将ppt word文档转换成pdf",
   "description": "保存为vbs脚本，可以将同目录下的ppt、word转成PDF，非常方便\nOn Error Resume Next Const wdExportFormatPDF = 17 Set oWord = WScript.CreateObject(\u0026#34;Word.Application\u0026#34;) Set ppt = CreateObject(\u0026#34;PowerPoint.application\u0026#34;) Set fso = WScript.CreateObject(\u0026#34;Scripting.Filesystemobject\u0026#34;) Set fds=fso.GetFolder(\u0026#34;.\u0026#34;) Set ffs=fds.Files For Each ff In ffs If (LCase(Right(ff.Name,4))=\u0026#34;.doc\u0026#34; Or LCase(Right(ff.Name,4))=\u0026#34;docx\u0026#34; ) And Left(ff.Name,1)\u0026lt;\u0026gt;\u0026#34;~\u0026#34; Then Set oDoc=oWord.Documents.Open(ff.Path) odoc.ExportAsFixedFormat Left(ff.Path,InStrRev(ff.Path,\u0026#34;.\u0026#34;))\u0026amp;\u0026#34;pdf\u0026#34;,wdExportFormatPDF End If If (LCase(Right(ff.Name,4))=\u0026#34;.ppt\u0026#34; Or LCase(Right(ff.Name,4))=\u0026#34;pptx\u0026#34; ) And Left(ff.Name,1)\u0026lt;\u0026gt;\u0026#34;~\u0026#34; Then Set pptfile = ppt.Presentations.Open(ff.Path,false,false,false) pptfile.Saveas Left(ff.Path,InStrRev(ff.Path,\u0026#34;.\u0026#34;))\u0026amp;\u0026#34;pdf\u0026#34;,32,false End If Next odoc.Close oword.Quit pptfiles.Close ppt.Quit Set oDoc=Nothing Set oWord =Nothing Set pptfile = Nothing Set ppt = Nothing MsgBox \u0026#34;PPT和Word全部转换为PDF啦!\u0026#34; ",
   "keywords": [
-    "编程", "小脚本"
+    "编程", "小脚本", "old"
   ],
   "articleBody": "保存为vbs脚本，可以将同目录下的ppt、word转成PDF，非常方便\nOn Error Resume Next Const wdExportFormatPDF = 17 Set oWord = WScript.CreateObject(\"Word.Application\") Set ppt = CreateObject(\"PowerPoint.application\") Set fso = WScript.CreateObject(\"Scripting.Filesystemobject\") Set fds=fso.GetFolder(\".\") Set ffs=fds.Files For Each ff In ffs If (LCase(Right(ff.Name,4))=\".doc\" Or LCase(Right(ff.Name,4))=\"docx\" ) And Left(ff.Name,1)\u003c\u003e\"~\" Then Set oDoc=oWord.Documents.Open(ff.Path) odoc.ExportAsFixedFormat Left(ff.Path,InStrRev(ff.Path,\".\"))\u0026\"pdf\",wdExportFormatPDF End If If (LCase(Right(ff.Name,4))=\".ppt\" Or LCase(Right(ff.Name,4))=\"pptx\" ) And Left(ff.Name,1)\u003c\u003e\"~\" Then Set pptfile = ppt.Presentations.Open(ff.Path,false,false,false) pptfile.Saveas Left(ff.Path,InStrRev(ff.Path,\".\"))\u0026\"pdf\",32,false End If Next odoc.Close oword.Quit pptfiles.Close ppt.Quit Set oDoc=Nothing Set oWord =Nothing Set pptfile = Nothing Set ppt = Nothing MsgBox \"PPT和Word全部转换为PDF啦!\" ",
   "wordCount" : "80",
   "inLanguage": "en",
   "datePublished": "2025-03-11T00:48:44Z",
-  "dateModified": "2025-12-01T10:14:17.27Z",
+  "dateModified": "2025-12-04T10:18:33.063Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/92gfku-5zk/"
@@ -288,6 +289,7 @@ End If
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
       <li><a href="https://cywd123.github.io/tags/%E5%B0%8F%E8%84%9A%E6%9C%AC/">小脚本</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

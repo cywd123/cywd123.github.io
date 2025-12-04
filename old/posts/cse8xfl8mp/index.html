@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>线段树 | Juiceright</title>
-<meta name="keywords" content="编程, C&#43;&#43;">
+<meta name="keywords" content="编程, C&#43;&#43;, old">
 <meta name="description" content="#include&lt;bits/stdc&#43;&#43;.h&gt;
 using namespace std;
 struct pl{
@@ -141,9 +141,10 @@ while(m--){
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-10T13:26:55+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="编程">
     <meta property="article:tag" content="C&#43;&#43;">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线段树">
 <meta name="twitter:description" content="#include&lt;bits/stdc&#43;&#43;.h&gt;
@@ -240,13 +241,13 @@ while(m--){
   "name": "线段树",
   "description": "#include\u0026lt;bits/stdc++.h\u0026gt; using namespace std; struct pl{ long long l,r,v,add,tim; #define l(x) tree[x].l #define r(x) tree[x].r #define v(x) tree[x].v #define add(x) tree[x].add }tree[4*100000]; long long a[100001]; void build(long long p,long long l,long long r){ l(p)=l;r(p)=r; if(l==r){ v(p)=a[l];return; } long long mid=(l+r)\u0026gt;\u0026gt;1; build(p\u0026lt;\u0026lt;1,l,mid); build((p\u0026lt;\u0026lt;1)+1,mid+1,r); v(p)=v(p*2)+v(p*2+1); } void spread(long long p){ if(add(p)==0)return; v(p*2)+=add(p)*(r(p*2)-l(p*2)+1); v(p*2+1)+=add(p)*(r(p*2+1)-l(p*2+1)+1); add(p*2)+=add(p); add(p*2+1)+=add(p); add(p)=0; } void chg(long long p,long long l,long long r,long long d){ if(l\u0026lt;=l(p)\u0026amp;\u0026amp;r\u0026gt;=r(p)){ v(p)+=d*(r(p)-l(p)+1); add(p)+=d; return; } spread(p); long long mid=(l(p)+r(p))\u0026gt;\u0026gt;1; if(l\u0026lt;=mid)chg(p*2,l,r,d); if(r\u0026gt;mid)chg(p*2+1,l,r,d); v(p)=v(p*2)+v(p*2+1); } long long ask(long long p,long long l,long long r){ if(l\u0026lt;=l(p)\u0026amp;\u0026amp;r\u0026gt;=r(p))return v(p); spread(p); long long mid=(l(p)+r(p))\u0026gt;\u0026gt;1; long long ans=0; if(l\u0026lt;=mid)ans+=ask(p*2,l,r); if(r\u0026gt;mid)ans+=ask(p*2+1,l,r); return ans; } int main(){ long long i,j,n,m,t,k; cin\u0026gt;\u0026gt;n\u0026gt;\u0026gt;m; for(i=1;i\u0026lt;=n;i++)cin\u0026gt;\u0026gt;a[i]; build(1,1,n); while(m--){ long long op,l,r,k; cin\u0026gt;\u0026gt;op\u0026gt;\u0026gt;l\u0026gt;\u0026gt;r; if(op==1){ cin\u0026gt;\u0026gt;k; chg(1,l,r,k); }else cout\u0026lt;\u0026lt;ask(1,l,r)\u0026lt;\u0026lt;endl;\t} } ",
   "keywords": [
-    "编程", "C++"
+    "编程", "C++", "old"
   ],
   "articleBody": "#include using namespace std; struct pl{ long long l,r,v,add,tim; #define l(x) tree[x].l #define r(x) tree[x].r #define v(x) tree[x].v #define add(x) tree[x].add }tree[4*100000]; long long a[100001]; void build(long long p,long long l,long long r){ l(p)=l;r(p)=r; if(l==r){ v(p)=a[l];return; } long long mid=(l+r)\u003e\u003e1; build(p\u003c\u003c1,l,mid); build((p\u003c\u003c1)+1,mid+1,r); v(p)=v(p*2)+v(p*2+1); } void spread(long long p){ if(add(p)==0)return; v(p*2)+=add(p)*(r(p*2)-l(p*2)+1); v(p*2+1)+=add(p)*(r(p*2+1)-l(p*2+1)+1); add(p*2)+=add(p); add(p*2+1)+=add(p); add(p)=0; } void chg(long long p,long long l,long long r,long long d){ if(l\u003c=l(p)\u0026\u0026r\u003e=r(p)){ v(p)+=d*(r(p)-l(p)+1); add(p)+=d; return; } spread(p); long long mid=(l(p)+r(p))\u003e\u003e1; if(l\u003c=mid)chg(p*2,l,r,d); if(r\u003emid)chg(p*2+1,l,r,d); v(p)=v(p*2)+v(p*2+1); } long long ask(long long p,long long l,long long r){ if(l\u003c=l(p)\u0026\u0026r\u003e=r(p))return v(p); spread(p); long long mid=(l(p)+r(p))\u003e\u003e1; long long ans=0; if(l\u003c=mid)ans+=ask(p*2,l,r); if(r\u003emid)ans+=ask(p*2+1,l,r); return ans; } int main(){ long long i,j,n,m,t,k; cin\u003e\u003en\u003e\u003em; for(i=1;i\u003c=n;i++)cin\u003e\u003ea[i]; build(1,1,n); while(m--){ long long op,l,r,k; cin\u003e\u003eop\u003e\u003el\u003e\u003er; if(op==1){ cin\u003e\u003ek; chg(1,l,r,k); }else cout\u003c",
   "wordCount" : "121",
   "inLanguage": "en",
   "datePublished": "2025-03-10T13:26:55Z",
-  "dateModified": "2025-12-01T09:31:17.666Z",
+  "dateModified": "2025-12-04T10:18:33.086Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/cse8xfl8mp/"
@@ -392,6 +393,7 @@ while(m--){
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
       <li><a href="https://cywd123.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

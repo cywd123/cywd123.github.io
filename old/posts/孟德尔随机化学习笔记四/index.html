@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>孟德尔随机化笔记（四）——药物靶点MR分析 | Juiceright</title>
-<meta name="keywords" content="">
+<meta name="keywords" content="old">
 <meta name="description" content="用于药物开发与效应预测的药物孟德尔随机化（Drug-MR）,基于靶蛋白的下游产物（biomarker），以靶蛋白编码基因附近的对biomarker有显著效应的SNP（pQTL或者eQTL）作为工具变量，以biomarker浓度作为暴露，以疾病作为结局，进行孟德尔随机化，以验证蛋白靶对于所研究疾病的影响。
 参考资料
 资料建议剔除连锁不平衡： R^2 = 0.60
@@ -149,7 +149,8 @@ library(easyMR) dat=get_drug_target_data( id = &#34;ieu-b-110&#34;,　#暴露GWA
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2023-08-05T05:13:50+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="孟德尔随机化笔记（四）——药物靶点MR分析">
 <meta name="twitter:description" content="用于药物开发与效应预测的药物孟德尔随机化（Drug-MR）,基于靶蛋白的下游产物（biomarker），以靶蛋白编码基因附近的对biomarker有显著效应的SNP（pQTL或者eQTL）作为工具变量，以biomarker浓度作为暴露，以疾病作为结局，进行孟德尔随机化，以验证蛋白靶对于所研究疾病的影响。
@@ -250,13 +251,13 @@ mr_common(
   "name": "孟德尔随机化笔记（四）——药物靶点MR分析",
   "description": "用于药物开发与效应预测的药物孟德尔随机化（Drug-MR）,基于靶蛋白的下游产物（biomarker），以靶蛋白编码基因附近的对biomarker有显著效应的SNP（pQTL或者eQTL）作为工具变量，以biomarker浓度作为暴露，以疾病作为结局，进行孟德尔随机化，以验证蛋白靶对于所研究疾病的影响。\n参考资料\n资料建议剔除连锁不平衡： R^2 = 0.60\n下面是分别用easyMR和MendelR包进行的分析代码\nlibrary(easyMR) dat=get_drug_target_data( id = \u0026#34;ieu-b-110\u0026#34;,　#暴露GWAS ID gene_name=\u0026#34;HMGCR\u0026#34;, #药靶蛋白编码基因 kb=100, #基因附近的SNP范围 clump_kb = 100, #clump的范围 clump_local = FALSE, r2=0.3, #clump的r2阈值 pval=0.05, MAF = 0.01, #次等位基因频率 阈值 build = \u0026#34;GRch38\u0026#34;, chr = NULL, pos_start = NULL, pos_end = NULL ) drug_MR( target_gene_data=dat, outcome_id =\u0026#34;finn-b-I9_AF\u0026#34;, #疾病GWAS ID outcome_name=\u0026#34;atrial fibrillation\u0026#34;, inhibitor = FALSE, after_trans_inhibitor = FALSE, pval = 0.05, action = 2, out_type = \u0026#34;binary\u0026#34;, save_path=\u0026#34;e:\u0026#34; ) library(MendelR) mr_common( id_exposure = \u0026#34;ieu-b-110\u0026#34;, #暴露GWAS ID id_outcome = \u0026#34;finn-b-I9_AF\u0026#34;, #疾病GWAS ID p1 = 0.05, p2 = 0.05, write_csv = TRUE, write_ppt = FALSE, method_list = c(\u0026#34;mr_ivw\u0026#34;, \u0026#34;mr_egger_regression\u0026#34;, \u0026#34;mr_weighted_median\u0026#34;, \u0026#34;mr_weighted_mode\u0026#34;), rm_snps = NULL, r2 = 0.3, #clump的r2阈值 kb = 100, #clump的范围 build_version = \u0026#34;hg19\u0026#34;, gene = \u0026#34;HMGCR\u0026#34;, #药靶蛋白编码基因 chr = NULL, pos_start = NULL, pos_end = NULL, eaf_threshold = NULL, run_presso = T, gene_win = 100, #基因附近的SNP范围 NbDistribution = 3000, find_proxy = T, local_clump = F, r2_cal_mode = 1, steiger = T, #是否进行Steiger方向性检验 auto_ivw = T, pop = \u0026#34;EUR\u0026#34;, no_clump = F, out_dir = NULL, exposure_samplesize = NULL, outcome_samplesize = NULL ) ",
   "keywords": [
-    
+    "old"
   ],
   "articleBody": "用于药物开发与效应预测的药物孟德尔随机化（Drug-MR）,基于靶蛋白的下游产物（biomarker），以靶蛋白编码基因附近的对biomarker有显著效应的SNP（pQTL或者eQTL）作为工具变量，以biomarker浓度作为暴露，以疾病作为结局，进行孟德尔随机化，以验证蛋白靶对于所研究疾病的影响。\n参考资料\n资料建议剔除连锁不平衡： R^2 = 0.60\n下面是分别用easyMR和MendelR包进行的分析代码\nlibrary(easyMR) dat=get_drug_target_data( id = \"ieu-b-110\",　#暴露GWAS ID gene_name=\"HMGCR\", #药靶蛋白编码基因 kb=100, #基因附近的SNP范围 clump_kb = 100, #clump的范围 clump_local = FALSE, r2=0.3, #clump的r2阈值 pval=0.05, MAF = 0.01, #次等位基因频率 阈值 build = \"GRch38\", chr = NULL, pos_start = NULL, pos_end = NULL ) drug_MR( target_gene_data=dat, outcome_id =\"finn-b-I9_AF\", #疾病GWAS ID outcome_name=\"atrial fibrillation\", inhibitor = FALSE, after_trans_inhibitor = FALSE, pval = 0.05, action = 2, out_type = \"binary\", save_path=\"e:\" ) library(MendelR) mr_common( id_exposure = \"ieu-b-110\", #暴露GWAS ID id_outcome = \"finn-b-I9_AF\", #疾病GWAS ID p1 = 0.05, p2 = 0.05, write_csv = TRUE, write_ppt = FALSE, method_list = c(\"mr_ivw\", \"mr_egger_regression\", \"mr_weighted_median\", \"mr_weighted_mode\"), rm_snps = NULL, r2 = 0.3, #clump的r2阈值 kb = 100, #clump的范围 build_version = \"hg19\", gene = \"HMGCR\", #药靶蛋白编码基因 chr = NULL, pos_start = NULL, pos_end = NULL, eaf_threshold = NULL, run_presso = T, gene_win = 100, #基因附近的SNP范围 NbDistribution = 3000, find_proxy = T, local_clump = F, r2_cal_mode = 1, steiger = T, #是否进行Steiger方向性检验 auto_ivw = T, pop = \"EUR\", no_clump = F, out_dir = NULL, exposure_samplesize = NULL, outcome_samplesize = NULL ) ",
   "wordCount" : "173",
   "inLanguage": "en",
   "datePublished": "2023-08-05T05:13:50Z",
-  "dateModified": "2025-12-01T09:31:17.678Z",
+  "dateModified": "2025-12-04T10:18:33.139Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/%E5%AD%9F%E5%BE%B7%E5%B0%94%E9%9A%8F%E6%9C%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/"
@@ -404,6 +405,7 @@ mr_common(
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

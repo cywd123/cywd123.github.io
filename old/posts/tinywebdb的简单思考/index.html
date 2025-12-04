@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>TinyWebDB的简单思考 | Juiceright</title>
-<meta name="keywords" content="编程">
+<meta name="keywords" content="编程, old">
 <meta name="description" content="部分核心代码：
 
 	$tag = urldecode($_POST[&#39;tag&#39;]);            //获得POST参数，URL解码
@@ -112,8 +112,9 @@ $tag = urldecode($_POST[&#39;tag&#39;]); //获得POST参数，URL解码 if (strp
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2022-12-21T22:10:55+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="编程">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TinyWebDB的简单思考">
 <meta name="twitter:description" content="部分核心代码：
@@ -180,13 +181,13 @@ $tag = urldecode($_POST[&#39;tag&#39;]); //获得POST参数，URL解码 if (strp
   "name": "TinyWebDB的简单思考",
   "description": "部分核心代码：\n$tag = urldecode($_POST[\u0026#39;tag\u0026#39;]); //获得POST参数，URL解码 if (strpos($_SERVER[\u0026#34;REQUEST_URI\u0026#34;], \u0026#39;storeavalue\u0026#39;)) //判断HTTP请求头 { //储存数据 $sql = \u0026#34;SELECT * FROM tinywebdb WHERE tag=\u0026#39;\u0026#34;.$tag.\u0026#34;\u0026#39;\u0026#34;; //SQL $result = $conn-\u0026gt;query($sql); if ($result-\u0026gt;num_rows \u0026gt; 0) { $sql = \u0026#34;UPDATE tinywebdb SET value = \u0026#39;\u0026#34;.$_POST[\u0026#39;value\u0026#39;].\u0026#34;\u0026#39; where tag=\u0026#39;\u0026#34;.$tag.\u0026#34;\u0026#39;\u0026#34;; } else { $sql = \u0026#34;INSERT INTO tinywebdb \u0026#34;.\u0026#34;(tag,value) \u0026#34;.\u0026#34;VALUES (\u0026#39;\u0026#34;.$tag.\u0026#34;\u0026#39;,\u0026#39;\u0026#34;.$_POST[\u0026#39;value\u0026#39;].\u0026#34;\u0026#39;)\u0026#34;; } $retval = mysqli_query($conn, $sql); //传递SQL命令 } elseif(strpos($_SERVER[\u0026#34;REQUEST_URI\u0026#34;], \u0026#39;getvalue\u0026#39;)) { //查询数据 $sql = \u0026#34;SELECT * FROM tinywebdb WHERE tag=\u0026#39;\u0026#34;.$tag.\u0026#34;\u0026#39;\u0026#34;; //SQL $result = $conn-\u0026gt;query($sql); if ($result-\u0026gt;num_rows \u0026gt; 0) { while ($row = $result-\u0026gt;fetch_assoc()) { $results = array(\u0026#34;VALUE\u0026#34;, $tag, urldecode($row[\u0026#34;value\u0026#34;])); // $result_in_JSON = json_encode($results); // JSON编码 echo $result_in_JSON; // } } else { $results = array(\u0026#34;VALUE\u0026#34;, $tag, \u0026#34;\u0026#34;); $result_in_JSON = json_encode($results); echo $result_in_JSON; } }else{ ?\u0026gt; 其实主要还是查看了文献，用PHP模拟官方使用API接口格式。\n",
   "keywords": [
-    "编程"
+    "编程", "old"
   ],
   "articleBody": "部分核心代码：\n$tag = urldecode($_POST['tag']); //获得POST参数，URL解码 if (strpos($_SERVER[\"REQUEST_URI\"], 'storeavalue')) //判断HTTP请求头 { //储存数据 $sql = \"SELECT * FROM tinywebdb WHERE tag='\".$tag.\"'\"; //SQL $result = $conn-\u003equery($sql); if ($result-\u003enum_rows \u003e 0) { $sql = \"UPDATE tinywebdb SET value = '\".$_POST['value'].\"' where tag='\".$tag.\"'\"; } else { $sql = \"INSERT INTO tinywebdb \".\"(tag,value) \".\"VALUES ('\".$tag.\"','\".$_POST['value'].\"')\"; } $retval = mysqli_query($conn, $sql); //传递SQL命令 } elseif(strpos($_SERVER[\"REQUEST_URI\"], 'getvalue')) { //查询数据 $sql = \"SELECT * FROM tinywebdb WHERE tag='\".$tag.\"'\"; //SQL $result = $conn-\u003equery($sql); if ($result-\u003enum_rows \u003e 0) { while ($row = $result-\u003efetch_assoc()) { $results = array(\"VALUE\", $tag, urldecode($row[\"value\"])); // $result_in_JSON = json_encode($results); // JSON编码 echo $result_in_JSON; // } } else { $results = array(\"VALUE\", $tag, \"\"); $result_in_JSON = json_encode($results); echo $result_in_JSON; } }else{ ?\u003e 其实主要还是查看了文献，用PHP模拟官方使用API接口格式。\n然后调用了SQL数据库来储存和查找数据\n",
   "wordCount" : "115",
   "inLanguage": "en",
   "datePublished": "2022-12-21T22:10:55Z",
-  "dateModified": "2025-12-01T09:31:17.659Z",
+  "dateModified": "2025-12-04T10:18:33.104Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/tinywebdb%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%9D%E8%80%83/"
@@ -303,6 +304,7 @@ $tag = urldecode($_POST[&#39;tag&#39;]); //获得POST参数，URL解码 if (strp
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>使用Hyper-V配置网卡多个虚拟网卡 | Juiceright</title>
-<meta name="keywords" content="小脚本, 编程">
+<meta name="keywords" content="小脚本, 编程, old">
 <meta name="description" content="配置 Hyper-V
 首先需要启用 Hyper-V，在 管理员 Powershell输入以下命令：
 然后重启电脑。
@@ -104,9 +104,10 @@ Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name &#34;Ethernet-Vir
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-14T20:55:35+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="小脚本">
     <meta property="article:tag" content="编程">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hyper-V配置网卡多个虚拟网卡">
 <meta name="twitter:description" content="配置 Hyper-V
@@ -162,13 +163,13 @@ Remove-VMSwitch -name Ethernet-Virt -Force -Confirm
   "name": "使用Hyper-V配置网卡多个虚拟网卡",
   "description": "配置 Hyper-V 首先需要启用 Hyper-V，在 管理员 Powershell输入以下命令：\n然后重启电脑。\n启用 Hyper-V Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All 安装 Hyper-V 虚拟交换机 在管理员 Powershell 输入以下命令。name 参数后面的 Ethernet-Virt 是虚拟交换机的名称，可以任取。 NetAdapterName 参数后面的 Ethernet 代表你要桥接的物理网卡的名称，中文版系统一般为 以太网，英文版为 Ethernet。注意 AllowManagementOS 需要为 $false，否则 Hyper-V 会创建一个和物理网卡一样 MAC 地址的虚拟网卡妨碍我们使用。\nNew-VMSwitch -name Ethernet-Virt -AllowManagementOS $false -NetAdapterName \u0026#34;以太网 2\u0026#34; 向宿主机添加虚拟网卡 在管理员 Powershell 输入以下命令。Switch 参数后面的 Ethernet-Virt 是虚拟交换机的名称。 Name 参数后面的 Ethernet-Virt-Main 是虚拟网卡的名称，可以任取。注意要有 ManagementOS 参数，代表向宿主机添加网卡而不是某个虚拟机。StaticMacAddress 后面的 e0-00-00-00-ca-01 是虚拟网卡的 MAC 地址，可以任取，但必须唯一并且是单播地址（不懂单播、多播地址的话就无脑e0开头，然后后面的数字随便换）。\nAdd-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main1\u0026#34; -StaticMacAddress 38:fd:cc:7c:94:c5 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main2\u0026#34; -StaticMacAddress b0:36:c6:fa:f4:df Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main3\u0026#34; -StaticMacAddress 90:53:84:3e:9b:12 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main4\u0026#34; -StaticMacAddress 5c:1f:4b:eb:62:ad Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main5\u0026#34; -StaticMacAddress 58:d3:b1:6b:f4:97 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main6\u0026#34; -StaticMacAddress 18:9c:1a:d5:ca:a8 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main7\u0026#34; -StaticMacAddress 54:7c:bd:16:ae:0a Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main8\u0026#34; -StaticMacAddress d0:7c:6b:78:13:2f Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main9\u0026#34; -StaticMacAddress a0:05:1c:48:0b:12 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \u0026#34;Ethernet-Virt-Main10\u0026#34; -StaticMacAddress ec:89:10:ac:20:97 使用结束，删除虚拟交换机： Confirm : A Remove-VMSwitch -name Ethernet-Virt -Force -Confirm ",
   "keywords": [
-    "小脚本", "编程"
+    "小脚本", "编程", "old"
   ],
   "articleBody": "配置 Hyper-V 首先需要启用 Hyper-V，在 管理员 Powershell输入以下命令：\n然后重启电脑。\n启用 Hyper-V Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All 安装 Hyper-V 虚拟交换机 在管理员 Powershell 输入以下命令。name 参数后面的 Ethernet-Virt 是虚拟交换机的名称，可以任取。 NetAdapterName 参数后面的 Ethernet 代表你要桥接的物理网卡的名称，中文版系统一般为 以太网，英文版为 Ethernet。注意 AllowManagementOS 需要为 $false，否则 Hyper-V 会创建一个和物理网卡一样 MAC 地址的虚拟网卡妨碍我们使用。\nNew-VMSwitch -name Ethernet-Virt -AllowManagementOS $false -NetAdapterName \"以太网 2\" 向宿主机添加虚拟网卡 在管理员 Powershell 输入以下命令。Switch 参数后面的 Ethernet-Virt 是虚拟交换机的名称。 Name 参数后面的 Ethernet-Virt-Main 是虚拟网卡的名称，可以任取。注意要有 ManagementOS 参数，代表向宿主机添加网卡而不是某个虚拟机。StaticMacAddress 后面的 e0-00-00-00-ca-01 是虚拟网卡的 MAC 地址，可以任取，但必须唯一并且是单播地址（不懂单播、多播地址的话就无脑e0开头，然后后面的数字随便换）。\nAdd-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main1\" -StaticMacAddress 38:fd:cc:7c:94:c5 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main2\" -StaticMacAddress b0:36:c6:fa:f4:df Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main3\" -StaticMacAddress 90:53:84:3e:9b:12 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main4\" -StaticMacAddress 5c:1f:4b:eb:62:ad Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main5\" -StaticMacAddress 58:d3:b1:6b:f4:97 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main6\" -StaticMacAddress 18:9c:1a:d5:ca:a8 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main7\" -StaticMacAddress 54:7c:bd:16:ae:0a Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main8\" -StaticMacAddress d0:7c:6b:78:13:2f Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main9\" -StaticMacAddress a0:05:1c:48:0b:12 Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name \"Ethernet-Virt-Main10\" -StaticMacAddress ec:89:10:ac:20:97 使用结束，删除虚拟交换机： Confirm : A Remove-VMSwitch -name Ethernet-Virt -Force -Confirm ",
   "wordCount" : "151",
   "inLanguage": "en",
   "datePublished": "2025-03-14T20:55:35Z",
-  "dateModified": "2025-12-01T09:31:17.668Z",
+  "dateModified": "2025-12-04T10:18:33.09Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/kbg4hlog6b/"
@@ -273,6 +274,7 @@ Add-VMNetworkAdapter -Switch Ethernet-Virt -ManagementOS -Name &#34;Ethernet-Vir
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E5%B0%8F%E8%84%9A%E6%9C%AC/">小脚本</a></li>
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>

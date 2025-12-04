@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>LCA算法 | Juiceright</title>
-<meta name="keywords" content="编程, C&#43;&#43;">
+<meta name="keywords" content="编程, C&#43;&#43;, old">
 <meta name="description" content="// luogu-judger-enable-o2
 #include&lt;bits/stdc&#43;&#43;.h&gt;
 using namespace std;
@@ -136,9 +136,10 @@ int main(){
   <meta property="og:type" content="article">
     <meta property="article:section" content="old">
     <meta property="article:published_time" content="2025-03-10T13:27:39+00:00">
-    <meta property="article:modified_time" content="2025-12-01T09:31:17+00:00">
+    <meta property="article:modified_time" content="2025-12-04T10:18:33+00:00">
     <meta property="article:tag" content="编程">
     <meta property="article:tag" content="C&#43;&#43;">
+    <meta property="article:tag" content="Old">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LCA算法">
 <meta name="twitter:description" content="// luogu-judger-enable-o2
@@ -230,13 +231,13 @@ int main(){
   "name": "LCA算法",
   "description": "// luogu-judger-enable-o2 #include\u0026lt;bits/stdc++.h\u0026gt; using namespace std; int ver[2*500000],nex[2*500000],head[2*500000],d[2*500000],p[2*500000][23],tot; void add(int x,int y){ ver[++tot]=y;nex[tot]=head[x];head[x]=tot; } int read(){ int x=0; char ch; while(ch\u0026lt;\u0026#39;0\u0026#39;||ch\u0026gt;\u0026#39;9\u0026#39;)ch=getchar(); while(ch\u0026gt;\u0026#39;0\u0026#39;\u0026amp;\u0026amp;ch\u0026lt;\u0026#39;9\u0026#39;){ x=x*10+ch-\u0026#39;0\u0026#39;; ch=getchar(); } return x; } void dfs(int x,int fa){ d[x]=d[fa]+1; p[x][0]=fa; for(int i=1;(1\u0026lt;\u0026lt;i)\u0026lt;=d[x];i++) p[x][i]=p[p[x][i-1]][i-1]; for(int i=head[x];i;i=nex[i]){ if(ver[i]!=fa) dfs(ver[i],x);\t} } int lca(int a,int b){ if(d[a]\u0026gt;d[b])swap(a,b); for(int i=20;i\u0026gt;=0;i--) if(d[a]\u0026lt;=d[b]-(1\u0026lt;\u0026lt;i)) b=p[b][i]; if(a==b) return a; for(int i=20;i\u0026gt;=0;i--) if(p[a][i]==p[b][i])continue; else a=p[a][i],b=p[b][i]; return p[a][0]; } int main(){ int i,j,n,m,t,k,s; scanf(\u0026#34;%d %d %d\u0026#34;,\u0026amp;n,\u0026amp;m,\u0026amp;s); for(int i=1;i\u0026lt;n;i++) { int a,b; scanf(\u0026#34;%d %d\u0026#34;,\u0026amp;a,\u0026amp;b); add(a,b); add(b,a); } dfs(s,0); for(i=1;i\u0026lt;=m;i++) { int a,b; scanf(\u0026#34;%d %d\u0026#34;,\u0026amp;a,\u0026amp;b); cout\u0026lt;\u0026lt;lca(a,b)\u0026lt;\u0026lt;endl; } } ",
   "keywords": [
-    "编程", "C++"
+    "编程", "C++", "old"
   ],
   "articleBody": "// luogu-judger-enable-o2 #include using namespace std; int ver[2*500000],nex[2*500000],head[2*500000],d[2*500000],p[2*500000][23],tot; void add(int x,int y){ ver[++tot]=y;nex[tot]=head[x];head[x]=tot; } int read(){ int x=0; char ch; while(ch\u003c'0'||ch\u003e'9')ch=getchar(); while(ch\u003e'0'\u0026\u0026ch\u003c'9'){ x=x*10+ch-'0'; ch=getchar(); } return x; } void dfs(int x,int fa){ d[x]=d[fa]+1; p[x][0]=fa; for(int i=1;(1\u003c",
   "wordCount" : "90",
   "inLanguage": "en",
   "datePublished": "2025-03-10T13:27:39Z",
-  "dateModified": "2025-12-01T09:31:17.638Z",
+  "dateModified": "2025-12-04T10:18:33.069Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://cywd123.github.io/old/posts/5ipfk_eghq/"
@@ -377,6 +378,7 @@ int main(){
     <ul class="post-tags">
       <li><a href="https://cywd123.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></li>
       <li><a href="https://cywd123.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a></li>
+      <li><a href="https://cywd123.github.io/tags/old/">Old</a></li>
     </ul>
   </footer>
 </article>
